@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="メイシル シンボル">
+  <title>メイシル favicon（案A アクショングリーン）</title>
+  <desc>名刺の角丸長方形が矢印に変わるシンボルの正方形favicon。メイシルグリーン地に白抜き。</desc>
+  <!-- 地: メイシルグリーン（ダーク地用に白抜きシンボルを使用） -->
+  <rect width="64" height="64" rx="14" fill="#0B9E52"/>
+  <!-- シンボル（白抜き版・名刺の角丸長方形→矢印） -->
+  <g transform="translate(11,17)">
+    <path d="M7,0 L18,0 L33,15 L18,30 L7,30 Q0,30 0,23 L0,7 Q0,0 7,0 Z" fill="#FFFFFF"/>
+    <path d="M22.5,0 L31,0 L46,15 L31,30 L22.5,30 L37.5,15 Z" fill="#FFFFFF" opacity="0.72"/>
+  </g>
+</svg>
