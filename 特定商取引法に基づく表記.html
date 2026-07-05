@@ -3,183 +3,306 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>特定商取引法に基づく表記｜コンバージョン名刺 メイシル</title>
-<meta name="description" content="コンバージョン名刺制作サービス「メイシル」の特定商取引法に基づく表記です。">
 
-<!-- Google Fonts（Noto Sans JP: SIL OFL 1.1） -->
+<title>特定商取引法に基づく表記｜コンバージョン名刺 メイシル</title>
+<meta name="description" content="コンバージョン名刺制作サービス「メイシル（MEISIRU）」の特定商取引法に基づく表記です。販売事業者・料金・支払方法・役務の提供時期・キャンセルなどを記載しています。">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="コンバージョン名刺 メイシル">
+<meta property="og:title" content="特定商取引法に基づく表記｜コンバージョン名刺 メイシル">
+<meta property="og:description" content="コンバージョン名刺制作サービス「メイシル（MEISIRU）」の特定商取引法に基づく表記です。">
+<meta property="og:url" content="https://uicity.github.io/meisiru/特定商取引法に基づく表記.html">
+<meta property="og:image" content="https://uicity.github.io/meisiru/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uicity.github.io/meisiru/特定商取引法に基づく表記.html">
+
+<!-- favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<!-- ================= GA4（差し替え: 【GA4測定ID】 例 G-XXXXXXXXXX） =================
+     ⚠️公開前必須: GA4測定ID発行後、このコメントを解除してIDを差し替えること
+     （未解除のまま公開すると計測ゼロ） -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=【GA4測定ID】"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '【GA4測定ID】');
+</script>
+-->
+
+<!-- Google Fonts（Noto Sans JP / Inter：SIL OFL 1.1） -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+<!-- 共通CSS -->
+<link rel="stylesheet" href="assets/site.css">
+
+<!-- 法務ページ固有スタイル（全ページ共通のsite.cssを土台に、読みやすい定義テーブル用の最小追加） -->
 <style>
-/* =========================================================
-   法務ページ共通スタイル（案A/B/Cのどの世界観にも依存しないニュートラル設計）
-   背景 #FFFFFF ／ 本文 #0F2540（コントラスト比 約14.9:1・WCAG AA合格）
-   ========================================================= */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  background: #FFFFFF;
-  color: #0F2540;
-  font-family: 'Noto Sans JP', 'Yu Gothic UI', 'Yu Gothic', '游ゴシック', Meiryo, sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
-  font-feature-settings: 'palt';
-}
-.page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 48px 20px 64px;
-}
-h1 {
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 8px;
-}
-.page-sub {
-  font-size: 14px;
-  color: #47576B; /* 白背景で 6.9:1 */
-  margin-bottom: 24px;
-}
-.draft-note {
-  border: 1px solid #C7D0DA;
-  background: #F4F7F9;
-  border-radius: 6px;
-  padding: 14px 16px;
-  font-size: 14px;
-  margin-bottom: 32px;
-}
-.draft-note strong { font-weight: 700; }
-.updated {
-  font-size: 14px;
-  margin-bottom: 24px;
-}
-.table-wrap { overflow-x: auto; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 15px;
-}
-th, td {
-  border: 1px solid #C7D0DA;
-  padding: 12px 14px;
-  text-align: left;
-  vertical-align: top;
-  line-height: 1.8;
-}
-th {
-  background: #F4F7F9;
-  font-weight: 700;
-  width: 11em;
-  min-width: 9em;
-}
-.foot-notes {
-  margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid #C7D0DA;
-  font-size: 13px;
-  color: #47576B;
-}
-.foot-notes p { margin-bottom: 4px; }
-@media (max-width: 560px) {
-  .page { padding: 32px 16px 48px; }
-  h1 { font-size: 22px; }
-  th, td { display: block; width: auto; min-width: 0; }
-  th { border-bottom: none; }
-  tr + tr th { border-top: none; }
-  td { border-top: none; }
-}
+  .legal{ padding:56px 0 80px; }
+  .legal .container{ max-width:820px; }
+  .legal .page-head{ margin-bottom:28px; }
+  .legal h1{ font-size:clamp(26px,4vw,34px); font-weight:700; line-height:1.4; margin-bottom:10px; }
+  .legal .page-sub{ font-size:14px; color:var(--green-dark); font-weight:700; letter-spacing:.04em; }
+  .legal .updated{ font-size:14px; color:var(--navy); opacity:.75; margin-bottom:28px; }
+
+  /* 定義テーブル（縦2列・見出しセル+内容セル）。site.cssの.table-wrapとは別意匠。 */
+  .legal-table-wrap{
+    overflow-x:auto; -webkit-overflow-scrolling:touch;
+    border:1px solid var(--border); border-radius:var(--radius); background:var(--white);
+    box-shadow:var(--shadow-rest);
+  }
+  .legal-table{ width:100%; font-size:15px; line-height:1.9; }
+  .legal-table th,
+  .legal-table td{
+    border-bottom:1px solid var(--hairline);
+    padding:16px 20px; text-align:left; vertical-align:top;
+  }
+  .legal-table tr:last-child th,
+  .legal-table tr:last-child td{ border-bottom:0; }
+  .legal-table th{
+    background:var(--bg); font-weight:700; color:var(--navy);
+    width:13em; min-width:11em; border-right:1px solid var(--hairline);
+  }
+  .legal-foot{
+    margin-top:28px; padding-top:18px; border-top:1px solid var(--hairline);
+    font-size:13px; color:var(--navy); opacity:.75;
+  }
+  .legal-foot p{ margin-bottom:4px; }
+
+  @media (max-width:600px){
+    .legal{ padding:40px 0 56px; }
+    .legal-table{ font-size:14px; }
+    .legal-table th,
+    .legal-table td{ display:block; width:auto; min-width:0; padding:12px 16px; }
+    .legal-table th{ border-right:0; border-bottom:0; }
+    .legal-table td{ border-bottom:1px solid var(--hairline); }
+    .legal-table tr:last-child td{ border-bottom:0; }
+  }
 </style>
 </head>
 <body>
-<main class="page">
-  <h1>特定商取引法に基づく表記</h1>
-  <p class="page-sub">コンバージョン名刺 メイシル</p>
+<a class="skip-link" href="#main">本文へスキップ</a>
 
-  <div class="draft-note">
-    <strong>【重要】</strong>本書は弁護士レビュー前の草案です。正式なご利用（Web掲載）の前に、必ず弁護士のリーガルレビューを受けてください。
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo" aria-label="コンバージョン名刺 メイシル トップへ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 236" role="img" aria-label="コンバージョン名刺 メイシル">
+        <g transform="translate(106,117) scale(0.65) translate(-235.6,-256)">
+          <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
+          <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
+        </g>
+        <text x="231" y="74" font-size="25" font-weight="500" letter-spacing="2" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
+        <text x="229" y="157" font-size="82" font-weight="700" letter-spacing="3.3" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">メ<tspan dx="-1.5">イシ</tspan><tspan dx="-1">ル</tspan></text>
+        <text x="231" y="198" font-size="23" font-weight="600" letter-spacing="6" fill="#0F2540" font-family="'Inter','Segoe UI','Yu Gothic UI',Arial,sans-serif">MEISIRU</text>
+      </svg>
+    </a>
+
+    <nav class="header-nav" aria-label="グローバルメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="service.html">サービス</a>
+      <a href="price.html">料金</a>
+      <a href="flow.html">導入の流れ</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="company.html">会社概要</a>
+    </nav>
+
+    <a class="header-cta js-cta" data-cta-id="header_soudan"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+       target="_blank" rel="noopener">無料相談</a>
+
+    <button class="nav-toggle" aria-label="メニューを開閉" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</header>
 
-  <p class="updated">最終更新日: 2026年7月5日</p>
+<nav class="mobile-nav" id="mobile-nav" aria-label="モバイルメニュー">
+  <a href="index.html">ホーム</a>
+  <a href="service.html">サービス</a>
+  <a href="price.html">料金</a>
+  <a href="flow.html">導入の流れ</a>
+  <a href="faq.html">よくある質問</a>
+  <a href="company.html">会社概要</a>
+  <a class="btn btn-primary js-cta" data-cta-id="mobilenav_soudan"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+     target="_blank" rel="noopener">無料相談を予約する</a>
+</nav>
 
-  <div class="table-wrap">
-    <table>
-      <tbody>
-        <tr>
-          <th>販売事業者</th>
-          <td>UIcity株式会社</td>
-        </tr>
-        <tr>
-          <th>代表者</th>
-          <td>梶本 雅人</td>
-        </tr>
-        <tr>
-          <th>所在地</th>
-          <td>〒461-0005 愛知県名古屋市東区東桜2丁目3-7 東カン名古屋キャステール1F</td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td>052-325-2222（受付時間: 平日10:00〜17:00）※お問い合わせは原則としてメールまたは公式LINEにて承ります。</td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td>kaji.2415@gmail.com</td>
-        </tr>
-        <tr>
-          <th>Webサイト</th>
-          <td>https://uicity.github.io/meisiru/</td>
-        </tr>
-        <tr>
-          <th>販売価格</th>
-          <td>構成別の費用感（目安・税込）: シンプル構成 5〜10万円前後／標準構成 10〜20万円前後／本格構成 20万円〜（内容により変動）。金額は一律ではなく、目的・予算・必要な導線に合わせた個別見積です。正式な金額は、ヒアリング後に制作範囲を整理したお見積書にて提示します。継続サポート（任意・月額または年払い）およびスポット相談は都度お見積りします。</td>
-        </tr>
-        <tr>
-          <th>商品代金以外の必要料金</th>
-          <td>印刷費、LINE公式アカウント利用料その他の外部ツール利用料（各提供事業者の定めによる実費）、銀行振込手数料、消費税。金額はお見積書に明記します。</td>
-        </tr>
-        <tr>
-          <th>支払方法</th>
-          <td>銀行振込</td>
-        </tr>
-        <tr>
-          <th>支払時期</th>
-          <td>標準（2回払い）: 着手金50%を契約締結後7日以内、残金50%を検収合格後7日以内にお支払いください。お申込み時に3回分割払い等をご選択いただける場合があります（申込書の支払条件欄に明記）。当社は着手金の入金確認をもって制作に着手します。継続サポートは、月額プランは当月分を当月末日まで、年払いプランは契約期間の初月末日までにお支払いください。</td>
-        </tr>
-        <tr>
-          <th>役務の提供時期</th>
-          <td>ご入金（着手金）確認およびヒアリング完了後、制作に着手し、最短2週間で納品します。納期は制作範囲（名刺形式・オファー制作・シナリオ配信等の有無）により変動し、正式な納期はお見積書・申込書に明記します。継続サポートは契約期間の開始日から提供します。</td>
-        </tr>
-        <tr>
-          <th>キャンセル・返金</th>
-          <td>サービス利用契約書第10条（キャンセルおよび中途解約）の定めに従います。制作着手前（着手金の入金前）のキャンセルは費用がかかりません。制作着手後のキャンセルは、お支払い済みの着手金は返金せず、キャンセル時までの進捗に応じた出来高相当額（報酬総額を上限とします）を申し受けます。印刷の発注後のキャンセルは、これに加えて印刷費の実費全額をご負担いただきます。継続サポートは当月末での解約が可能です（月額プランの日割り返金はありません。年払いプランは未経過月数分を月割りで精算します）。詳細は「メイシル サービス利用契約書」「メイシル 継続サポート利用規約」をご確認ください。本サービスは通信販売に該当する場合もクーリング・オフの対象ではありません。</td>
-        </tr>
-        <tr>
-          <th>納品物の不備について</th>
-          <td>納品物に契約内容との不一致（乱丁・データ不備等）があった場合は、納品後14日以内にご連絡ください。当社の負担で修正または再納品します。</td>
-        </tr>
-        <tr>
-          <th>動作環境・ご利用の条件</th>
-          <td>公式LINEを含む導線の運用には、LINEヤフー株式会社が提供するLINEおよびLINE公式アカウントの利用（同社の規約・料金プランに従います）、ならびにインターネット接続環境・スマートフォン等の端末が必要です。納品データの確認には、PDF・画像等を閲覧できる環境が必要です。</td>
-        </tr>
-        <tr>
-          <th>成果について</th>
-          <td>本サービスは名刺交換後の「次の行動につながる導線」を設計・制作するサービスであり、LINE登録数・問い合わせ数・売上等の成果を保証するものではありません。掲載している数値はすべて例です。</td>
-        </tr>
-        <tr>
-          <th>申込みの有効期限</th>
-          <td>お見積書の有効期限は発行日から30日間です。</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<main id="main">
+  <section class="legal">
+    <div class="container">
+      <div class="page-head">
+        <h1>特定商取引法に基づく表記</h1>
+        <p class="page-sub">コンバージョン名刺 メイシル</p>
+      </div>
 
-  <div class="foot-notes">
-    <p>※「LINE」は、LINEヤフー株式会社の商標です。</p>
-    <p>※本書は弁護士レビュー前の草案であり、正式利用の前にリーガルレビューが必要です。</p>
-  </div>
+      <p class="updated">最終更新日: 2026年7月5日</p>
+
+      <div class="legal-table-wrap">
+        <table class="legal-table">
+          <tbody>
+            <tr>
+              <th>販売事業者</th>
+              <td>ＵＩｃｉｔｙ株式会社</td>
+            </tr>
+            <tr>
+              <th>代表者</th>
+              <td>代表取締役 梶本 雅人</td>
+            </tr>
+            <tr>
+              <th>所在地</th>
+              <td>〒460-0003 愛知県名古屋市中区錦1-17-13 名興ビル5F</td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td>052-325-2222（受付時間: 平日10:00〜17:00）<br>※お問い合わせは原則としてメールまたは公式LINEにて承ります。</td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><a href="mailto:info@uicity.net">info@uicity.net</a></td>
+            </tr>
+            <tr>
+              <th>Webサイト</th>
+              <td><a href="https://uicity.github.io/meisiru/" target="_blank" rel="noopener">https://uicity.github.io/meisiru/</a></td>
+            </tr>
+            <tr>
+              <th>販売価格</th>
+              <td>構成別の費用感（目安・税込）: シンプル構成 5〜10万円前後／標準構成 10〜20万円前後／本格構成 20万円〜（内容により変動）。金額は一律ではなく、目的・予算・必要な導線に合わせた個別見積です。正式な金額は、ヒアリング後に制作範囲を整理したお見積書にて提示します。継続サポート（任意・月額または年払い）およびスポット相談は都度お見積りします。</td>
+            </tr>
+            <tr>
+              <th>商品代金以外の必要料金</th>
+              <td>印刷費、LINE公式アカウント利用料その他の外部ツール利用料（各提供事業者の定めによる実費）、銀行振込手数料、消費税。金額はお見積書に明記します。</td>
+            </tr>
+            <tr>
+              <th>支払方法</th>
+              <td>銀行振込</td>
+            </tr>
+            <tr>
+              <th>支払時期</th>
+              <td>標準（2回払い）: 着手金50%を契約締結後7日以内、残金50%を検収合格後7日以内にお支払いください。お申込み時に3回分割払い等をご選択いただける場合があります（申込書の支払条件欄に明記）。当社は着手金の入金確認をもって制作に着手します。継続サポートは、月額プランは当月分を当月末日まで、年払いプランは契約期間の初月末日までにお支払いください。</td>
+            </tr>
+            <tr>
+              <th>役務の提供時期</th>
+              <td>ご入金（着手金）確認およびヒアリング完了後、制作に着手し、最短2週間で納品します。納期は制作範囲（名刺形式・オファー制作・シナリオ配信等の有無）により変動し、正式な納期はお見積書・申込書に明記します。継続サポートは契約期間の開始日から提供します。</td>
+            </tr>
+            <tr>
+              <th>キャンセル・返金</th>
+              <td>サービス利用契約書第10条（キャンセルおよび中途解約）の定めに従います。制作着手前（着手金の入金前）のキャンセルは費用がかかりません。制作着手後のキャンセルは、お支払い済みの着手金は返金せず、キャンセル時までの進捗に応じた出来高相当額（報酬総額を上限とします）を申し受けます。印刷の発注後のキャンセルは、これに加えて印刷費の実費全額をご負担いただきます。継続サポートは当月末での解約が可能です（月額プランの日割り返金はありません。年払いプランは未経過月数分を月割りで精算します）。詳細は「メイシル サービス利用契約書」「メイシル 継続サポート利用規約」をご確認ください。本サービスは通信販売に該当する場合もクーリング・オフの対象ではありません。</td>
+            </tr>
+            <tr>
+              <th>納品物の不備について</th>
+              <td>納品物に契約内容との不一致（乱丁・データ不備等）があった場合は、納品後14日以内にご連絡ください。当社の負担で修正または再納品します。</td>
+            </tr>
+            <tr>
+              <th>動作環境・ご利用の条件</th>
+              <td>公式LINEを含む導線の運用には、LINEヤフー株式会社が提供するLINEおよびLINE公式アカウントの利用（同社の規約・料金プランに従います）、ならびにインターネット接続環境・スマートフォン等の端末が必要です。納品データの確認には、PDF・画像等を閲覧できる環境が必要です。</td>
+            </tr>
+            <tr>
+              <th>成果について</th>
+              <td>本サービスは名刺交換後の「次の行動につながる導線」を設計・制作するサービスであり、LINE登録数・問い合わせ数・売上等の成果を保証するものではありません。掲載している数値はすべて例です。</td>
+            </tr>
+            <tr>
+              <th>申込みの有効期限</th>
+              <td>お見積書の有効期限は発行日から30日間です。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="legal-foot">
+        <p>※「LINE」は、LINEヤフー株式会社の商標です。</p>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- 管理者向けメモ: ※【】内は公開前に確定情報へ差し替えてください（差し替え後、ページ内を「【」で全文検索して0件になることを確認） -->
+<!-- 共通CTAセクション -->
+<section class="section bg-dark" id="contact" aria-labelledby="cta-heading">
+  <div class="container t-center">
+    <span class="kicker" style="color:#8fe3b6;">CONTACT</span>
+    <h2 class="section-title" id="cta-heading" style="color:#fff;">名刺を、<span class="accent">始まりに。</span></h2>
+    <p class="section-lead" style="color:rgba(255,255,255,.9);">
+      無料相談のゴールは契約ではなく、必要な導線と予算感の整理です。<br>
+      オンライン対応・ご契約を迫りません。まずは現状のお話からお聞かせください。
+    </p>
+
+    <div class="cta-buttons" style="margin:32px 0 16px;">
+      <a class="btn btn-primary js-cta" data-cta-id="closing_soudan"
+         href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+         target="_blank" rel="noopener">
+        無料相談を予約する<span class="micro">オンライン対応・ご契約を迫りません</span>
+      </a>
+      <a class="btn btn-line js-cta" data-cta-id="closing_line"
+         href="https://line.me/R/ti/p/@471iiiut"
+         target="_blank" rel="noopener">
+        <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        公式LINEで受け取る
+      </a>
+    </div>
+
+    <p class="cta-note" style="color:rgba(255,255,255,.82);">
+      いきなりの相談に迷う方は、
+      <a href="https://uicity.github.io/meisiru/checklist.html" target="_blank" rel="noopener" style="color:#8fe3b6; text-decoration:underline; text-underline-offset:3px;">名刺導線チェックリスト</a>
+      から。LINE友だち追加で受け取れます。<br>
+      配信は月数回程度。不要になればブロックでいつでも解除できます。<br>
+      ※「LINE」はLINEヤフー株式会社の商標です。
+    </p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 236" role="img" aria-label="コンバージョン名刺 メイシル">
+            <g transform="translate(106,117) scale(0.65) translate(-235.6,-256)">
+              <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
+              <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#FFFFFF"/>
+            </g>
+            <text x="231" y="74" font-size="25" font-weight="500" letter-spacing="2" fill="#FFFFFF" opacity="0.85" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
+            <text x="229" y="157" font-size="82" font-weight="700" letter-spacing="3.3" fill="#FFFFFF" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">メ<tspan dx="-1.5">イシ</tspan><tspan dx="-1">ル</tspan></text>
+            <text x="231" y="198" font-size="23" font-weight="600" letter-spacing="6" fill="#FFFFFF" font-family="'Inter','Segoe UI','Yu Gothic UI',Arial,sans-serif">MEISIRU</text>
+          </svg>
+        </div>
+        <p class="footer-company">
+          運営: ＵＩｃｉｔｙ株式会社（代表取締役 梶本 雅人）<br>
+          所在地: 〒460-0003 愛知県名古屋市中区錦1-17-13 名興ビル5F<br>
+          電話: <a href="tel:0523252222">052-325-2222</a>（受付 平日10:00〜17:00）<br>
+          メール: <a href="mailto:info@uicity.net">info@uicity.net</a><br>
+          <span class="note" style="color:rgba(255,255,255,.7);">お問い合わせは原則メール／公式LINEにて承ります。</span>
+        </p>
+      </div>
+      <nav aria-label="フッターリンク">
+        <ul class="footer-links">
+          <li><a href="service.html">サービス</a></li>
+          <li><a href="price.html">料金の目安</a></li>
+          <li><a href="flow.html">導入の流れ</a></li>
+          <li><a href="faq.html">よくあるご質問</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="特定商取引法に基づく表記.html">特定商取引法に基づく表記</a></li>
+          <li><a href="プライバシーポリシー.html">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-legal">
+      <p>本サイトに記載の数値はすべて説明のための例であり、成果を保証するものではありません。料金は目安であり、印刷費・外部ツール利用料は別途です。正式金額はヒアリング後に制作範囲を整理してご提示します。</p>
+      <p>「LINE」はLINEヤフー株式会社の商標です。本サービスはLINEヤフー株式会社とは関係のない、独立したサービスです。</p>
+      <p class="en">&copy; <span id="copyright-year">2026</span> UIcity Inc. / MEISIRU（メイシル）. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="ページ先頭へ戻る">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 5l-7 7M12 5l7 7M12 5v14" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="assets/site.js"></script>
 </body>
 </html>

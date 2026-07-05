@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>会社概要｜コンバージョン名刺 メイシル</title>
+<meta name="description" content="コンバージョン名刺「メイシル」を運営するUIcity株式会社の会社概要です。社名・代表者・所在地・事業内容、代表挨拶をご紹介します。名刺交換後の見込み客の取りこぼしをなくす導線設計に取り組んでいます。">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="コンバージョン名刺 メイシル">
+<meta property="og:title" content="会社概要｜コンバージョン名刺 メイシル">
+<meta property="og:description" content="コンバージョン名刺「メイシル」を運営するUIcity株式会社の会社概要。社名・代表者・所在地・事業内容と代表挨拶をご紹介します。">
+<meta property="og:url" content="https://uicity.github.io/meisiru/company.html">
+<meta property="og:image" content="https://uicity.github.io/meisiru/ogp.png"><!-- 差し替え: ogp を PNG(1200×630) 化して配置 -->
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://uicity.github.io/meisiru/company.html">
+
+<!-- favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- ================= GA4（差し替え: 【GA4測定ID】 例 G-XXXXXXXXXX） =================
+     ⚠️公開前必須: GA4測定ID発行後、このコメントを解除してIDを差し替えること
+     （未解除のまま公開すると計測ゼロ） -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=【GA4測定ID】"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '【GA4測定ID】');
+</script>
+-->
+
+<!-- Google Fonts（Noto Sans JP / Inter：SIL OFL 1.1） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- 共通CSS -->
+<link rel="stylesheet" href="assets/site.css">
+
+<!-- ページ固有スタイル（会社概要: 情報テーブル・代表挨拶・代表写真フォールバック） -->
+<style>
+/* 会社概要リード */
+.company-hero{ background:linear-gradient(180deg,var(--bg) 0%,var(--white) 100%); padding:64px 0 24px; }
+.company-hero .kicker.en{ font-family:"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif; }
+
+/* 会社概要テーブル（縦罫全廃・角丸箱・行ごと下罫線） */
+.company-table{
+  max-width:820px; margin:0 auto;
+  border:1px solid var(--border); border-radius:var(--radius);
+  background:var(--white); overflow:hidden;
+}
+.company-table table{ width:100%; font-size:15px; }
+.company-table th,
+.company-table td{
+  border:0; border-bottom:1px solid var(--hairline);
+  padding:18px 22px; text-align:left; vertical-align:top; line-height:1.9;
+}
+.company-table th{
+  width:9.5em; white-space:nowrap; font-weight:700;
+  color:var(--navy); background:var(--bg);
+}
+.company-table tbody tr:last-child th,
+.company-table tr:last-child th,
+.company-table tr:last-child td{ border-bottom:0; }
+.company-table a{ color:var(--green-dark); text-decoration:underline; text-underline-offset:3px; }
+@media (max-width:560px){
+  .company-table th,
+  .company-table td{ display:block; width:auto; padding:14px 18px; }
+  .company-table th{ border-bottom:0; padding-bottom:2px; }
+  .company-table td{ padding-top:4px; }
+}
+
+/* 代表挨拶 */
+.greeting-grid{ display:grid; gap:36px; align-items:start; max-width:960px; margin:0 auto; }
+@media (min-width:820px){ .greeting-grid{ grid-template-columns:.85fr 1.15fr; gap:48px; } }
+.greeting-body p{ margin-bottom:18px; }
+.greeting-body p:last-child{ margin-bottom:0; }
+.greeting-sign{ margin-top:28px; font-size:14px; }
+.greeting-sign .role{ display:block; font-size:13px; opacity:.75; margin-bottom:2px; }
+.greeting-sign .name{ font-size:19px; font-weight:700; letter-spacing:.06em; }
+
+/* 代表写真（figure）＋ 画像欠落時のモノグラム円フォールバック */
+.rep-photo{ text-align:center; }
+.rep-photo img{
+  width:100%; max-width:300px; border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-rest); display:inline-block;
+}
+.rep-photo figcaption{
+  margin-top:14px; font-size:13.5px; font-weight:500; color:var(--navy); line-height:1.7;
+}
+/* onerror で .noimg 付与時: 頭文字「梶」のモノグラム円を疑似要素で表示 */
+.rep-photo.noimg::before{
+  content:"梶"; display:flex; align-items:center; justify-content:center;
+  width:180px; height:180px; margin:8px auto 0; border-radius:50%;
+  background:linear-gradient(150deg,var(--green) 0%,var(--green-dark) 100%);
+  color:var(--white); font-size:76px; font-weight:700; line-height:1;
+  font-feature-settings:'palt'; box-shadow:var(--shadow-rest);
+}
+@media (prefers-reduced-motion:reduce){
+  .rep-photo img{ box-shadow:var(--shadow-rest); }
+}
+
+/* 法務リンク（カード2枚） */
+.legal-links{ display:grid; gap:16px; max-width:820px; margin:0 auto; }
+@media (min-width:600px){ .legal-links{ grid-template-columns:repeat(2,1fr); } }
+.legal-links a.card{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  text-decoration:none; color:var(--navy); font-weight:700; font-size:15px;
+}
+.legal-links a.card:hover{ border-color:#CFE9DC; }
+.legal-links a.card .arw{
+  font-family:"Inter","Segoe UI",Arial,sans-serif; color:var(--green-dark); font-weight:700;
+  transition:transform .2s var(--ease-out);
+}
+.legal-links a.card:hover .arw{ transform:translateX(3px); }
+@media (prefers-reduced-motion:reduce){
+  .legal-links a.card:hover .arw{ transform:none; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo" aria-label="コンバージョン名刺 メイシル トップへ">
+      <!-- ロゴ横組み（インラインSVG／案A） -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 236" role="img" aria-label="コンバージョン名刺 メイシル">
+        <g transform="translate(106,117) scale(0.65) translate(-235.6,-256)">
+          <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
+          <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
+        </g>
+        <text x="231" y="74" font-size="25" font-weight="500" letter-spacing="2" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
+        <text x="229" y="157" font-size="82" font-weight="700" letter-spacing="3.3" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">メ<tspan dx="-1.5">イシ</tspan><tspan dx="-1">ル</tspan></text>
+        <text x="231" y="198" font-size="23" font-weight="600" letter-spacing="6" fill="#0F2540" font-family="'Inter','Segoe UI','Yu Gothic UI',Arial,sans-serif">MEISIRU</text>
+      </svg>
+    </a>
+
+    <nav class="header-nav" aria-label="グローバルメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="service.html">サービス</a>
+      <a href="price.html">料金</a>
+      <a href="flow.html">導入の流れ</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="company.html" aria-current="page">会社概要</a>
+    </nav>
+
+    <!-- 右端: 無料相談ボタン（フォームURL直リンク・新規タブ） -->
+    <a class="header-cta js-cta" data-cta-id="header_soudan"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+       target="_blank" rel="noopener">無料相談</a>
+
+    <!-- ハンバーガー（モバイルのみ表示） -->
+    <button class="nav-toggle" aria-label="メニューを開閉" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- モバイルナビ -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="モバイルメニュー">
+  <a href="index.html">ホーム</a>
+  <a href="service.html">サービス</a>
+  <a href="price.html">料金</a>
+  <a href="flow.html">導入の流れ</a>
+  <a href="faq.html">よくある質問</a>
+  <a href="company.html" aria-current="page">会社概要</a>
+  <a class="btn btn-primary js-cta" data-cta-id="mobilenav_soudan"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+     target="_blank" rel="noopener">無料相談を予約する</a>
+</nav>
+
+<main id="main">
+
+  <!-- ページヘッダー -->
+  <section class="company-hero">
+    <div class="container t-center">
+      <span class="kicker en">COMPANY</span>
+      <h1 class="section-title">会社概要</h1>
+      <p class="section-lead">
+        コンバージョン名刺「メイシル」は、UIcity株式会社が企画・制作・運用サポートを行うサービスです。<br>
+        名刺交換のあとに続く関係づくりを、丁寧に支える会社でありたいと考えています。
+      </p>
+    </div>
+  </section>
+
+  <!-- ① 会社概要テーブル -->
+  <section class="section" aria-labelledby="overview-heading">
+    <div class="container">
+      <div class="section-head t-center">
+        <span class="kicker en">OVERVIEW</span>
+        <h2 class="section-title" id="overview-heading">運営会社</h2>
+      </div>
+
+      <div class="company-table">
+        <table>
+          <tbody>
+            <tr>
+              <th scope="row">社名</th>
+              <td>UIcity株式会社（ユーアイシティ）</td>
+            </tr>
+            <tr>
+              <th scope="row">代表取締役</th>
+              <td>梶本 雅人</td>
+            </tr>
+            <tr>
+              <th scope="row">所在地</th>
+              <td>〒460-0003 愛知県名古屋市中区錦1-17-13 名興ビル5F</td>
+            </tr>
+            <tr>
+              <th scope="row">電話番号</th>
+              <td>
+                <a href="tel:0523252222">052-325-2222</a>（受付 平日10:00〜17:00）<br>
+                <span class="note">お問い合わせは原則としてメールまたは公式LINEにて承ります。</span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">メール</th>
+              <td><a href="mailto:info@uicity.net">info@uicity.net</a></td>
+            </tr>
+            <tr>
+              <th scope="row">事業内容</th>
+              <td>コンバージョン名刺「メイシル」の企画・制作・運用サポート</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② 代表挨拶 -->
+  <section class="section bg-light" aria-labelledby="greeting-heading">
+    <div class="container">
+      <div class="section-head t-center">
+        <span class="kicker en">MESSAGE</span>
+        <h2 class="section-title" id="greeting-heading">名刺は、営業の終わりではありません。</h2>
+      </div>
+
+      <div class="greeting-grid">
+        <figure class="rep-photo">
+          <img src="assets/rep.jpg" alt="UIcity株式会社 代表取締役 梶本 雅人"
+               onerror="this.style.display='none';this.closest('.rep-photo').classList.add('noimg')">
+          <figcaption>UIcity株式会社 代表取締役　梶本 雅人</figcaption>
+        </figure>
+
+        <div class="greeting-body">
+          <p>
+            名刺を交換したあと、「その後どうなったか分からない」という経験は、多くの方が持っているのではないでしょうか。せっかくお会いできても、時間が経つと想起されず、こちらから連絡するのも気が引ける。そうして、本来つながれたはずのご縁が、静かに途切れていってしまいます。
+          </p>
+          <p>
+            メイシルは、その「渡して終わり」の一枚を、関係が始まる入口に変えるために生まれました。名刺と公式LINE、無料オファー、そして問い合わせまでの導線をひとつながりに設計し、名刺交換後の取りこぼしを少しでも減らすこと。それが私たちの役割です。
+          </p>
+          <p>
+            大切にしているのは、成果を大きく見せることではなく、必要なものだけを、無理のない形で整えることです。すべての機能を入れる必要はありません。目的や予算に合わせて、いまのあなたに本当に必要な導線だけをご一緒に選んでいきます。相談のゴールは契約ではなく、必要な導線と予算感を整理することだと考えています。
+          </p>
+          <p>
+            なお、メイシルがお作りするのは「次の行動につながる導線」であり、登録数や売上といった成果をお約束するものではありません。それでも、渡した一枚から次の一歩が生まれる。その瞬間を、誠実な仕事で少しでも増やしていきたい。そう考えて、日々の制作に向き合っています。
+          </p>
+
+          <p class="greeting-sign">
+            <span class="role">UIcity株式会社 代表取締役</span>
+            <span class="name">梶本 雅人</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 法務リンク -->
+  <section class="section" aria-labelledby="legal-heading">
+    <div class="container">
+      <div class="section-head t-center">
+        <span class="kicker en">LEGAL</span>
+        <h2 class="section-title" id="legal-heading">各種表記</h2>
+        <p class="section-lead">お取引やお申し込みに関する表記、個人情報の取り扱いについては、以下をご確認ください。</p>
+      </div>
+
+      <div class="legal-links">
+        <a class="card card--shadow" href="特定商取引法に基づく表記.html">
+          <span>特定商取引法に基づく表記</span>
+          <span class="arw" aria-hidden="true">→</span>
+        </a>
+        <a class="card card--shadow" href="プライバシーポリシー.html">
+          <span>プライバシーポリシー</span>
+          <span class="arw" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 共通CTAセクション -->
+  <section class="section bg-dark" id="contact" aria-labelledby="cta-heading">
+    <div class="container t-center">
+      <span class="kicker" style="color:#8fe3b6;">CONTACT</span>
+      <h2 class="section-title" id="cta-heading" style="color:#fff;">名刺を、<span class="accent">始まりに。</span></h2>
+      <p class="section-lead" style="color:rgba(255,255,255,.9);">
+        無料相談のゴールは契約ではなく、必要な導線と予算感の整理です。<br>
+        オンライン対応・ご契約を迫りません。まずは現状のお話からお聞かせください。
+      </p>
+
+      <div class="cta-buttons" style="margin:32px 0 16px;">
+        <!-- 主CTA: 無料相談フォーム（直リンク・新規タブ） -->
+        <a class="btn btn-primary js-cta" data-cta-id="closing_soudan"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+           target="_blank" rel="noopener">
+          無料相談を予約する<span class="micro">オンライン対応・ご契約を迫りません</span>
+        </a>
+        <!-- LINEボタン: 友だち追加（直リンク・新規タブ・#06C755） -->
+        <a class="btn btn-line js-cta" data-cta-id="closing_line"
+           href="https://line.me/R/ti/p/@471iiiut"
+           target="_blank" rel="noopener">
+          <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          公式LINEで受け取る
+        </a>
+      </div>
+
+      <!-- チェックリスト誘導（特典） -->
+      <p class="cta-note" style="color:rgba(255,255,255,.82);">
+        いきなりの相談に迷う方は、
+        <a href="https://uicity.github.io/meisiru/checklist.html" target="_blank" rel="noopener" style="color:#8fe3b6; text-decoration:underline; text-underline-offset:3px;">名刺導線チェックリスト</a>
+        から。LINE友だち追加で受け取れます。<br>
+        配信は月数回程度。不要になればブロックでいつでも解除できます。<br>
+        ※「LINE」はLINEヤフー株式会社の商標です。
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <!-- 白抜きロゴ（ダーク背景用） -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 236" role="img" aria-label="コンバージョン名刺 メイシル">
+            <g transform="translate(106,117) scale(0.65) translate(-235.6,-256)">
+              <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
+              <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#FFFFFF"/>
+            </g>
+            <text x="231" y="74" font-size="25" font-weight="500" letter-spacing="2" fill="#FFFFFF" opacity="0.85" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
+            <text x="229" y="157" font-size="82" font-weight="700" letter-spacing="3.3" fill="#FFFFFF" font-family="'Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif">メ<tspan dx="-1.5">イシ</tspan><tspan dx="-1">ル</tspan></text>
+            <text x="231" y="198" font-size="23" font-weight="600" letter-spacing="6" fill="#FFFFFF" font-family="'Inter','Segoe UI','Yu Gothic UI',Arial,sans-serif">MEISIRU</text>
+          </svg>
+        </div>
+        <p class="footer-company">
+          運営: UIcity株式会社（代表取締役 梶本 雅人）<br>
+          所在地: 〒460-0003 愛知県名古屋市中区錦1-17-13 名興ビル5F<br>
+          電話: <a href="tel:0523252222">052-325-2222</a>（受付 平日10:00〜17:00）<br>
+          メール: <a href="mailto:info@uicity.net">info@uicity.net</a><br>
+          <span class="note" style="color:rgba(255,255,255,.7);">お問い合わせは原則メール／公式LINEにて承ります。</span>
+        </p>
+      </div>
+      <nav aria-label="フッターリンク">
+        <ul class="footer-links">
+          <li><a href="service.html">サービス</a></li>
+          <li><a href="price.html">料金の目安</a></li>
+          <li><a href="flow.html">導入の流れ</a></li>
+          <li><a href="faq.html">よくあるご質問</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="特定商取引法に基づく表記.html">特定商取引法に基づく表記</a></li>
+          <li><a href="プライバシーポリシー.html">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-legal">
+      <p>本サイトに記載の数値はすべて説明のための例であり、成果を保証するものではありません。料金は目安であり、印刷費・外部ツール利用料は別途です。正式金額はヒアリング後に制作範囲を整理してご提示します。</p>
+      <p>「LINE」はLINEヤフー株式会社の商標です。本サービスはLINEヤフー株式会社とは関係のない、独立したサービスです。</p>
+      <p class="en">&copy; <span id="copyright-year">2026</span> UIcity Inc. / MEISIRU（メイシル）. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- back-to-top -->
+<button class="back-to-top" aria-label="ページ先頭へ戻る">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 5l-7 7M12 5l7 7M12 5v14" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- 共通JS -->
+<script src="assets/site.js"></script>
+</body>
+</html>

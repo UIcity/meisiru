@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# 代替デザイン案（案B / 案C）はプレビュー用のため検索インデックス対象外
+Disallow: /b/
+Disallow: /c/
+
+Sitemap: https://uicity.github.io/meisiru/sitemap.xml

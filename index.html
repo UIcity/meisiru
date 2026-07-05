@@ -3,30 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>コンバージョン名刺 メイシル｜渡して終わり、を終わらせる。名刺×公式LINE×無料オファーの導線設計</title>
-<meta name="description" content="名刺×公式LINE×無料オファー×問い合わせ導線をワンセットで設計し、名刺交換後の見込み客の取りこぼしを無くす「コンバージョン名刺」制作サービス。まずは無料相談で、必要な導線と予算感を一緒に整理します。">
 
-<!-- ================= OGP（差し替え: https://uicity.github.io/meisiru/https://uicity.github.io/meisiru/ogp.png） ================= -->
+<title>コンバージョン名刺 メイシル｜渡して終わり、を終わらせる。名刺×公式LINEの導線設計</title>
+<meta name="description" content="名刺 × 公式LINE × 無料オファー × 問い合わせ導線をワンセットで設計し、名刺交換後の見込み客の取りこぼしを無くす「コンバージョン名刺」制作サービス メイシル。まずは無料相談で、必要な導線と予算感を一緒に整理します。">
+
+<!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="コンバージョン名刺 メイシル">
 <meta property="og:title" content="コンバージョン名刺 メイシル｜渡して終わり、を終わらせる。">
 <meta property="og:description" content="名刺×公式LINE×無料オファー×問い合わせ導線をワンセットで設計。名刺交換後の見込み客の取りこぼしを無くすコンバージョン名刺制作サービスです。">
-<meta property="og:url" content="https://uicity.github.io/meisiru/"><!-- 差し替え: 公開後の正式URL -->
-<meta property="og:image" content="https://uicity.github.io/meisiru/ogp.png"><!-- 差し替え: 同梱 ogp.svg をPNG(1200×630)に書き出して配置したURL -->
+<meta property="og:url" content="https://uicity.github.io/meisiru/">
+<meta property="og:image" content="https://uicity.github.io/meisiru/ogp.png"><!-- 差し替え: ogp.svg を PNG(1200×630) 化して配置 -->
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://uicity.github.io/meisiru/"><!-- 差し替え: 公開後の正式URL -->
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://uicity.github.io/meisiru/">
 
-<!-- ================= GA4（差し替え: 【GA4測定ID】 例 G-XXXXXXXXXX） ================= -->
-<!-- ⚠️公開前必須: GA4測定ID発行後、このコメントを解除してIDを差し替えること（未解除のまま公開すると計測ゼロ） -->
+<!-- favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<!-- ================= GA4（差し替え: 【GA4測定ID】 例 G-XXXXXXXXXX） =================
+     ⚠️公開前必須: GA4測定ID発行後、このコメントを解除してIDを差し替えること
+     （未解除のまま公開すると計測ゼロ） -->
 <!--
 <script async src="https://www.googletagmanager.com/gtag/js?id=【GA4測定ID】"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', '【GA4測定ID】'); /* 差し替え: GA4測定ID */
+  gtag('config', '【GA4測定ID】');
 </script>
 -->
 
@@ -35,576 +39,90 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+<!-- 共通CSS -->
+<link rel="stylesheet" href="assets/site.css">
+
+<!-- ページ固有の微調整（共通CSSのクラスを補うのみ・カラー規定は厳守） -->
 <style>
-/* =========================================================
-   案A「アクショングリーン」カラー規定（ブランドスペック準拠）
-   #0B9E52 大型見出し・図形のみ / #047A3B テキスト・ボタン地
-   #0F2540 本文 / #F4F7F9 背景のみ / #0EA5E9 図形・線のみ
-   #06C755 LINE導線UIパーツ（アイコン等）専用
-========================================================= */
-:root{
-  --green:#0B9E52;
-  --green-dark:#047A3B;
-  --navy:#0F2540;
-  --bg:#F4F7F9;
-  --white:#FFFFFF;
-  --blue:#0EA5E9;      /* 図形・線のみ（テキスト禁止） */
-  --line:#06C755;      /* LINE導線UIパーツ専用 */
-  --radius:16px;
-  --hairline:#E9EEF2;
-  /* 影の2段規格（rgba(15,37,64)＝ネイビー由来のみ） */
-  --shadow-rest:0 1px 2px rgba(15,37,64,.05), 0 8px 24px rgba(15,37,64,.07);
-  --shadow-hover:0 2px 4px rgba(15,37,64,.06), 0 16px 40px rgba(15,37,64,.12);
-  --ease-out:cubic-bezier(.22,.61,.36,1);
-  /* タイプスケール（Major Third 1.25・8pxグリッド） */
-  --fs-display:clamp(30px,5.4vw,47px);
-  --fs-h2:clamp(26px,4.4vw,38px);
-  --fs-h3:19px;
-  --fs-lead:clamp(15.5px,2vw,17px);
-  --fs-body:16px;
-  --fs-small:13px;
-  --fs-kicker:12px;
-  /* 余白リズム */
-  --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:40px; --sp-5:64px; --sp-6:96px; --sp-7:128px;
-}
-*{ margin:0; padding:0; box-sizing:border-box; }
-html{ scroll-behavior:smooth; scroll-padding-top:76px; }
-body{
-  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
-  font-size:var(--fs-body); line-height:1.9; color:var(--navy); background:var(--white);
-  -webkit-text-size-adjust:100%;
-}
-.en{ font-family:"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif; }
-img,svg{ max-width:100%; height:auto; }
-a{ color:var(--green-dark); }
-ul{ list-style:none; }
-.container{ width:100%; max-width:1080px; margin:0 auto; padding:0 20px; }
-
-/* 余白リズム: 標準96px／山場120px／クロージング128px（SPは末尾のメディアクエリで縮小） */
-.section{ padding:var(--sp-6) 0; }
-.section.bg-light{ background:var(--bg); border-top:1px solid var(--hairline); }/* 色替わり境界の髪の毛1本 */
-.section.bg-dark{ background:var(--navy); color:var(--white); }
-#samples, #price, #steps{ padding:120px 0; }
-/* seam（中間CTAの48px食い込み）を受けるセクション */
-#samples{ padding-top:168px; }
-#support{ padding-top:144px; }
-
-/* 見出し（和文見出しは palt、本文はベタ組み） */
-h1,h2,h3,h4{ font-feature-settings:'palt'; line-height:1.4; }
-.kicker{
-  display:inline-block; font-size:var(--fs-kicker); font-weight:700; letter-spacing:.24em;
-  color:var(--green-dark); margin-bottom:14px;
-}
-/* kicker格上げ: 24×2pxの水平バー（中央揃えセクションは左右対称） */
-.kicker::before,.kicker::after{
-  content:""; display:inline-block; width:24px; height:2px; background:var(--green);
-  vertical-align:middle; margin:0 10px 2px;
-}
-/* 山場セクションはバーの代わりにミニ矢印（排他） */
-.kicker--arrow::before,.kicker--arrow::after{ content:none; }
-.kicker-mark{ display:block; width:40px; height:auto; margin:0 auto 12px; }
-.section-head{ margin-bottom:56px; }
-.section-title{ font-size:var(--fs-h2); font-weight:700; line-height:1.35; margin-bottom:18px; }
-.section-title .accent{ color:var(--green); }/* 大型見出しのみ #0B9E52 可 */
-.section-lead{ max-width:760px; margin:0 auto; font-size:var(--fs-lead); }
-.t-center{ text-align:center; }
-.note{ font-size:var(--fs-small); color:var(--navy); opacity:.75; }
-
-/* ===== ヘッダー ===== */
-.site-header{
-  position:sticky; top:0; z-index:100; background:rgba(255,255,255,.96);
-  border-bottom:1px solid #E3E9EE; backdrop-filter:blur(6px);
-}
-.header-inner{
-  max-width:1080px; margin:0 auto; padding:10px 20px;
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-}
-.header-logo{ display:flex; align-items:center; }
-.header-logo svg{ width:170px; height:auto; display:block; }
-.header-nav{ display:none; gap:24px; align-items:center; }
-.header-nav a{ font-size:14px; font-weight:500; color:var(--navy); text-decoration:none; }
-.header-nav a:hover{ color:var(--green-dark); }
-.header-cta{
-  display:inline-block; background:var(--green-dark); color:var(--white)!important;
-  font-size:14px; font-weight:700; padding:10px 20px; border-radius:999px; text-decoration:none;
-  transition:background .2s;
-}
-.header-cta:hover{ background:var(--green); }
-@media (min-width:900px){ .header-nav{ display:flex; } }
-
-/* ===== ボタン（主従の階層分離） ===== */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  font-weight:700; text-decoration:none; border-radius:999px; text-align:center;
-  transition:background .2s, color .2s, border-color .2s, transform .2s, box-shadow .2s;
-  line-height:1.4;
-}
-.btn:hover{ transform:translateY(-2px); }
-.btn-primary{
-  background:var(--green-dark); color:var(--white); font-size:17px; padding:18px 40px;
-  box-shadow:0 8px 24px rgba(15,37,64,.16);
-}
-.btn-primary:hover{ background:var(--green); box-shadow:0 12px 32px rgba(15,37,64,.2); }
-/* 主CTAの矢印glyph（ホバーで矢印のみ+3px） */
-.btn-primary::after{
-  content:"→"; font-family:"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif;
-  font-weight:700; transition:transform .2s;
-}
-.btn-primary:hover::after{ transform:translateX(3px); }
-/* 副CTAはアウトライン化（白地 #047A3B 文字=5.45:1 AA） */
-.btn-sub{
-  background:var(--white); color:var(--green-dark); font-size:15px; padding:13px 28px;
-  border:2px solid var(--green-dark);
-}
-.btn-sub:hover{ background:var(--green-dark); color:var(--white); }
-/* ダーク地（.cta-block / .closing）上の副CTA（白文字=15.45:1 AA） */
-.cta-block .btn-sub, .closing .btn-sub{
-  background:transparent; color:var(--white); border-color:rgba(255,255,255,.6);
-}
-.cta-block .btn-sub:hover, .closing .btn-sub:hover{
-  border-color:var(--white); background:rgba(255,255,255,.08); color:var(--white);
-}
-.btn .micro{ display:block; font-size:11px; font-weight:500; letter-spacing:.05em; }
-/* LINE識別アイコン（この円のみ #06C755 使用可） */
-.line-badge{
-  flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--line);
-  display:inline-flex; align-items:center; justify-content:center;
-}
-.line-badge svg{ width:12px; height:12px; display:block; }
-.cta-note{ font-size:12.5px; margin-top:12px; opacity:.8; }
-
-/* ===== CTAブロック（中間CTA） ===== */
-.cta-block{
-  background:var(--navy); border-radius:20px; padding:44px 28px; text-align:center; color:var(--white);
-}
-.cta-block h3{ font-size:clamp(19px,3.4vw,24px); font-weight:700; margin-bottom:10px; }
-.cta-block p{ font-size:14px; margin-bottom:24px; opacity:.9; }
-/* seam方式: 次セクションへ48px食い込ませ「段差」を作る（#empathy末尾・#faq末尾） */
-.cta-seam{ position:relative; z-index:2; margin-bottom:-144px; }
-.cta-buttons{ display:flex; flex-direction:column; gap:14px; align-items:center; }
-@media (min-width:768px){ .cta-buttons{ flex-direction:row; justify-content:center; } }
-
-/* ===== FV ===== */
-.fv{ background:linear-gradient(180deg,var(--bg) 0%,var(--white) 100%); padding:72px 0 96px; overflow:hidden; }
-.fv-grid{ display:grid; gap:40px; align-items:center; }
-@media (min-width:900px){ .fv-grid{ grid-template-columns:1.15fr .85fr; } }
-.fv-copy .problem{
-  font-size:var(--fs-display); font-weight:700; line-height:1.42; letter-spacing:.01em; margin-bottom:24px;
-}
-.fv-copy .problem .underline{
-  background:linear-gradient(transparent 68%, rgba(11,158,82,.28) 68%);
-}
-/* カテゴリ名ロックアップ＋タグライン（必ず2段構成） */
-.lockup{ margin-bottom:24px; }
-.lockup .category{
-  display:inline-block; font-size:14px; font-weight:700; letter-spacing:.14em;
-  color:var(--white); background:var(--green-dark); padding:5px 14px; border-radius:6px; margin-bottom:10px;
-}
-.lockup .tagline{
-  display:block; font-size:clamp(20px,3.8vw,28px); font-weight:700; color:var(--green-dark); letter-spacing:.04em;
-}
-.fv-desc{ font-size:var(--fs-lead); margin-bottom:28px; max-width:560px; }
-.fv-visual{ text-align:center; }
-.fv-visual svg{ width:100%; max-width:520px; }
-
-/* ===== 共感（3つのお悩み）: pain-card=枠のみ・影なし（カードの格差付け） ===== */
-.cards-3{ display:grid; gap:20px; margin-bottom:48px; }
-@media (min-width:768px){ .cards-3{ grid-template-columns:repeat(3,1fr); } }
-.pain-card{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  padding:28px 22px;
-}
-.pain-card .num{
-  font-family:"Inter",sans-serif; font-feature-settings:"tnum"; font-size:13px; font-weight:700;
-  letter-spacing:.1em; color:var(--green-dark); display:block; margin-bottom:8px;
-}
-.pain-card h3{ font-size:18px; font-weight:700; margin-bottom:10px; }
-.pain-card p{ font-size:14px; }
-.empathy-close{ max-width:720px; margin:0 auto 48px; text-align:center; font-weight:500; }
-.empathy-close strong{ color:var(--green-dark); }
-
-/* ===== 制作サンプル（影あり3種のひとつ） ===== */
-.samples-grid{ display:grid; gap:24px; margin-bottom:24px; }
-@media (min-width:900px){ .samples-grid{ grid-template-columns:repeat(3,1fr); } }
-.sample-card{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  padding:20px; box-shadow:var(--shadow-rest);
-  transition:transform .25s var(--ease-out), box-shadow .25s, border-color .25s;
-}
-.sample-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color:#CFE9DC; }
-.sample-card .tag{
-  display:inline-block; font-size:12px; font-weight:700; color:var(--white);
-  background:var(--navy); border-radius:4px; padding:2px 10px; margin-bottom:12px;
-}
-.sample-card figure{ margin:0 0 14px; }
-.sample-card h3{ font-size:16px; font-weight:700; margin-bottom:6px; }
-.sample-card p{ font-size:13.5px; }
-.demo-note{
-  text-align:center; font-size:13px; font-weight:500;
-  border:1px dashed var(--green-dark); color:var(--green-dark);
-  border-radius:8px; padding:10px 16px; max-width:640px; margin:0 auto;
-}
-
-/* ===== 6ステップ導線図 ===== */
-.flow6{ display:grid; gap:0; counter-reset:flow; max-width:720px; margin:0 auto; }
-.flow6 li{ position:relative; padding:0 0 30px 64px; }
-.flow6 li::before{
-  counter-increment:flow; content:"0" counter(flow);
-  position:absolute; left:0; top:0; width:44px; height:44px; border-radius:12px;
-  background:var(--green); color:var(--white);
-  font-family:"Inter",sans-serif; font-weight:700; font-size:16px;
-  display:flex; align-items:center; justify-content:center;
-}
-/* 縦の接続線（図形用途 #0EA5E9） */
-.flow6 li:not(:last-child)::after{
-  content:""; position:absolute; left:21px; top:48px; bottom:4px; width:2px;
-  background:var(--blue); opacity:.5;
-}
-.flow6 h3{ font-size:17px; font-weight:700; margin-bottom:4px; }
-.flow6 p{ font-size:14px; }
-.flow-punch{
-  max-width:720px; margin:36px auto 0; background:var(--white); border:1px solid var(--hairline);
-  border-left:5px solid var(--green);
-  border-radius:0 var(--radius) var(--radius) 0; padding:20px 24px; font-weight:500;
-}
-
-/* ===== 比較表（縦罫全廃・丸箱化・メイシル列の額装） ===== */
-.table-shell{ position:relative; }
-.table-shell::before{
-  content:"→ 横にスクロールできます"; display:none; text-align:right;
-  font-size:13px; color:var(--navy); opacity:.65; margin-bottom:6px;
-}
-.table-shell::after{
-  content:""; display:none; position:absolute; top:1px; bottom:17px; right:1px; width:16px;
-  border-radius:0 13px 13px 0; pointer-events:none;
-  background:linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
-}
-.table-wrap{
-  overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:16px;
-  border:1px solid #E3E9EE; border-radius:14px; background:var(--white);
-}
-table{ border-collapse:collapse; width:100%; min-width:640px; background:var(--white); font-size:14px; }
-caption{ text-align:left; font-size:13px; padding:12px 18px 8px; color:var(--navy); opacity:.75; }
-th,td{ border:0; border-bottom:1px solid var(--hairline); padding:14px 18px; text-align:left; vertical-align:top; }
-thead th{ background:var(--bg); color:var(--navy); font-weight:700; font-size:13px; letter-spacing:.06em; white-space:nowrap; }
-tbody th{ font-weight:700; white-space:nowrap; }
-tbody tr:nth-child(even){ background:#FAFCFD; }
-tbody tr:last-child th, tbody tr:last-child td{ border-bottom:0; }
-.col-meisiru{ background:rgba(11,158,82,.07); }
-tbody .col-meisiru{ box-shadow:inset 3px 0 0 var(--green), inset -3px 0 0 var(--green); }
-thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
-.mark-good{ color:var(--green-dark); font-weight:700; }
-.mark-mid{ color:var(--navy); }
-.mark-bad{ color:var(--navy); opacity:.55; }
-
-/* ===== 業種別活用（影あり3種のひとつ） ===== */
-.industry-grid{ display:grid; gap:20px; }
-@media (min-width:768px){ .industry-grid{ grid-template-columns:repeat(2,1fr); } }
-.industry-card{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  padding:26px 24px; box-shadow:var(--shadow-rest);
-  transition:transform .25s var(--ease-out), box-shadow .25s, border-color .25s;
-}
-.industry-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color:#CFE9DC; }
-.industry-card .badge{
-  display:inline-block; font-size:12px; font-weight:700; color:var(--white);
-  background:var(--green-dark); border-radius:999px; padding:3px 12px; margin-bottom:10px;
-}
-.industry-card h3{ font-size:19px; font-weight:700; margin-bottom:10px; }
-.industry-card dl{ font-size:14px; }
-.industry-card dt{ font-weight:700; color:var(--green-dark); margin-top:10px; }
-.industry-card dd{ margin:0; }
-
-/* ===== メリット6 ===== */
-.merit-grid{ display:grid; gap:20px; }
-@media (min-width:600px){ .merit-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (min-width:960px){ .merit-grid{ grid-template-columns:repeat(3,1fr); } }
-.merit-card{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  padding:26px 22px; border-top:4px solid var(--green);
-}
-.merit-card .m-num{
-  font-family:"Inter",sans-serif; font-feature-settings:"tnum"; font-size:26px; font-weight:700;
-  color:var(--green); display:block; margin-bottom:6px;
-}
-.merit-card h3{ font-size:16.5px; font-weight:700; margin-bottom:8px; }
-.merit-card p{ font-size:14px; }
-
-/* ===== 代表挨拶 ===== */
-.message-grid{ display:grid; gap:30px; align-items:start; }
-@media (min-width:800px){ .message-grid{ grid-template-columns:280px 1fr; } }
-.photo-placeholder{
-  width:100%; max-width:280px; aspect-ratio:3/4; border-radius:var(--radius);
-  background:var(--bg); border:2px dashed #B9C6D0;
-  display:flex; align-items:center; justify-content:center; text-align:center;
-  font-size:13px; color:var(--navy); opacity:.8; margin:0 auto;
-}
-.message-body p{ margin-bottom:16px; }
-.message-sign{ font-weight:700; margin-top:8px; }
-.message-sign .en{ font-size:12px; font-weight:600; letter-spacing:.1em; display:block; opacity:.7; }
-
-/* ===== 価格文脈 ===== */
-.context-grid{ display:grid; gap:20px; margin-bottom:36px; }
-@media (min-width:768px){ .context-grid{ grid-template-columns:repeat(3,1fr); } }
-.context-card{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius); padding:26px 22px;
-}
-.context-card h3{ font-size:16px; font-weight:700; margin-bottom:8px; }
-.context-card .sub{ font-size:12.5px; font-weight:700; color:var(--green-dark); display:block; margin-bottom:6px; letter-spacing:.06em; }
-.context-card p{ font-size:14px; }
-.funnel-example{
-  background:var(--navy); color:var(--white); border-radius:20px; padding:32px 24px; text-align:center;
-}
-.funnel-example h3{ font-size:18px; font-weight:700; margin-bottom:18px; }
-.funnel-steps{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; align-items:stretch; margin-bottom:14px; }
-.funnel-steps .f-step{
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25);
-  border-radius:10px; padding:10px 14px; min-width:104px;
-}
-.funnel-steps .f-step b{ display:block; font-family:"Inter",sans-serif; font-size:20px; font-weight:700; }
-.funnel-steps .f-step span{ font-size:12px; }
-.funnel-steps .f-arrow{ align-self:center; color:var(--white); opacity:.8; font-weight:700; }
-.funnel-example .note{ color:var(--white); opacity:.75; }
-
-/* ===== 料金（影あり3種のひとつ） ===== */
-.price-grid{ display:grid; gap:22px; margin-bottom:40px; }
-@media (min-width:900px){ .price-grid{ grid-template-columns:repeat(3,1fr); } }
-.price-card{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  padding:30px 24px; box-shadow:var(--shadow-rest); display:flex; flex-direction:column;
-  transition:transform .25s var(--ease-out), box-shadow .25s, border-color .25s;
-}
-.price-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color:#CFE9DC; }
-.price-card.featured{ border:2px solid var(--green-dark); position:relative; }
-.price-card.featured:hover{ border-color:var(--green-dark); }
-.price-card.featured .ribbon{
-  position:absolute; top:-14px; left:50%; transform:translateX(-50%);
-  background:var(--green-dark); color:var(--white); font-size:12px; font-weight:700;
-  border-radius:999px; padding:3px 16px; white-space:nowrap;
-}
-.price-card h3{ font-size:19px; font-weight:700; margin-bottom:4px; }
-.price-card .p-sub{ font-size:12.5px; font-weight:500; color:var(--green-dark); margin-bottom:14px; }
-.price-card .price{
-  font-family:"Inter","Noto Sans JP",sans-serif; font-feature-settings:"tnum";
-  font-size:30px; font-weight:700; margin-bottom:4px;
-}
-.price-card .price small{ font-size:14px; font-weight:500; }
-.price-card .p-note{ font-size:12px; opacity:.75; margin-bottom:16px; }
-.price-card ul{ font-size:13.5px; margin-top:auto; }
-.price-card ul li{ padding:7px 0 7px 26px; position:relative; border-top:1px dashed #DFE6EC; }
-.price-card ul li::before{
-  content:""; position:absolute; left:2px; top:14px; width:14px; height:8px;
-  border-left:2.5px solid var(--green); border-bottom:2.5px solid var(--green); transform:rotate(-45deg);
-}
-.price-philosophy{
-  max-width:760px; margin:0 auto 40px; background:var(--white); border-radius:var(--radius);
-  border:1px solid var(--hairline); border-left:5px solid var(--green); padding:24px 28px;
-}
-.price-philosophy p{ font-size:15px; font-weight:500; }
-.price-notes{ max-width:760px; margin:20px auto 0; font-size:13px; }
-.price-notes li{ padding-left:1.2em; text-indent:-1.2em; margin-bottom:6px; }
-.price-notes li::before{ content:"※ "; }
-
-/* ===== 制作の流れ7ステップ ===== */
-.steps7{ counter-reset:step; max-width:760px; margin:0 auto; }
-.steps7 li{
-  position:relative; background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  padding:20px 22px 20px 76px; margin-bottom:14px;
-}
-.steps7 li::before{
-  counter-increment:step; content:"0" counter(step);
-  position:absolute; left:20px; top:20px; font-family:"Inter",sans-serif;
-  font-feature-settings:"tnum"; font-size:22px; font-weight:700; color:var(--green);
-}
-.steps7 h3{ font-size:16.5px; font-weight:700; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
-.steps7 .days{
-  font-size:12px; font-weight:700; color:var(--green-dark); background:rgba(11,158,82,.1);
-  border-radius:999px; padding:2px 10px;
-}
-.steps7 p{ font-size:14px; margin-top:4px; }
-
-/* ===== 納品物 ===== */
-.deliv-grid{ display:grid; gap:16px; }
-@media (min-width:600px){ .deliv-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (min-width:960px){ .deliv-grid{ grid-template-columns:repeat(3,1fr); } }
-.deliv-card{ background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius); padding:22px; }
-.deliv-card h3{ font-size:15.5px; font-weight:700; margin-bottom:8px; color:var(--green-dark); }
-.deliv-card p{ font-size:13.5px; }
-
-/* ===== 向いている・向いていない ===== */
-.fit-grid{ display:grid; gap:24px; }
-@media (min-width:800px){ .fit-grid{ grid-template-columns:1fr 1fr; } }
-.fit-card{ border-radius:var(--radius); padding:30px 26px; }
-.fit-card.ok{ background:var(--white); border:2px solid var(--green-dark); }
-.fit-card.ng{ background:var(--white); border:1px solid #DFE6EC; }
-.fit-card h3{ font-size:18px; font-weight:700; margin-bottom:16px; }
-.fit-card.ok h3{ color:var(--green-dark); }
-.fit-card li{ font-size:14.5px; padding:8px 0 8px 30px; position:relative; border-top:1px dashed #E3E9EE; }
-.fit-card.ok li::before{
-  content:""; position:absolute; left:2px; top:16px; width:15px; height:8px;
-  border-left:2.5px solid var(--green); border-bottom:2.5px solid var(--green); transform:rotate(-45deg);
-}
-.fit-card.ng li::before{
-  content:"—"; position:absolute; left:4px; top:8px; font-weight:700; opacity:.5;
-}
-.fit-conditions{
-  max-width:760px; margin:36px auto 0; background:var(--navy); color:var(--white);
-  border-radius:var(--radius); padding:26px 28px;
-}
-.fit-conditions h3{ font-size:16px; font-weight:700; margin-bottom:10px; }
-.fit-conditions ol{ padding-left:1.4em; font-size:14.5px; }
-
-/* ===== FAQ ===== */
-.faq-list{ max-width:800px; margin:0 auto 48px; }
-.faq-list details{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  margin-bottom:12px; overflow:hidden; transition:border-color .25s, box-shadow .25s;
-}
-.faq-list details[open]{ border-color:var(--green); box-shadow:inset 3px 0 0 var(--green); }
-.faq-list summary{
-  cursor:pointer; list-style:none; padding:18px 52px 18px 52px; position:relative;
-  font-weight:700; font-size:15.5px; line-height:1.6; transition:background .2s;
-}
-.faq-list summary:hover{ background:#F8FAFB; }
-.faq-list summary::-webkit-details-marker{ display:none; }
-.faq-list summary::before{
-  content:"Q"; position:absolute; left:18px; top:16px; font-family:"Inter",sans-serif;
-  font-weight:700; color:var(--green); font-size:18px;
-}
-/* シェブロンは transform-origin:center の回転のみ（開閉時のガタつき解消） */
-.faq-list summary::after{
-  content:""; position:absolute; right:20px; top:26px; width:10px; height:10px;
-  border-right:2.5px solid var(--green-dark); border-bottom:2.5px solid var(--green-dark);
-  transform:rotate(45deg); transform-origin:center; transition:transform .2s;
-}
-.faq-list details[open] summary::after{ transform:rotate(-135deg); }
-.faq-list .answer{ display:grid; grid-template-rows:1fr; padding:0 20px 0 52px; position:relative; font-size:14.5px; }
-.faq-list .answer-inner{ overflow:hidden; }
-.faq-list .answer-inner p{ padding-bottom:20px; }
-.faq-list .answer::before{
-  content:"A"; position:absolute; left:18px; top:-2px; font-family:"Inter",sans-serif;
-  font-weight:700; color:var(--navy); font-size:18px;
-}
-
-/* ===== 運用サポート3択 ===== */
-.support-grid{ display:grid; gap:20px; }
-@media (min-width:800px){ .support-grid{ grid-template-columns:repeat(3,1fr); } }
-.support-card{
-  background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius);
-  padding:28px 24px; text-align:center;
-}
-.support-card .s-label{
-  display:inline-block; font-size:12px; font-weight:700; color:var(--green-dark);
-  border:1px solid var(--green-dark); border-radius:999px; padding:2px 14px; margin-bottom:12px;
-}
-.support-card h3{ font-size:17px; font-weight:700; margin-bottom:8px; }
-.support-card p{ font-size:13.5px; text-align:left; }
-.support-note{ text-align:center; margin-top:24px; font-weight:500; }
-
-/* ===== クロージング ===== */
-.closing{
-  background:var(--navy); color:var(--white); text-align:center; padding:var(--sp-7) 0;
-  position:relative; overflow:hidden;
-}
-/* 上辺から下がる同一色相グラデ帯（#0B9E52 α0.08→0） */
-.closing::before{
-  content:""; position:absolute; top:0; left:0; right:0; height:96px;
-  background:linear-gradient(180deg, rgba(11,158,82,.08), rgba(11,158,82,0)); pointer-events:none;
-}
-.closing .container{ position:relative; }
-.closing .closing-copy{ font-size:clamp(30px,6vw,46px); font-weight:700; margin-bottom:18px; letter-spacing:.04em; }
-.closing .closing-copy .accent{ color:var(--green); }/* ダーク地のグリーンは大型のみ */
-.closing p.lead{ max-width:640px; margin:0 auto 34px; font-size:15.5px; opacity:.92; }
-.closing .lockup .category{ background:var(--green-dark); }
-.closing .lockup .tagline{ color:var(--white); font-size:clamp(17px,3vw,22px); }
-
-/* ===== フッター ===== */
-.site-footer{ background:var(--navy); color:var(--white); padding:44px 0 120px; border-top:1px solid rgba(255,255,255,.15); }
-@media (min-width:768px){ .site-footer{ padding-bottom:44px; } }
-.footer-grid{ display:grid; gap:28px; }
-@media (min-width:800px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
-.footer-logo svg{ width:180px; height:auto; }
-.footer-company{ font-size:13px; margin-top:14px; opacity:.9; }
-.footer-links{ font-size:13.5px; }
-.footer-links li{ margin-bottom:8px; }
-.footer-links a{ color:var(--white); text-decoration:underline; text-underline-offset:3px; }
-.footer-legal{ margin-top:32px; padding-top:20px; border-top:1px solid rgba(255,255,255,.18); font-size:12px; opacity:.8; }
-.footer-legal p{ margin-bottom:6px; }
-
-/* ===== モバイル固定CTAバー（無料相談優先の7:5比率） ===== */
-.fixed-cta{
-  position:fixed; left:0; right:0; bottom:0; z-index:120;
-  display:flex; gap:8px; padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-  background:rgba(255,255,255,.97); border-top:1px solid #E3E9EE; box-shadow:0 -4px 16px rgba(15,37,64,.12);
-  transition:transform .3s;
-}
-.fixed-cta.is-hidden{ transform:translateY(110%); }
-.fixed-cta a{
-  flex:5; display:flex; align-items:center; justify-content:center; gap:6px;
-  background:var(--green-dark); color:var(--white); font-size:13.5px; font-weight:700;
-  padding:13px 6px; border-radius:10px; text-decoration:none; line-height:1.3; text-align:center;
-  min-height:52px;
-}
-.fixed-cta a:first-child{ flex:7; }
-.fixed-cta a:active{ background:var(--green); }
-@media (min-width:768px){ .fixed-cta{ display:none; } }
-
-/* ===== スクロール連出（vanilla・prefers-reduced-motion対応） ===== */
-@media (prefers-reduced-motion: no-preference){
-  .reveal{opacity:0; transform:translateY(18px);
-    transition:opacity .6s ease, transform .6s var(--ease-out);}
-  .reveal.is-in{opacity:1; transform:none;}
-  .reveal-stagger > *{opacity:0; transform:translateY(14px);
-    transition:opacity .5s ease, transform .5s var(--ease-out);}
-  .reveal-stagger.is-in > *{opacity:1; transform:none;}
-  .reveal-stagger.is-in > :nth-child(2){transition-delay:.08s;}
-  .reveal-stagger.is-in > :nth-child(3){transition-delay:.16s;}
-  .reveal-stagger.is-in > :nth-child(n+4){transition-delay:.24s;}
-  .faq-list details[open] .answer{ animation:faqOpen .3s ease; }
-}
-@keyframes faqOpen{ from{ grid-template-rows:0fr; } to{ grid-template-rows:1fr; } }
-
-/* ===== モバイル最適化（〜600px） ===== */
-@media (max-width:600px){
-  body{ line-height:1.8; }
-  .section{ padding:var(--sp-5) 0; }
-  #price, #steps{ padding:72px 0; }
-  #samples{ padding:104px 0 72px; }
-  #support{ padding-top:96px; }
-  .cta-seam{ margin-bottom:-96px; }
-  .section-head{ margin-bottom:40px; }
-  .fv{ padding:48px 0 64px; }
-  .fv-copy .problem{ font-size:30px; line-height:1.45; }
-  .fv-visual svg{ max-width:88vw; }
-  .closing{ padding:88px 0; }
-  .cta-buttons .btn{ width:100%; max-width:360px; min-height:52px; }
-  .table-shell::before{ display:block; }
-  .table-shell::after{ display:block; }
-}
-
-/* アクセシビリティ */
-.visually-hidden{
-  position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden;
-  clip:rect(0 0 0 0); white-space:nowrap; border:0;
-}
-:focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
-@media (prefers-reduced-motion:reduce){
-  html{ scroll-behavior:auto; }
-  .btn:hover{ transform:none; }
-  .btn-primary:hover::after{ transform:none; }
-  .sample-card:hover, .industry-card:hover, .price-card:hover{ transform:none; box-shadow:var(--shadow-rest); }
-  .faq-list summary::after{ transition:none; }
-  .fixed-cta{ transition:none; }
-}
+  /* ヒーロー導線ミニ図の下の一言 */
+  .hero-note{ font-size:12.5px; margin-top:14px; opacity:.85; }
+  /* 3つのお悩みカード（枠のみ・影なし＝格差付け） */
+  .pain-card .num{
+    font-family:"Inter",sans-serif; font-feature-settings:"tnum"; font-size:13px; font-weight:700;
+    letter-spacing:.1em; color:var(--green-dark); display:block; margin-bottom:8px;
+  }
+  .pain-card h3{ font-size:18px; font-weight:700; margin-bottom:10px; }
+  .pain-card p{ font-size:14px; }
+  .empathy-close{ max-width:720px; margin:40px auto 0; text-align:center; font-weight:500; }
+  .empathy-close strong{ color:var(--green-dark); }
+  /* 業種別プレビュー: dl */
+  .industry-card .badge{ margin-bottom:10px; }
+  .industry-card h3{ font-size:18px; font-weight:700; margin-bottom:10px; }
+  .industry-card dl{ font-size:14px; }
+  .industry-card dt{ font-weight:700; color:var(--green-dark); margin-top:10px; }
+  .industry-card dd{ margin:0; }
+  /* メリットカード内番号 */
+  .merit-card .m-num{
+    font-family:"Inter",sans-serif; font-feature-settings:"tnum"; font-size:26px; font-weight:700;
+    color:var(--green); display:block; margin-bottom:6px; line-height:1;
+  }
+  /* 変化ファネル（50→8→6→3→1） */
+  .funnel-example{ background:var(--navy); color:var(--white); border-radius:var(--radius-lg); padding:34px 24px; text-align:center; }
+  .funnel-example h3{ font-size:18px; font-weight:700; margin-bottom:22px; }
+  .funnel-steps{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; align-items:stretch; margin-bottom:16px; }
+  .funnel-steps .f-step{
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25);
+    border-radius:12px; padding:12px 16px; min-width:110px;
+  }
+  .funnel-steps .f-step .num{ font-size:clamp(24px,4vw,30px); color:#8fe3b6; line-height:1.1; }
+  .funnel-steps .f-step .lbl{ display:block; font-size:12px; margin-top:2px; opacity:.9; }
+  .funnel-steps .f-arrow{ align-self:center; color:var(--white); opacity:.65; font-weight:700; font-family:"Inter",sans-serif; }
+  .funnel-example .note{ color:var(--white); opacity:.75; }
+  /* 料金プレビュー3枚 */
+  .price-card{
+    display:flex; flex-direction:column;
+  }
+  .price-card .p-sub{ font-size:12.5px; font-weight:500; color:var(--green-dark); margin-bottom:12px; }
+  .price-card .price{
+    font-family:"Inter","Noto Sans JP",sans-serif; font-feature-settings:"tnum";
+    font-size:28px; font-weight:700; margin-bottom:4px; color:var(--navy);
+  }
+  .price-card .price small{ font-size:13px; font-weight:500; }
+  .price-card .p-note{ font-size:12px; opacity:.75; margin-bottom:16px; }
+  .price-card ul{ font-size:13.5px; margin-top:auto; }
+  .price-card ul li{ padding:7px 0 7px 26px; position:relative; border-top:1px dashed #DFE6EC; }
+  .price-card ul li::before{
+    content:""; position:absolute; left:2px; top:14px; width:14px; height:8px;
+    border-left:2.5px solid var(--green); border-bottom:2.5px solid var(--green); transform:rotate(-45deg);
+  }
+  .price-card.featured{ border:2px solid var(--green-dark); position:relative; }
+  .price-card.featured .ribbon{
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    background:var(--green-dark); color:var(--white); font-size:12px; font-weight:700;
+    border-radius:999px; padding:3px 16px; white-space:nowrap;
+  }
+  /* 代表からの一言 */
+  .message-grid{ display:grid; gap:28px; align-items:start; max-width:900px; margin:0 auto; }
+  @media (min-width:800px){ .message-grid{ grid-template-columns:240px 1fr; } }
+  .photo-placeholder{
+    width:100%; max-width:240px; aspect-ratio:3/4; border-radius:var(--radius);
+    background:var(--bg); border:2px dashed #B9C6D0;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-size:13px; color:var(--navy); opacity:.8; margin:0 auto;
+  }
+  .message-body p{ margin-bottom:16px; }
+  .message-sign{ font-weight:700; margin-top:8px; }
+  .message-sign .en{ font-size:12px; font-weight:600; letter-spacing:.1em; display:block; opacity:.7; }
 </style>
 </head>
 <body>
 
-<!-- =============== ヘッダー =============== -->
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<!-- =============== ヘッダー（共通） =============== -->
 <header class="site-header">
   <div class="header-inner">
-    <a href="#top" class="header-logo" aria-label="コンバージョン名刺 メイシル トップへ">
-      <!-- ロゴ横組み（01_ロゴ/案A/ロゴ横組み.svg をインライン展開） -->
+    <a href="index.html" class="header-logo" aria-label="コンバージョン名刺 メイシル トップへ">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 236" role="img" aria-label="コンバージョン名刺 メイシル">
         <g transform="translate(106,117) scale(0.65) translate(-235.6,-256)">
           <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
@@ -615,24 +133,45 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
         <text x="231" y="198" font-size="23" font-weight="600" letter-spacing="6" fill="#0F2540" font-family="'Inter','Segoe UI','Yu Gothic UI',Arial,sans-serif">MEISIRU</text>
       </svg>
     </a>
-    <nav class="header-nav" aria-label="ページ内メニュー">
-      <a href="#samples">制作サンプル</a>
-      <a href="#merit">選ばれる理由</a>
-      <a href="#price">料金</a>
-      <a href="#steps">制作の流れ</a>
-      <a href="#faq">よくある質問</a>
+
+    <nav class="header-nav" aria-label="グローバルメニュー">
+      <a href="index.html" aria-current="page">ホーム</a>
+      <a href="service.html">サービス</a>
+      <a href="price.html">料金</a>
+      <a href="flow.html">導入の流れ</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="company.html">会社概要</a>
     </nav>
-    <a class="header-cta js-cta" data-cta-id="header_soudan" href="#contact">無料相談</a>
+
+    <a class="header-cta js-cta" data-cta-id="header_soudan"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+       target="_blank" rel="noopener">無料相談</a>
+
+    <button class="nav-toggle" aria-label="メニューを開閉" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<main id="top">
+<nav class="mobile-nav" id="mobile-nav" aria-label="モバイルメニュー">
+  <a href="index.html" aria-current="page">ホーム</a>
+  <a href="service.html">サービス</a>
+  <a href="price.html">料金</a>
+  <a href="flow.html">導入の流れ</a>
+  <a href="faq.html">よくある質問</a>
+  <a href="company.html">会社概要</a>
+  <a class="btn btn-primary js-cta" data-cta-id="mobilenav_soudan"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+     target="_blank" rel="noopener">無料相談を予約する</a>
+</nav>
 
-<!-- =============== 1. FV =============== -->
-<section class="fv" id="fv">
-  <div class="container fv-grid">
-    <div class="fv-copy">
-      <h1 class="problem">名刺交換のあと、<br><span class="underline">見込み客を取りこぼして</span>いませんか。</h1>
+<main id="main">
+
+<!-- =============== ① ヒーロー =============== -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>名刺交換のあと、<br><span class="underline">見込み客を取りこぼして</span>いませんか。</h1>
 
       <!-- タグラインはカテゴリ名ロックアップとの2段構成（単独使用禁止） -->
       <div class="lockup">
@@ -640,485 +179,223 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
         <span class="tagline">渡して終わり、を終わらせる。</span>
       </div>
 
-      <p class="fv-desc">メイシルは、名刺 × 公式LINE × 無料オファー × 問い合わせ導線（導線＝お客様が次の行動に進む道すじ）をワンセットで設計する「コンバージョン名刺」制作サービスです。名刺を渡して終わりにせず、LINE登録・無料オファー・サービス理解・問い合わせへつながる「次の行動につながる導線」をお作りします。</p>
-
-      <p class="fv-desc">かんたんに言うと——名刺を渡すと、相手のLINEに無料の特典が届いて、そのまま相談や予約につながる仕組みです。</p>
+      <p class="hero-desc">メイシルは、名刺 × 公式LINE × 無料オファー × 問い合わせ導線（導線＝お客様が次の行動に進む道すじ）をワンセットで設計する「コンバージョン名刺」制作サービスです。名刺を渡して終わりにせず、LINE登録・無料オファー・サービス理解・問い合わせへつながる「次の行動につながる導線」をお作りします。</p>
 
       <div class="cta-buttons" style="align-items:flex-start;">
-        <!-- 主CTA（差し替え: https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform。現在はページ内 #contact へリンク） -->
-        <a class="btn btn-primary js-cta" data-cta-id="fv_soudan" href="#contact">無料相談を予約する<span class="micro">オンライン対応・ご契約を迫りません</span></a>
-        <!-- 副CTA（差し替え: https://line.me/R/ti/p/@471iiiut。現在はページ内 #contact へリンク） -->
-        <a class="btn btn-sub js-cta" data-cta-id="fv_line" href="#contact">
+        <!-- 主CTA: 無料相談フォーム（直リンク・新規タブ） -->
+        <a class="btn btn-primary js-cta" data-cta-id="hero_soudan"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+           target="_blank" rel="noopener">無料相談を予約する<span class="micro">オンライン対応・ご契約を迫りません</span></a>
+        <!-- 副CTA: 公式LINE（直リンク・新規タブ） -->
+        <a class="btn btn-line js-cta" data-cta-id="hero_line"
+           href="https://line.me/R/ti/p/@471iiiut"
+           target="_blank" rel="noopener">
           <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          名刺導線チェックリストをLINEで受け取る
+          公式LINEで受け取る
         </a>
       </div>
-      <p class="cta-note">配信は月数回程度。不要になればブロックでいつでも解除できます。<br>※「LINE」はLINEヤフー株式会社の商標です。</p>
+      <p class="hero-note">配信は月数回程度。不要になればブロックでいつでも解除できます。<br>※「LINE」はLINEヤフー株式会社の商標です。</p>
     </div>
 
-    <div class="fv-visual">
-      <!-- キービジュアル: 1枚の名刺が矢印になり、LINE→オファー→相談へ進むZ動線（案Aモチーフ） -->
-      <svg viewBox="0 0 560 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="名刺が次の行動への矢印に変わるイメージ図。名刺からLINE登録、無料オファー、問い合わせへと導線がつながる様子">
-        <!-- 背景レイヤー（装飾はこの2つだけ） -->
-        <rect x="300" y="0" width="260" height="260" rx="48" fill="#F4F7F9"/>
-        <circle cx="64" cy="392" r="72" fill="#F4F7F9"/>
+    <div class="hero-visual">
+      <!-- 導線ミニ図（インラインSVG）: 名刺 → LINE → 無料オファー → 相談 -->
+      <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="名刺からLINE登録、無料オファー、相談へとつながる導線のイメージ図">
+        <!-- 装飾レイヤー -->
+        <rect x="288" y="0" width="232" height="232" rx="44" fill="#F4F7F9"/>
+        <circle cx="56" cy="368" r="64" fill="#F4F7F9"/>
 
-        <!-- 主役・名刺（ネイビー6%のオフセット面を先置き） -->
-        <rect x="24" y="54" width="252" height="154" rx="16" fill="rgba(15,37,64,.06)"/>
-        <rect x="24" y="48" width="252" height="154" rx="16" fill="#FFFFFF" stroke="#0F2540" stroke-width="1.5"/>
-        <!-- 名刺の中身（実名刺案Aの縮小再現: ロックアップ・氏名バー・緑ピル・QR枠） -->
-        <g transform="translate(46,62) scale(0.155) translate(-134,-176)">
+        <!-- 名刺（ネイビー6%オフセット面＋本体） -->
+        <rect x="24" y="52" width="240" height="148" rx="16" fill="rgba(15,37,64,.06)"/>
+        <rect x="24" y="46" width="240" height="148" rx="16" fill="#FFFFFF" stroke="#0F2540" stroke-width="1.5"/>
+        <g transform="translate(44,58) scale(0.15) translate(-134,-176)">
           <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
           <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
         </g>
-        <text x="86" y="72" font-size="6.5" font-weight="500" letter-spacing="0.8" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
-        <text x="86" y="85" font-size="13" font-weight="700" letter-spacing="1" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">メイシル</text>
-        <rect x="46" y="112" width="92" height="9" rx="4.5" fill="#0F2540"/>
-        <rect x="46" y="129" width="64" height="6" rx="3" fill="#0F2540" opacity="0.45"/>
-        <rect x="46" y="158" width="104" height="20" rx="10" fill="#0B9E52"/>
-        <rect x="210" y="130" width="50" height="50" rx="4" fill="#FFFFFF" stroke="#0F2540" stroke-width="1.2" stroke-dasharray="2 1.6"/>
+        <text x="82" y="68" font-size="6.5" font-weight="500" letter-spacing="0.8" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
+        <text x="82" y="81" font-size="13" font-weight="700" letter-spacing="1" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">メイシル</text>
+        <rect x="44" y="108" width="90" height="9" rx="4.5" fill="#0F2540"/>
+        <rect x="44" y="125" width="62" height="6" rx="3" fill="#0F2540" opacity="0.45"/>
+        <rect x="44" y="152" width="100" height="20" rx="10" fill="#0B9E52"/>
+        <rect x="200" y="122" width="50" height="50" rx="4" fill="#FFFFFF" stroke="#0F2540" stroke-width="1.2" stroke-dasharray="2 1.6"/>
         <g fill="#0F2540">
-          <rect x="215" y="135" width="10" height="10"/><rect x="245" y="135" width="10" height="10"/><rect x="215" y="165" width="10" height="10"/>
-          <rect x="231" y="138" width="4" height="4"/><rect x="238" y="148" width="4" height="4"/><rect x="228" y="154" width="4" height="4"/>
-          <rect x="246" y="158" width="4" height="4"/><rect x="234" y="166" width="4" height="4"/>
+          <rect x="205" y="127" width="10" height="10"/><rect x="235" y="127" width="10" height="10"/><rect x="205" y="157" width="10" height="10"/>
+          <rect x="221" y="130" width="4" height="4"/><rect x="228" y="140" width="4" height="4"/><rect x="218" y="146" width="4" height="4"/>
+          <rect x="236" y="150" width="4" height="4"/><rect x="224" y="158" width="4" height="4"/>
         </g>
         <g fill="#FFFFFF">
-          <rect x="217.5" y="137.5" width="5" height="5"/><rect x="247.5" y="137.5" width="5" height="5"/><rect x="217.5" y="167.5" width="5" height="5"/>
+          <rect x="207.5" y="129.5" width="5" height="5"/><rect x="237.5" y="129.5" width="5" height="5"/><rect x="207.5" y="159.5" width="5" height="5"/>
         </g>
-        <!-- アイキャッチ補助（✓入り円・線画。追加モチーフはこれ以上入れない） -->
-        <circle cx="48" cy="28" r="10" fill="#FFFFFF" stroke="#0B9E52" stroke-width="2"/>
-        <path d="M43.5,28 L47,31.5 L53,24.5" fill="none" stroke="#0B9E52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- ✓入り円 -->
+        <circle cx="46" cy="26" r="10" fill="#FFFFFF" stroke="#0B9E52" stroke-width="2"/>
+        <path d="M41.5,26 L45,29.5 L51,22.5" fill="none" stroke="#0B9E52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
-        <!-- 変身の瞬間: 3段階を結ぶ破線ガイド弧（図形用途 #0EA5E9） -->
-        <path d="M330,198 C362,206 378,214 398,232 C420,252 434,258 452,262" fill="none" stroke="#0EA5E9" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.7"/>
-        <!-- 第1段階: 角丸長方形のまま -->
-        <rect x="300" y="168" width="56" height="56" rx="14" fill="#0B9E52" opacity="0.35"/>
-        <!-- 第2段階: 半分矢印化（矢先が出始めた中間形状） -->
-        <path d="M376,196 L402,196 L430,224 Q432,228 430,232 L402,260 L376,260 Q356,260 356,240 L356,216 Q356,196 376,196 Z" fill="#0B9E52" opacity="0.65"/>
-        <!-- 第3段階: 完成形モチーフ（本体#0B9E52＋追い矢#047A3B・右下へ18°） -->
-        <g transform="translate(468,256) rotate(18) translate(-66,-48)">
+        <!-- 変身ガイド弧（図形用途 #0EA5E9） -->
+        <path d="M300,188 C336,198 356,208 380,228 C402,246 416,252 434,256" fill="none" stroke="#0EA5E9" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.7"/>
+        <rect x="288" y="158" width="52" height="52" rx="13" fill="#0B9E52" opacity="0.32"/>
+        <path d="M360,184 L384,184 L410,210 Q412,214 410,218 L384,244 L360,244 Q342,244 342,226 L342,202 Q342,184 360,184 Z" fill="#0B9E52" opacity="0.6"/>
+        <g transform="translate(448,242) rotate(18) translate(-62,-46)">
           <path d="M27,0 L54,0 L99,45 Q102,48 99,51 L54,96 L27,96 Q0,96 0,69 L0,27 Q0,0 27,0 Z" fill="#0B9E52"/>
           <path d="M62,1.5 L86,1.5 L130,45 Q133,48 130,51 L86,94.5 L62,94.5 L106,48 Z" fill="#047A3B"/>
         </g>
 
-        <!-- 到達点・3ステップ（LINE登録セルの上辺バーのみ #06C755＝LINE導線識別） -->
+        <!-- 到達点3ステップ: LINE → 無料オファー → 相談（LINEセル上辺のみ #06C755） -->
         <g>
-          <rect x="24" y="336" width="160" height="76" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
-          <rect x="200" y="336" width="160" height="76" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
-          <rect x="376" y="336" width="160" height="76" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
-          <path d="M40,338.5 H168" stroke="#06C755" stroke-width="3" stroke-linecap="round"/>
-          <path d="M216,338.5 H344" stroke="#0B9E52" stroke-width="3" stroke-linecap="round"/>
-          <path d="M392,338.5 H520" stroke="#0B9E52" stroke-width="3" stroke-linecap="round"/>
-          <path d="M186,374 h11 m-4.5,-4.5 l4.5,4.5 l-4.5,4.5" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M362,374 h11 m-4.5,-4.5 l4.5,4.5 l-4.5,4.5" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="20" y="318" width="150" height="80" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
+          <rect x="186" y="318" width="150" height="80" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
+          <rect x="352" y="318" width="150" height="80" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
+          <path d="M36,320.5 H154" stroke="#06C755" stroke-width="3" stroke-linecap="round"/>
+          <path d="M202,320.5 H320" stroke="#0B9E52" stroke-width="3" stroke-linecap="round"/>
+          <path d="M368,320.5 H486" stroke="#0B9E52" stroke-width="3" stroke-linecap="round"/>
+          <path d="M172,358 h11 m-4.5,-4.5 l4.5,4.5 l-4.5,4.5" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M338,358 h11 m-4.5,-4.5 l4.5,4.5 l-4.5,4.5" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
-        <text x="104" y="380" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">LINE登録</text>
-        <text x="280" y="373" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">無料オファー</text>
-        <text x="280" y="391" text-anchor="middle" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">価値提供・信頼獲得</text>
-        <text x="456" y="380" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">問い合わせ</text>
+        <text x="95" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">LINE登録</text>
+        <text x="95" y="374" text-anchor="middle" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">つながる</text>
+        <text x="261" y="356" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">無料オファー</text>
+        <text x="261" y="374" text-anchor="middle" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">価値提供・信頼獲得</text>
+        <text x="427" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">相談・問い合わせ</text>
+        <text x="427" y="374" text-anchor="middle" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">次の行動へ</text>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- =============== 2. 共感（3つのお悩み）→ CTA =============== -->
-<section class="section bg-light" id="empathy">
+<!-- =============== ② 3つのお悩み =============== -->
+<section class="section bg-light" id="problem">
   <div class="container">
     <div class="section-head t-center reveal">
       <span class="kicker">PROBLEM</span>
       <h2 class="section-title">名刺を渡しても、<span class="accent">その先</span>がない。</h2>
-      <p class="section-lead">交流会や商談で名刺を交換したのに、そこから何も生まれない。<br>そんな経験はありませんか。</p>
+      <p class="section-lead">交流会や商談で名刺を交換したのに、そこから何も生まれない。<br>その原因は、名刺交換のあとに「次の行動につながる導線」がないことです。</p>
     </div>
 
-    <div class="cards-3 reveal-stagger">
-      <div class="pain-card">
-        <span class="num">CASE 01</span>
+    <div class="grid-3 reveal-stagger">
+      <div class="card pain-card">
+        <span class="num en">01</span>
         <h3>後日、連絡が来ない</h3>
-        <p>名刺は渡しただけで終わり。その後の接点がつくれず、せっかく出会った見込み客を取りこぼしてしまいます。</p>
+        <p>渡しただけで終わってしまい、その後の接点がつくれない。せっかくの出会いが、取りこぼし・機会損失になっていませんか。</p>
       </div>
-      <div class="pain-card">
-        <span class="num">CASE 02</span>
+      <div class="card pain-card">
+        <span class="num en">02</span>
         <h3>相手が覚えていない</h3>
-        <p>時間が経つと思い出してもらえず、いざ相手にニーズが生まれたときに選ばれません。</p>
+        <p>時間が経つと想起されず、名前も顔も思い出してもらえない。いざ必要になったときに、選ばれる存在になれていますか。</p>
       </div>
-      <div class="pain-card">
-        <span class="num">CASE 03</span>
+      <div class="card pain-card">
+        <span class="num en">03</span>
         <h3>自分から追客しづらい</h3>
-        <p>営業っぽくなるのが苦手で、こちらからのフォローができないまま、関係が途切れてしまいます。</p>
+        <p>営業っぽくなるのが苦手で、こちらからフォローできない。追いかけないうちに、関係がそのまま途切れてしまう。</p>
       </div>
     </div>
 
-    <p class="empathy-close">原因は、あなたの営業力ではありません。名刺交換のあとに<strong>「次の行動につながる導線」がないこと</strong>です。導線は、名刺を作る段階で設計できます。</p>
-
-    <!-- CTA 2/5（seam: 次セクションへ48px食い込み） -->
-    <div class="cta-block cta-seam reveal">
-      <h3>導線のない名刺、そのままにしていませんか。</h3>
-      <p>いまの名刺と使い方をお聞きして、必要な導線を一緒に整理します。</p>
-      <div class="cta-buttons">
-        <!-- 差し替え: https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform -->
-        <a class="btn btn-primary js-cta" data-cta-id="empathy_soudan" href="#contact">無料相談で現状を整理する</a>
-        <!-- 差し替え: https://line.me/R/ti/p/@471iiiut -->
-        <a class="btn btn-sub js-cta" data-cta-id="empathy_line" href="#contact">
-          <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          チェックリストをLINEで受け取る
-        </a>
-      </div>
-    </div>
+    <p class="empathy-close reveal">
+      名刺は「自己紹介で終わるもの」ではなく、<strong>見込み客との関係が始まる入口</strong>に変えられます。
+    </p>
   </div>
 </section>
 
-<!-- =============== 3. 制作サンプル（架空業種のデモ） =============== -->
-<section class="section" id="samples">
+<!-- =============== ③ メイシルがつくる6ステップ導線 =============== -->
+<section class="section" id="flow">
   <div class="container">
     <div class="section-head t-center reveal">
-      <svg class="kicker-mark" viewBox="0 0 55 40" aria-hidden="true" focusable="false"><path d="M9,3 L22,3 L38.2,18.4 Q39.9,20 38.2,21.6 L22,37 L9,37 Q3,37 3,31 L3,9 Q3,3 9,3 Z" fill="#0B9E52"/><path d="M28,4.5 L35,4.5 L50.4,18.4 Q52.2,20 50.4,21.6 L35,35.5 L28,35.5 L45,20 Z" fill="#047A3B"/></svg>
-      <span class="kicker kicker--arrow">SAMPLE</span>
-      <h2 class="section-title">「導線のある名刺」とは、<span class="accent">こういうもの</span>です。</h2>
-      <p class="section-lead">名刺の裏面が「次の行動の入口」に変わります。QRコードから公式LINEへ、無料オファーの受け取りへ。業種ごとに導線を設計した制作イメージをご覧ください。</p>
+      <span class="kicker">FLOW</span>
+      <h2 class="section-title">メイシルがつくる、<span class="accent">6ステップの導線</span>。</h2>
+      <p class="section-lead">名刺を受け取った相手が、迷わず次の行動へ進めるように。<br>渡した瞬間から相談・予約までを、ひとつの道すじにつなげます。</p>
     </div>
 
-    <div class="samples-grid reveal-stagger">
-      <!-- 実物: メイシル自社名刺（09_その他/名刺_案A を同形式で再現。QR・氏名等は公開時差し替え） -->
-      <div class="sample-card">
-        <span class="tag">実物｜メイシル自社名刺</span>
-        <figure>
-          <svg viewBox="3 3 91 55" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="メイシル自社名刺の表面。ロゴロックアップと氏名・連絡先（公開時差し替え）を配置した実物の名刺デザイン">
-            <rect x="3" y="3" width="91" height="55" fill="#FFFFFF" stroke="#DFE6EC" stroke-width="0.5"/>
-            <g transform="translate(15.3,14.5) scale(0.05233) translate(-235.6,-256)">
-              <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
-              <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
-            </g>
-            <text x="25" y="10.8" font-size="2.3" font-weight="500" letter-spacing="0.18" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
-            <text x="24.8" y="17.2" font-size="6.2" font-weight="700" letter-spacing="0.25" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">メイシル</text>
-            <text x="25" y="20.4" font-size="2.2" font-weight="600" letter-spacing="0.57" fill="#0F2540" font-family="'Inter','Segoe UI',Arial,sans-serif">MEISIRU</text>
-            <rect x="8" y="29.2" width="1.1" height="3.0" fill="#0B9E52"/>
-            <text x="10.3" y="31.7" font-size="2.6" font-weight="500" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">代表取締役</text>
-            <text x="7.8" y="39.9" font-size="7.5" font-weight="700" letter-spacing="0.8" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">梶本 雅人</text>
-            <line x1="8" y1="43.8" x2="56" y2="43.8" stroke="#0B9E52" stroke-width="0.25"/>
-            <text x="8" y="47.4" font-size="2.2" font-weight="600" letter-spacing="0.3" fill="#047A3B" font-family="'Inter','Segoe UI',Arial,sans-serif">TEL</text>
-            <text x="17.5" y="47.4" font-size="2.4" font-weight="400" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">052-325-2222</text>
-            <text x="8" y="50.4" font-size="2.2" font-weight="600" letter-spacing="0.3" fill="#047A3B" font-family="'Inter','Segoe UI',Arial,sans-serif">MAIL</text>
-            <text x="17.5" y="50.4" font-size="2.4" font-weight="400" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">kaji.2415@gmail.com</text>
-            <text x="8" y="53.4" font-size="2.2" font-weight="600" letter-spacing="0.3" fill="#047A3B" font-family="'Inter','Segoe UI',Arial,sans-serif">WEB</text>
-            <text x="17.5" y="53.4" font-size="2.4" font-weight="400" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">https://uicity.github.io/meisiru/</text>
-            <g transform="translate(78.5,39) scale(0.06977) translate(-235.6,-256)">
-              <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
-              <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
-            </g>
-            <rect x="3" y="56" width="91" height="2" fill="#0B9E52"/>
-          </svg>
-        </figure>
-        <figure>
-          <svg viewBox="3 3 91 55" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="メイシル自社名刺の裏面。名刺導線チェックリストをLINEで受け取れる案内とQRコード枠（公開時に実QRへ差し替え）を配置">
-            <rect x="3" y="3" width="91" height="55" fill="#FFFFFF" stroke="#DFE6EC" stroke-width="0.5"/>
-            <text x="8" y="9.8" font-size="2.4" font-weight="500" letter-spacing="0.28" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺 メイシル</text>
-            <text x="7.8" y="16.2" font-size="4.4" font-weight="700" letter-spacing="0.2" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">渡して終わり、を終わらせる。</text>
-            <g transform="translate(83.5,11.6) scale(0.04651) translate(-235.6,-256)">
-              <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
-              <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
-            </g>
-            <line x1="8" y1="19.4" x2="66" y2="19.4" stroke="#0B9E52" stroke-width="0.35"/>
-            <rect x="8" y="22" width="18.6" height="4.6" rx="2.3" fill="#FFFFFF" stroke="#047A3B" stroke-width="0.3"/>
-            <text x="17.3" y="25.2" font-size="2.4" font-weight="500" fill="#047A3B" text-anchor="middle" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">無料オファー</text>
-            <text x="8" y="32.6" font-size="4.2" font-weight="700" letter-spacing="0.2" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">名刺導線チェックリスト</text>
-            <polyline points="8.1,35.8 9.0,36.6 10.6,34.8" fill="none" stroke="#0B9E52" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="11.8" y="36.8" font-size="2.4" font-weight="400" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">名刺交換後の導線づくりの要点が分かります。</text>
-            <polyline points="8.1,39.6 9.0,40.4 10.6,38.6" fill="none" stroke="#0B9E52" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="11.8" y="40.6" font-size="2.4" font-weight="400" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">いまの名刺の改善点をご自身で確認できます。</text>
-            <polyline points="8.1,43.4 9.0,44.2 10.6,42.4" fill="none" stroke="#0B9E52" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="11.8" y="44.4" font-size="2.4" font-weight="400" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">登録後も、導線づくりのヒントをお届けします。</text>
-            <rect x="8" y="46.4" width="47" height="5.4" rx="2.7" fill="#047A3B"/>
-            <rect x="10.3" y="47.4" width="3.4" height="3.4" rx="0.9" fill="#06C755"/>
-            <ellipse cx="12" cy="48.9" rx="1.15" ry="0.85" fill="#FFFFFF"/>
-            <path d="M11.3,49.55 L10.95,50.35 L12.25,49.75 Z" fill="#FFFFFF"/>
-            <text x="14.9" y="50" font-size="2.6" font-weight="700" fill="#FFFFFF" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">公式LINEに登録して受け取る</text>
-            <rect x="72" y="21" width="16" height="16" fill="#FFFFFF" stroke="#0F2540" stroke-width="0.25" stroke-dasharray="1 0.7"/>
-            <g fill="#0F2540">
-              <rect x="72.9" y="21.9" width="3" height="3"/>
-              <rect x="84.1" y="21.9" width="3" height="3"/>
-              <rect x="72.9" y="33.1" width="3" height="3"/>
-            </g>
-            <g fill="#FFFFFF">
-              <rect x="73.35" y="22.35" width="2.1" height="2.1"/>
-              <rect x="84.55" y="22.35" width="2.1" height="2.1"/>
-              <rect x="73.35" y="33.55" width="2.1" height="2.1"/>
-            </g>
-            <g fill="#0F2540">
-              <rect x="73.75" y="22.75" width="1.3" height="1.3"/>
-              <rect x="84.95" y="22.75" width="1.3" height="1.3"/>
-              <rect x="73.75" y="33.95" width="1.3" height="1.3"/>
-              <rect x="78" y="23" width="0.9" height="0.9"/>
-              <rect x="81" y="25" width="0.9" height="0.9"/>
-              <rect x="77" y="27" width="0.9" height="0.9"/>
-              <rect x="80.5" y="28.5" width="0.9" height="0.9"/>
-              <rect x="84" y="31" width="0.9" height="0.9"/>
-              <rect x="78.5" y="31.5" width="0.9" height="0.9"/>
-              <rect x="81.5" y="33.5" width="0.9" height="0.9"/>
-              <rect x="85" y="34.5" width="0.9" height="0.9"/>
-              <rect x="76.5" y="25.5" width="0.9" height="0.9"/>
-            </g>
-            <text x="80" y="43.6" font-size="2.2" font-weight="500" fill="#0F2540" text-anchor="middle" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">【QRコード差し替え】</text>
-            <text x="8" y="54.8" font-size="2.2" font-weight="400" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">『LINE』はLINEヤフー株式会社の商標です。</text>
-          </svg>
-        </figure>
-        <h3>メイシル自身の名刺（実物）</h3>
-        <p>私たち自身が営業で使っている実物の名刺です。この名刺のQRから、この公式LINEにつながります。</p>
-      </div>
-
-      <!-- デモ1: 士業（架空） -->
-      <div class="sample-card">
-        <span class="tag">架空業種デモ｜士業・専門家</span>
-        <figure>
-          <svg viewBox="0 0 364 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="士業向けデモ名刺（裏面・架空のサンプル）。相談前チェックリストをLINEで受け取れる導線を掲載した名刺デザイン例">
-            <rect x="2" y="2" width="360" height="216" rx="12" fill="#FFFFFF" stroke="#DFE6EC" stroke-width="2"/>
-            <rect x="2" y="2" width="360" height="10" rx="5" fill="#0B9E52"/>
-            <text x="26" y="52" font-size="11" font-weight="500" fill="#047A3B" letter-spacing="2" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">初回相談をお考えの方へ</text>
-            <text x="26" y="82" font-size="17" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">相談前チェックリストを</text>
-            <text x="26" y="106" font-size="17" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">無料でお渡ししています</text>
-            <text x="26" y="132" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">許認可・相続のご相談前に、準備がひと目で</text>
-            <text x="26" y="148" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">分かるチェックリストです。</text>
-            <g transform="translate(26,164)">
-              <circle cx="11" cy="11" r="11" fill="#06C755"/>
-              <path d="M5.5 11h11M12 6.5 16.5 11 12 15.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="30" y="15.5" font-size="12" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">公式LINEに登録して受け取る</text>
-            </g>
-            <rect x="264" y="112" width="74" height="74" rx="6" fill="#FFFFFF" stroke="#0F2540" stroke-width="2"/>
-            <g fill="#0F2540">
-              <rect x="272" y="120" width="16" height="16"/><rect x="314" y="120" width="16" height="16"/>
-              <rect x="272" y="162" width="16" height="16"/><rect x="296" y="128" width="8" height="8"/>
-              <rect x="296" y="146" width="10" height="10"/><rect x="314" y="146" width="7" height="7"/>
-              <rect x="316" y="164" width="12" height="12"/><rect x="296" y="166" width="8" height="8"/>
-            </g>
-            <text x="301" y="102" text-anchor="middle" font-size="10" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">スマホで読み取り</text>
-            <text x="26" y="205" font-size="9" fill="#0F2540" opacity="0.6" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">〇〇行政書士事務所（架空）／QR・文面はサンプルです</text>
-          </svg>
-        </figure>
-        <h3>行政書士事務所（架空）の例</h3>
-        <p>2つ折り名刺＋「相談前チェックリスト」＋リッチメニューの構成。相談のハードルを下げ、問い合わせにつなげる導線です。</p>
-      </div>
-
-      <!-- デモ2: 保険営業（架空） -->
-      <div class="sample-card">
-        <span class="tag">架空業種デモ｜保険・不動産</span>
-        <figure>
-          <svg viewBox="0 0 364 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="保険営業向けデモ名刺（裏面・架空のサンプル）。ライフプラン診断をLINEで受け取れる導線を掲載した名刺デザイン例">
-            <rect x="2" y="2" width="360" height="216" rx="12" fill="#F4F7F9" stroke="#DFE6EC" stroke-width="2"/>
-            <path d="M2,14 Q2,2 14,2 L110,2 L60,14 Z" fill="#0B9E52"/>
-            <text x="26" y="52" font-size="11" font-weight="500" fill="#047A3B" letter-spacing="2" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">家計と保障の見直しに</text>
-            <text x="26" y="82" font-size="17" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">ライフプラン診断シートを</text>
-            <text x="26" y="106" font-size="17" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">LINEでお受け取りください</text>
-            <text x="26" y="132" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">ご自身で書き込める簡単な診断シートです。</text>
-            <text x="26" y="148" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">お役立ち情報も定期的にお届けします。</text>
-            <g transform="translate(26,164)">
-              <circle cx="11" cy="11" r="11" fill="#06C755"/>
-              <path d="M5.5 11h11M12 6.5 16.5 11 12 15.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="30" y="15.5" font-size="12" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">公式LINEに登録して受け取る</text>
-            </g>
-            <rect x="264" y="112" width="74" height="74" rx="6" fill="#FFFFFF" stroke="#0F2540" stroke-width="2"/>
-            <g fill="#0F2540">
-              <rect x="272" y="120" width="16" height="16"/><rect x="314" y="120" width="16" height="16"/>
-              <rect x="272" y="162" width="16" height="16"/><rect x="298" y="124" width="8" height="8"/>
-              <rect x="296" y="144" width="12" height="12"/><rect x="316" y="148" width="8" height="8"/>
-              <rect x="314" y="164" width="14" height="14"/><rect x="296" y="164" width="9" height="9"/>
-            </g>
-            <text x="301" y="102" text-anchor="middle" font-size="10" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">スマホで読み取り</text>
-            <text x="26" y="205" font-size="9" fill="#0F2540" opacity="0.6" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">〇〇生命保険 営業担当（架空）／QR・文面はサンプルです</text>
-          </svg>
-        </figure>
-        <h3>保険営業（架空）の例</h3>
-        <p>2つ折り名刺＋「無料診断」＋追客文＋予約導線の構成。月に多くの名刺を配る営業スタイルの取りこぼしを防ぎます。</p>
-      </div>
-
-      <!-- デモ3: サロン（架空） -->
-      <div class="sample-card">
-        <span class="tag">架空業種デモ｜サロン・整体</span>
-        <figure>
-          <svg viewBox="0 0 364 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="整体サロン向けデモ名刺（裏面・架空のサンプル）。セルフケアガイドと初回特典をLINEで受け取れる導線を掲載した名刺デザイン例">
-            <rect x="2" y="2" width="360" height="216" rx="12" fill="#FFFFFF" stroke="#DFE6EC" stroke-width="2"/>
-            <circle cx="330" cy="34" r="46" fill="#F4F7F9"/>
-            <path d="M310,20 L330,20 L352,34 L330,48 L310,48 L332,34 Z" fill="#0B9E52" opacity="0.9"/>
-            <text x="26" y="52" font-size="11" font-weight="500" fill="#047A3B" letter-spacing="2" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">はじめての方へ</text>
-            <text x="26" y="82" font-size="17" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">お悩み別セルフケアガイドと</text>
-            <text x="26" y="106" font-size="17" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">初回特典をLINEでどうぞ</text>
-            <text x="26" y="132" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">肩・腰・姿勢のお悩み別に、自宅でできる</text>
-            <text x="26" y="148" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">ケアをまとめました。予約もLINEから。</text>
-            <g transform="translate(26,164)">
-              <circle cx="11" cy="11" r="11" fill="#06C755"/>
-              <path d="M5.5 11h11M12 6.5 16.5 11 12 15.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="30" y="15.5" font-size="12" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">公式LINEに登録して受け取る</text>
-            </g>
-            <rect x="264" y="112" width="74" height="74" rx="6" fill="#FFFFFF" stroke="#0F2540" stroke-width="2"/>
-            <g fill="#0F2540">
-              <rect x="272" y="120" width="16" height="16"/><rect x="314" y="120" width="16" height="16"/>
-              <rect x="272" y="162" width="16" height="16"/><rect x="297" y="126" width="9" height="9"/>
-              <rect x="298" y="146" width="10" height="10"/><rect x="315" y="147" width="8" height="8"/>
-              <rect x="314" y="165" width="13" height="13"/><rect x="296" y="165" width="8" height="8"/>
-            </g>
-            <text x="301" y="102" text-anchor="middle" font-size="10" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">スマホで読み取り</text>
-            <text x="26" y="205" font-size="9" fill="#0F2540" opacity="0.6" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">〇〇整体サロン（架空）／QR・文面はサンプルです</text>
-          </svg>
-        </figure>
-        <h3>整体サロン（架空）の例</h3>
-        <p>両面カード＋LINE基本導線＋初回特典＋予約リンクの構成。来店前の不安を減らし、予約・来店につなげる導線です。</p>
-      </div>
-    </div>
-
-    <p class="demo-note">デモ3点はいずれも<strong>架空業種のデモサンプル</strong>です。実在の事業者・実績ではありません。掲載の文面・QRコードもサンプルです。<br><strong>配色・書体はお店・事務所の雰囲気に合わせて設計します（このデモの色はメイシルのブランドカラーです）。</strong></p>
-  </div>
-</section>
-
-<!-- =============== 4. 解決（6ステップ導線図） =============== -->
-<section class="section bg-light" id="flow6">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">SOLUTION</span>
-      <h2 class="section-title">メイシルがつくる、<span class="accent">6ステップの導線</span></h2>
-      <p class="section-lead">名刺を受け取った相手が、自然に次の行動へ進んでいく。その流れを名刺1枚から設計します。</p>
-    </div>
-
-    <ol class="flow6">
-      <li><h3>名刺を受け取る</h3><p>交流会・商談・展示会。いつもの名刺交換が導線の入口になります。</p></li>
-      <li><h3>無料オファーに興味を持つ</h3><p>「チェックリストをLINEでお渡ししています」の一言が、行動する理由をつくります。</p></li>
-      <li><h3>QRコードから公式LINEに登録</h3><p>使い慣れたアプリだから登録のハードルが低く、連絡先入力の手間もありません。</p></li>
-      <li><h3>LINEで無料オファーを受け取る</h3><p>チェックリストや診断シートなどの価値提供で、信頼が生まれます。</p></li>
-      <li><h3>サービス内容・実績を確認する</h3><p>リッチメニューや配信から、あなたのサービスへの理解が深まります。</p></li>
-      <li><h3>問い合わせ・相談・予約へ進む</h3><p>理解が深まった相手から、具体的な行動が生まれやすくなります。</p></li>
+    <ol class="flow reveal-stagger">
+      <li>
+        <h3>名刺を受け取る</h3>
+        <p>交流会・商談・来店などの場面で、コンバージョン名刺を手渡します。渡す瞬間の一言まで含めて設計します。</p>
+      </li>
+      <li>
+        <h3>無料オファーに興味を持つ</h3>
+        <p>「相談前に使えるチェックリストをLINEでお渡ししています」——受け取る理由（無料オファー）で、行動のきっかけを作ります。</p>
+      </li>
+      <li>
+        <h3>QRコードから公式LINEに登録</h3>
+        <p>名刺のQRから、使い慣れたLINEでかんたんに登録。連絡先入力の手間がなく、相手のハードルを下げます。</p>
+      </li>
+      <li>
+        <h3>LINEで無料オファーを受け取る</h3>
+        <p>登録直後に無料オファーを自動でお届け。あいさつメッセージから自然に価値提供が始まります。</p>
+      </li>
+      <li>
+        <h3>サービス内容・実績を確認</h3>
+        <p>リッチメニューや配信で、サービス理解が深まる導線へ。相談前に「何を頼めるか」が伝わります。</p>
+      </li>
+      <li>
+        <h3>問い合わせ・相談・予約へ進む</h3>
+        <p>理解が進んだうえで、問い合わせ・相談・予約の受け皿へ。名刺が「関係が始まる入口」に変わります。</p>
+      </li>
     </ol>
 
-    <p class="flow-punch">名刺は「自己紹介で終わるもの」ではなく、<strong>見込み客との関係が始まる入口</strong>に変わります。</p>
+    <div class="card card--left reveal" style="max-width:720px; margin:36px auto 0;">
+      <p style="font-weight:500;">名刺は営業の終わりではなく、見込み客との関係が始まる入口です。メイシルは、その入口から相談までの道すじをまとめて設計します。<a href="service.html">サービスの詳細はこちら →</a></p>
+    </div>
   </div>
 </section>
 
-<!-- =============== 5. 一般名刺との比較表 =============== -->
-<section class="section" id="hikaku">
+<!-- =============== ④ 選ばれる理由（メリット抜粋） =============== -->
+<section class="section bg-light" id="merit">
   <div class="container">
     <div class="section-head t-center reveal">
-      <span class="kicker">DIFFERENCE</span>
-      <h2 class="section-title">一般的な名刺との<span class="accent">違い</span></h2>
-      <p class="section-lead">見た目のデザインではなく、「名刺のゴール」がそもそも違います。</p>
+      <span class="kicker">WHY MEISIRU</span>
+      <h2 class="section-title">名刺1枚に、<span class="accent">仕組み</span>を詰め込む。</h2>
+      <p class="section-lead">メイシルがお作りするのは、単なる名刺ではありません。<br>関係づくりから次の行動までを支える「仕組み」を、名刺1枚に組み込みます。</p>
     </div>
 
-    <div class="table-shell"><div class="table-wrap">
-      <table>
-        <caption>一般的な名刺とコンバージョン名刺（メイシル）の違い</caption>
-        <thead>
-          <tr>
-            <th scope="col">観点</th>
-            <th scope="col">一般的な名刺</th>
-            <th scope="col" class="col-meisiru">コンバージョン名刺（メイシル）</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">目的</th><td>名前や連絡先を伝える</td><td class="col-meisiru"><span class="mark-good">次の行動へ誘導する</span></td></tr>
-          <tr><th scope="row">内容</th><td>自己紹介が中心</td><td class="col-meisiru"><span class="mark-good">LINE登録・問い合わせ導線が中心</span></td></tr>
-          <tr><th scope="row">関係性</th><td>渡して終わりになりやすい</td><td class="col-meisiru"><span class="mark-good">登録後も接点が続く</span></td></tr>
-          <tr><th scope="row">コミュニケーション</th><td>相手からの連絡待ち</td><td class="col-meisiru"><span class="mark-good">無料オファーで行動理由を作る</span></td></tr>
-          <tr><th scope="row">ゴール</th><td>情報が残るだけ</td><td class="col-meisiru"><span class="mark-good">相談・予約・問い合わせへつなげる</span></td></tr>
-        </tbody>
-      </table>
-    </div></div>
-  </div>
-</section>
-
-<!-- =============== 6. 競合4者比較 → CTA =============== -->
-<section class="section bg-light" id="kyogo">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">POSITIONING</span>
-      <h2 class="section-title">名刺印刷とも、LINE構築代行とも、<span class="accent">違います</span>。</h2>
-      <p class="section-lead">名刺印刷は導線を作りません。LINE構築代行は、登録してもらう瞬間＝名刺交換を設計しません。メイシルは、接点（名刺）から商談導線までを一気通貫でお作りします。</p>
-    </div>
-
-    <div class="table-shell"><div class="table-wrap">
-      <table>
-        <caption>一般的なサービス範囲の比較（各分野の一般的な例として整理したものです）</caption>
-        <thead>
-          <tr>
-            <th scope="col">対応範囲</th>
-            <th scope="col">一般名刺印刷</th>
-            <th scope="col">デザイン会社</th>
-            <th scope="col">LINE構築代行</th>
-            <th scope="col" class="col-meisiru">メイシル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">名刺のデザイン・印刷</th>
-            <td><span class="mark-mid">○ 定型が中心</span></td>
-            <td><span class="mark-mid">○ 見た目重視</span></td>
-            <td><span class="mark-bad">×（対象外）</span></td>
-            <td class="col-meisiru"><span class="mark-good">○ 導線起点で設計</span></td>
-          </tr>
-          <tr>
-            <th scope="row">LINE登録につながる名刺設計<br>（QR・登録メリット文・渡す一言）</th>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-bad">△ QR掲載まで</span></td>
-            <td><span class="mark-bad">×（名刺は作らない）</span></td>
-            <td class="col-meisiru"><span class="mark-good">○ 登録理由から設計</span></td>
-          </tr>
-          <tr>
-            <th scope="row">無料オファーの企画・制作</th>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-mid">△ 内容による</span></td>
-            <td class="col-meisiru"><span class="mark-good">○ 企画から制作まで</span></td>
-          </tr>
-          <tr>
-            <th scope="row">登録後のLINE導線<br>（あいさつ文・リッチメニュー・シナリオ配信）</th>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-mid">○ 得意領域</span></td>
-            <td class="col-meisiru"><span class="mark-good">○ 名刺とセットで設計</span></td>
-          </tr>
-          <tr>
-            <th scope="row">問い合わせ・予約への導線</th>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-mid">△ 構築範囲による</span></td>
-            <td class="col-meisiru"><span class="mark-good">○ 受け皿まで含めて整理</span></td>
-          </tr>
-          <tr>
-            <th scope="row">接点（名刺交換）から商談までの一気通貫</th>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-bad">×</span></td>
-            <td><span class="mark-bad">×</span></td>
-            <td class="col-meisiru"><span class="mark-good">○ ここが専門です</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div></div>
-    <p class="note" style="margin-bottom:40px;">※ 各社のサービス内容は事業者により異なります。上表は一般的なサービス範囲を例として整理したものです。</p>
-
-    <!-- CTA 3/5 -->
-    <div class="cta-block reveal">
-      <h3>「うちの場合はどの範囲が必要？」も、無料相談でどうぞ。</h3>
-      <p>すべての機能を入れる必要はありません。必要な導線だけを一緒に絞り込みます。</p>
-      <div class="cta-buttons">
-        <!-- 差し替え: https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform -->
-        <a class="btn btn-primary js-cta" data-cta-id="kyogo_soudan" href="#contact">無料相談を予約する</a>
-        <!-- 差し替え: https://line.me/R/ti/p/@471iiiut -->
-        <a class="btn btn-sub js-cta" data-cta-id="kyogo_line" href="#contact">
-          <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          チェックリストをLINEで受け取る
-        </a>
+    <div class="grid-3 reveal-stagger">
+      <div class="card merit-card card--accent">
+        <span class="m-num en">01</span>
+        <h3>自然につながる仕組み</h3>
+        <p>名刺を渡すだけで、LINE登録・無料オファーへ自然に誘導。押し売り感なく、次の接点が生まれます。</p>
+      </div>
+      <div class="card merit-card card--accent">
+        <span class="m-num en">02</span>
+        <h3>LINEで関係を継続できる</h3>
+        <p>お役立ち情報や特典を継続的にお届け。連絡待ちではなく、こちらから信頼を育てられます。</p>
+      </div>
+      <div class="card merit-card card--accent">
+        <span class="m-num en">03</span>
+        <h3>無料オファーで価値提供</h3>
+        <p>登録する理由（無料オファー）を用意することで、信頼を獲得し、サービスへの興味・理解を深めます。</p>
+      </div>
+      <div class="card merit-card card--accent">
+        <span class="m-num en">04</span>
+        <h3>相談・予約につながりやすい</h3>
+        <p>サービス理解が進むことで、問い合わせ・予約といった具体的な行動につながりやすくなります。</p>
+      </div>
+      <div class="card merit-card card--accent">
+        <span class="m-num en">05</span>
+        <h3>関係が可視化できる</h3>
+        <p>登録数や反応をデータで把握。「次にどこを直せば問い合わせに近づくか」が見えるようになります。</p>
+      </div>
+      <div class="card merit-card card--accent">
+        <span class="m-num en">06</span>
+        <h3>営業・集客の時間を削減</h3>
+        <p>整えた導線が自動で働くことで、追客の手間を減らせます。仕組みが関係づくりの一部を担います。</p>
       </div>
     </div>
+
+    <p class="t-center reveal" style="margin-top:36px;">
+      <a class="btn btn-ghost" href="service.html">選ばれる理由を詳しく見る</a>
+    </p>
   </div>
 </section>
 
-<!-- =============== 7. 業種別活用 =============== -->
+<!-- =============== ⑤ 業種別プレビュー =============== -->
 <section class="section" id="industry">
   <div class="container">
     <div class="section-head t-center reveal">
-      <span class="kicker">USE CASE</span>
-      <h2 class="section-title">業種別の<span class="accent">活用イメージ</span></h2>
-      <p class="section-lead">名刺やカードを渡す機会があるビジネスなら、業種に合わせた導線を設計できます。</p>
+      <span class="kicker">INDUSTRY</span>
+      <h2 class="section-title">業種別の、<span class="accent">活用イメージ</span>。</h2>
+      <p class="section-lead">名刺やカードを渡す機会があり、LINE登録後に案内したいサービスがある。<br>そんな方に、業種に合わせた無料オファーと導線を設計します。</p>
     </div>
 
-    <div class="industry-grid reveal-stagger">
-      <div class="industry-card">
-        <span class="badge">おすすめ業種</span>
-        <h3>士業・専門家</h3>
+    <div class="grid-2 reveal-stagger">
+      <div class="card card--shadow industry-card">
+        <span class="badge">士業・専門家</span>
+        <h3>相談前の不安を、先回りして解く</h3>
         <dl>
           <dt>無料オファー例</dt>
           <dd>相談前チェックリスト／よくある質問集／初回相談の進め方ガイド</dd>
@@ -1126,9 +403,9 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
           <dd>LINE登録 → 無料オファー → サービス理解 → 相談・問い合わせ</dd>
         </dl>
       </div>
-      <div class="industry-card">
-        <span class="badge">おすすめ業種</span>
-        <h3>保険・不動産</h3>
+      <div class="card card--shadow industry-card">
+        <span class="badge">保険・不動産</span>
+        <h3>検討中の見込み客と、つながり続ける</h3>
         <dl>
           <dt>無料オファー例</dt>
           <dd>ライフプラン診断／物件探しのポイント集／お役立ち情報レポート</dd>
@@ -1136,8 +413,9 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
           <dd>LINE登録 → 無料オファー → サービス理解 → 相談・問い合わせ</dd>
         </dl>
       </div>
-      <div class="industry-card">
-        <h3>サロン・整体・美容</h3>
+      <div class="card card--shadow industry-card">
+        <span class="badge">サロン・整体・美容</span>
+        <h3>初回来店の一歩を、後押しする</h3>
         <dl>
           <dt>無料オファー例</dt>
           <dd>お悩み別セルフケアガイド／施術の流れ・効果ガイド／お得な特典クーポン</dd>
@@ -1145,8 +423,9 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
           <dd>LINE登録 → 無料オファー → サービス理解 → 予約・来店</dd>
         </dl>
       </div>
-      <div class="industry-card">
-        <h3>BtoB・法人サービス</h3>
+      <div class="card card--shadow industry-card">
+        <span class="badge">BtoB・法人サービス</span>
+        <h3>大量の接点を、商談へ束ねる</h3>
         <dl>
           <dt>無料オファー例</dt>
           <dd>業界レポート・事例集／サービス資料ダウンロード／課題チェックリスト</dd>
@@ -1154,127 +433,71 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
           <dd>LINE登録 → 無料オファー → サービス理解 → 問い合わせ・商談</dd>
         </dl>
       </div>
-      <div class="industry-card">
-        <h3>展示会・交流会（法人）</h3>
-        <dl>
-          <dt>よくあるお悩み</dt>
-          <dd>回収した名刺が放置されている</dd>
-          <dt>構成例と費用感（目安）</dt>
-          <dd>3つ折り名刺＋資料請求導線＋LINE追客＋相談導線／35〜60万円前後</dd>
-        </dl>
-      </div>
     </div>
-    <p class="note t-center" style="margin-top:20px;">展示会・交流会で多くの名刺を交換する法人様には、資料請求導線＋LINE追客＋相談導線の設計もご提案できます。</p>
+
+    <p class="t-center reveal" style="margin-top:36px;">
+      <a class="btn btn-ghost" href="service.html">業種別の活用例を詳しく見る</a>
+    </p>
   </div>
 </section>
 
-<!-- =============== 8. メリット6 =============== -->
-<section class="section bg-light" id="merit">
+<!-- =============== ⑥ 導入後に見える変化（50→8→6→3→1・カウントアップ） =============== -->
+<section class="section bg-light" id="change">
   <div class="container">
     <div class="section-head t-center reveal">
-      <span class="kicker">MERIT</span>
-      <h2 class="section-title">メイシルが選ばれる<span class="accent">6つのメリット</span></h2>
-      <p class="section-lead">単なる名刺ではなく、成果につながる仕組みを名刺1枚に詰め込みます。</p>
+      <span class="kicker">VISUALIZE</span>
+      <h2 class="section-title">名刺のあとが、<span class="accent">見えるようになる</span>。</h2>
+      <p class="section-lead">これまでは、名刺を渡した後に何が起きたか分かりませんでした。<br>導線を整えると、どこまで進んだかが数字で見えるようになります。</p>
     </div>
 
-    <div class="merit-grid reveal-stagger">
-      <div class="merit-card"><span class="m-num en">01</span><h3>自然につながる仕組み</h3><p>名刺を渡すだけで、LINE登録・無料オファーへ自然に誘導。営業っぽさなく接点がつくれます。</p></div>
-      <div class="merit-card"><span class="m-num en">02</span><h3>LINEで関係を継続できる</h3><p>登録後は、お役立ち情報や特典の配信で継続的なコミュニケーションが可能になります。</p></div>
-      <div class="merit-card"><span class="m-num en">03</span><h3>無料オファーで価値提供できる</h3><p>先に価値を渡すから信頼につながり、サービスへの興味・理解が深まります。</p></div>
-      <div class="merit-card"><span class="m-num en">04</span><h3>問い合わせ・予約につながりやすい</h3><p>サービス理解が進んだ相手から、相談・予約など具体的な行動が生まれやすくなります。</p></div>
-      <div class="merit-card"><span class="m-num en">05</span><h3>見込み客との関係が可視化できる</h3><p>登録や反応をデータで把握でき、適切なタイミングでアプローチできます。</p></div>
-      <div class="merit-card"><span class="m-num en">06</span><h3>営業・集客の時間を削減できる</h3><p>導線の仕組みが自動で働くため、追客にかけていた時間と手間を減らせます。</p></div>
+    <div class="funnel-example reveal">
+      <h3>名刺配布からアポまで、どこで止まっているかが見える（例）</h3>
+      <div class="funnel-steps" aria-label="名刺配布50枚からアポ1件までの導線の例">
+        <div class="f-step">
+          <span class="num js-count en" data-to="50" data-suffix="枚" data-duration="1200">0</span>
+          <span class="lbl">名刺配布</span>
+        </div>
+        <span class="f-arrow" aria-hidden="true">→</span>
+        <div class="f-step">
+          <span class="num js-count en" data-to="8" data-suffix="人" data-duration="1200">0</span>
+          <span class="lbl">LINE登録</span>
+        </div>
+        <span class="f-arrow" aria-hidden="true">→</span>
+        <div class="f-step">
+          <span class="num js-count en" data-to="6" data-suffix="人" data-duration="1200">0</span>
+          <span class="lbl">資料反応</span>
+        </div>
+        <span class="f-arrow" aria-hidden="true">→</span>
+        <div class="f-step">
+          <span class="num js-count en" data-to="3" data-suffix="人" data-duration="1200">0</span>
+          <span class="lbl">予約クリック</span>
+        </div>
+        <span class="f-arrow" aria-hidden="true">→</span>
+        <div class="f-step">
+          <span class="num js-count en" data-to="1" data-suffix="件" data-duration="1200">0</span>
+          <span class="lbl">アポ</span>
+        </div>
+      </div>
+      <p class="note">※上記の数値はすべて説明のための「例」であり、成果を保証するものではありません。数字を見る目的は分析ではなく、「次にどこを直せば問い合わせに近づくか」を見つけるためです。</p>
     </div>
   </div>
 </section>
 
-<!-- =============== 9. 代表挨拶 =============== -->
-<section class="section" id="message">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">MESSAGE</span>
-      <h2 class="section-title">代表からの<span class="accent">ご挨拶</span></h2>
-    </div>
-
-    <div class="message-grid">
-      <!-- 差し替え: 【代表顔写真】（推奨: 縦3:4・本人写真。imgタグに置き換え、altに氏名を記載） -->
-      <div class="photo-placeholder" role="img" aria-label="代表者の顔写真（準備中）">【代表顔写真】<br>縦3:4推奨</div>
-      <div class="message-body">
-        <p>はじめまして。メイシル代表の梶本 雅人です。</p>
-        <!-- ▼公開ゲート差し替え対象: 公開前に、事実ベースの経歴・制作歴（2〜3行）に必ず差し替えること -->
-        <p>UIcity株式会社 代表取締役。2018年設立、名古屋を拠点に不動産・飲食・マーケティング支援など複数の事業を展開しています。</p>
-        <p>私たちは、名刺を「渡して終わり」にしないための導線づくりをしています。きっかけは、交流会や商談の場で「良い出会いだったのに、その後につながらなかった」というお話を、業種を問わず何度も伺ってきたことでした。原因の多くは、営業力でも人柄でもなく、名刺交換のあとに次の行動につながる道が用意されていないことにあります。</p>
-        <p>メイシルは、成果を保証するサービスではありません。その代わり、名刺・公式LINE・無料オファー・問い合わせ導線をワンセットで丁寧に設計し、納品後も「どこまで進んだか」を一緒に見ながら改善していきます。高く見せるための見積もりではなく、必要なものだけを選ぶための見積もりをお出しすることをお約束します。</p>
-        <p>名刺は、営業の終わりではなく、見込み客との関係が始まる入口です。あなたの名刺が「始まりの1枚」になるよう、まずは現状のお話をお聞かせください。</p>
-        <p class="message-sign">コンバージョン名刺 メイシル 代表　梶本 雅人<span class="en">MEISIRU</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============== 10. 価格文脈（比較フレーム） =============== -->
-<section class="section bg-light" id="price-context">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">COST PERSPECTIVE</span>
-      <h2 class="section-title">名刺代ではなく、<span class="accent">営業インフラ</span>として考える。</h2>
-      <p class="section-lead">料金をご覧いただく前に、ひとつだけ視点のご提案です。「1件の商談に出会うために、いま何にいくら使っているか」を思い浮かべてみてください。</p>
-    </div>
-
-    <div class="context-grid reveal-stagger">
-      <div class="context-card">
-        <span class="sub">比較の視点 1</span>
-        <h3>広告費は、止めると流入も止まる</h3>
-        <p>リスティング広告やSNS広告は毎月費用が発生し、出稿をやめれば接点もなくなります。一方、名刺の導線は一度設計すれば、名刺を配るたびに働き続けます。</p>
-      </div>
-      <div class="context-card">
-        <span class="sub">比較の視点 2</span>
-        <h3>媒体掲載費は、競合と並ぶ場所</h3>
-        <p>ポータルサイトや情報媒体への掲載は、毎月の掲載費に加えて競合との比較にさらされます。名刺交換は、すでに会って話した相手との一対一の接点です。</p>
-      </div>
-      <div class="context-card">
-        <span class="sub">比較の視点 3</span>
-        <h3>すでに払った「出会いのコスト」</h3>
-        <p>交流会の参加費、展示会の出展費、移動時間。せっかくコストをかけて得た接点が「渡して終わり」で消えていくことこそ、最も大きな損失かもしれません。</p>
-      </div>
-    </div>
-
-    <div class="funnel-example">
-      <h3>導線があると、「どこまで進んだか」が見えるようになります</h3>
-      <div class="funnel-steps" role="img" aria-label="導線の進み方の例。名刺配布50枚、LINE登録8人、資料反応6人、予約クリック3人、アポ1件">
-        <div class="f-step"><b class="en">50<small>枚</small></b><span>名刺配布</span></div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step"><b class="en">8<small>人</small></b><span>LINE登録</span></div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step"><b class="en">6<small>人</small></b><span>資料に反応</span></div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step"><b class="en">3<small>人</small></b><span>予約クリック</span></div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step"><b class="en">1<small>件</small></b><span>アポ獲得</span></div>
-      </div>
-      <p class="note">※上記の数値はあくまで説明のための「例」であり、実績や成果をお約束するものではありません。<br>※渡す瞬間に一言添えた場合の説明用の例です。実際の登録率は業種・場面で大きく変わります。<br>数字を見る目的は分析ではなく、「次にどこを直せば問い合わせに近づくか」を見つけるためです。</p>
-    </div>
-
-    <p style="max-width:760px;margin:28px auto 0;font-size:14.5px;text-align:center;">広告を出していない方は、1件のご依頼の単価と比べてみてください。例えば1件の報酬が20万円のお仕事であれば、制作費はご依頼1〜2件分に相当します（※数値は考え方を示す例であり、成果をお約束するものではありません）。</p>
-  </div>
-</section>
-
-<!-- =============== 11. 料金 → CTA =============== -->
+<!-- =============== ⑦ 料金プレビュー（3構成の要点） =============== -->
 <section class="section" id="price">
   <div class="container">
     <div class="section-head t-center reveal">
-      <svg class="kicker-mark" viewBox="0 0 55 40" aria-hidden="true" focusable="false"><path d="M9,3 L22,3 L38.2,18.4 Q39.9,20 38.2,21.6 L22,37 L9,37 Q3,37 3,31 L3,9 Q3,3 9,3 Z" fill="#0B9E52"/><path d="M28,4.5 L35,4.5 L50.4,18.4 Q52.2,20 50.4,21.6 L35,35.5 L28,35.5 L45,20 Z" fill="#047A3B"/></svg>
-      <span class="kicker kicker--arrow">PRICE</span>
-      <h2 class="section-title">料金の<span class="accent">目安</span></h2>
-      <p class="section-lead">金額は一律ではありません。目的・予算・必要な導線に合わせて、必要な内容だけをお見積もりします。</p>
+      <span class="kicker">PRICE</span>
+      <h2 class="section-title">必要なものだけを選ぶ、<span class="accent">3つの構成</span>。</h2>
+      <p class="section-lead">すべての機能を入れる必要はありません。目的・予算・必要な導線に合わせて、<br>無理のない構成からご提案します。まずは全体像の目安をご覧ください。</p>
     </div>
 
-    <div class="price-grid reveal-stagger">
-      <div class="price-card">
+    <div class="grid-3 reveal-stagger">
+      <div class="card price-card card--shadow">
         <h3>シンプル構成</h3>
-        <p class="p-sub">まず導線を持ちたい方に</p>
-        <p class="price"><span class="en">5〜10</span>万円<small>前後</small></p>
-        <p class="p-note">印刷費・外部ツール利用料は別途</p>
+        <p class="p-sub">まずは名刺からLINE導線まで</p>
+        <p class="price">5〜10<small>万円前後</small></p>
+        <p class="p-note">制作費（本体）の目安。印刷費・外部ツール利用料は別途。</p>
         <ul>
           <li>名刺制作</li>
           <li>QR設置</li>
@@ -1282,12 +505,12 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
           <li>無料オファー</li>
         </ul>
       </div>
-      <div class="price-card featured">
-        <span class="ribbon">よく選ばれる構成</span>
+      <div class="card price-card card--shadow featured">
+        <span class="ribbon">よく選ばれる</span>
         <h3>標準構成</h3>
-        <p class="p-sub">問い合わせ導線まで整えたい方に</p>
-        <p class="price"><span class="en">10〜20</span>万円<small>前後</small></p>
-        <p class="p-note">印刷費・外部ツール利用料は別途</p>
+        <p class="p-sub">問い合わせ導線まで整える</p>
+        <p class="price">10〜20<small>万円前後</small></p>
+        <p class="p-note">制作費（本体）の目安。印刷費・外部ツール利用料は別途。</p>
         <ul>
           <li>名刺制作</li>
           <li>LINE基本導線</li>
@@ -1296,307 +519,96 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
           <li>問い合わせ導線</li>
         </ul>
       </div>
-      <div class="price-card">
+      <div class="card price-card card--shadow">
         <h3>本格構成</h3>
-        <p class="p-sub">追客まで自動化したい方に</p>
-        <p class="price"><span class="en">20</span>万円<small>〜（内容により変動）</small></p>
-        <p class="p-note">印刷費・外部ツール利用料は別途</p>
+        <p class="p-sub">追客・予約まで自動で</p>
+        <p class="price">20<small>万円〜</small></p>
+        <p class="p-note">内容により変動。制作費（本体）の目安。印刷費・外部ツール利用料は別途。</p>
         <ul>
           <li>3つ折り名刺</li>
           <li>無料オファー制作</li>
           <li>リッチメニュー</li>
           <li>シナリオ配信</li>
-          <li>予約・相談導線 など</li>
-        </ul>
-        <p class="p-note" style="margin-top:12px;">※BtoB・展示会用途は40〜70万円前後が中心です</p>
-      </div>
-    </div>
-
-    <p class="note t-center" style="margin-bottom:28px;">※業種により目安が異なります（例：保険・不動産営業の方は25〜40万円前後が中心です）。下の業種別の表をご覧ください。</p>
-
-    <div class="price-philosophy">
-      <p>すべての機能を入れる必要はありません。私たちの見積もりは、高く見せるためではなく、<strong>必要なものだけを選ぶための見積もり</strong>です。ご予算に合わせて、無理のない構成からご提案します。</p>
-    </div>
-
-    <h3 class="t-center" style="font-size:20px; font-weight:700; margin-bottom:18px;">業種別のよくある構成例と費用感</h3>
-    <div class="table-shell"><div class="table-wrap">
-      <table>
-        <caption>業種・用途別の構成例と費用感の目安（本体制作費。印刷費・外部ツール利用料別途）</caption>
-        <thead>
-          <tr><th scope="col">業種・用途</th><th scope="col">よくある構成例</th><th scope="col">費用感（目安）</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">士業・専門家</th><td>2つ折り名刺＋相談前チェックリスト＋リッチメニュー<br><small>金額が上がる主な理由：2つ折りで原稿量が多く、所属会の広告規程に配慮した文面チェック工程を含むため</small></td><td class="en" style="font-feature-settings:'tnum';">22〜33万円前後<br><small>（＝本格構成に相当）</small></td></tr>
-          <tr><th scope="row">保険・不動産営業</th><td>2つ折り名刺＋無料診断＋追客文＋予約導線<br><small>金額が上がる主な理由：2つ折り＋無料診断＋追客文＋予約導線が標準的なため</small></td><td class="en" style="font-feature-settings:'tnum';">25〜40万円前後<br><small>（＝本格構成に相当）</small></td></tr>
-          <tr><th scope="row">サロン・整体</th><td>両面カード＋LINE基本導線＋初回特典＋予約リンク</td><td class="en" style="font-feature-settings:'tnum';">8〜15万円前後<br><small>（＝シンプル〜標準構成に相当）</small></td></tr>
-          <tr><th scope="row">BtoBコンサル</th><td>3つ折り名刺＋無料資料＋リッチメニュー＋シナリオ配信<br><small>金額が上がる主な理由：3つ折り＋無料資料の新規制作＋シナリオ配信＋日程調整連携のため</small></td><td class="en" style="font-feature-settings:'tnum';">40〜70万円前後<br><small>（＝本格構成に相当）</small></td></tr>
-          <tr><th scope="row">展示会・交流会向け</th><td>3つ折り名刺＋資料請求導線＋LINE追客＋相談導線<br><small>金額が上がる主な理由：3つ折り＋資料請求導線＋LINE追客＋相談導線のため</small></td><td class="en" style="font-feature-settings:'tnum';">35〜60万円前後<br><small>（＝本格構成に相当）</small></td></tr>
-        </tbody>
-      </table>
-    </div></div>
-
-    <ul class="price-notes">
-      <li>金額はすべて目安です。名刺の形式（両面／2つ折り／3つ折り）、原稿作成の有無、無料オファーの制作範囲、リッチメニュー・シナリオ配信の本数、予約・問い合わせ導線の作り込み、外部ツール連携、印刷仕様（部数・用紙・加工・納期）により変動します。</li>
-      <li>印刷費・外部ツール利用料（LINE公式アカウントの有料プラン、予約ツール等）は別途です。印刷費の例：両面名刺100〜200部で数千円〜1万円台、2つ折り・3つ折りは折り加工分上がります。LINE公式アカウントの利用料の例：無料プランなら0円から。</li>
-      <li>お支払いは2〜3回に分けられます。</li>
-      <li>正式な金額は、ヒアリング後に制作範囲を整理したうえでご提示します。総額の目安（本体＋印刷費＋月額ツール費）もあわせてお示ししますので、「結局いくらかかるのか」が分からないままになることはありません。</li>
-    </ul>
-
-    <!-- CTA 4/5 -->
-    <div class="cta-block reveal" style="margin-top:44px;">
-      <h3>あなたの場合の「必要な構成と総額目安」をお出しします。</h3>
-      <p>無料相談のゴールは契約ではなく、必要な導線と予算感の整理です。</p>
-      <div class="cta-buttons">
-        <!-- 差し替え: https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform -->
-        <a class="btn btn-primary js-cta" data-cta-id="price_soudan" href="#contact">無料相談で見積もりの前提を整理する</a>
-        <!-- 差し替え: https://line.me/R/ti/p/@471iiiut -->
-        <a class="btn btn-sub js-cta" data-cta-id="price_line" href="#contact">
-          <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          まずはチェックリストを受け取る
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============== 12. 制作の流れ7ステップ =============== -->
-<section class="section bg-light" id="steps">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <svg class="kicker-mark" viewBox="0 0 55 40" aria-hidden="true" focusable="false"><path d="M9,3 L22,3 L38.2,18.4 Q39.9,20 38.2,21.6 L22,37 L9,37 Q3,37 3,31 L3,9 Q3,3 9,3 Z" fill="#0B9E52"/><path d="M28,4.5 L35,4.5 L50.4,18.4 Q52.2,20 50.4,21.6 L35,35.5 L28,35.5 L45,20 Z" fill="#047A3B"/></svg>
-      <span class="kicker kicker--arrow">PROCESS</span>
-      <h2 class="section-title">ご利用の流れ<span class="accent">（7ステップ・最短2週間）</span></h2>
-      <p class="section-lead">ご相談から納品、そして納品後の運用まで。各ステップの目安期間と一緒にご案内します。</p>
-    </div>
-
-    <ol class="steps7">
-      <li><h3>ご相談・ヒアリング<span class="days">目安 1〜2日</span></h3><p>課題・目的・ターゲット・サービス内容を丁寧にお聞きします。</p></li>
-      <li><h3>設計・ご提案<span class="days">目安 2〜3日</span></h3><p>導線設計・オファー設計・構成案をご提案します。</p></li>
-      <li><h3>デザイン制作<span class="days">目安 3〜5日</span></h3><p>名刺デザインを制作します。修正は何度でも可能です。※当初の制作範囲内での修正です。構成の変更・コンセプトの全面的なやり直しは別途お見積もりとなります。</p></li>
-      <li><h3>ご確認・修正<span class="days">目安 2〜3日</span></h3><p>デザインをご確認いただき、ご要望に合わせて修正します。</p></li>
-      <li><h3>印刷<span class="days">目安 3〜4日</span></h3><p>高品質印刷。用紙・加工もご相談いただけます。</p></li>
-      <li><h3>納品<span class="days">目安 1〜2日</span></h3><p>ご指定の住所へ納品します。スピード対応も可能です。</p></li>
-      <li><h3>運用サポート<span class="days">継続的</span></h3><p>導線の改善・オファーの見直しなど、ご希望に応じて継続的にサポートします。</p></li>
-    </ol>
-  </div>
-</section>
-
-<!-- =============== 13. 納品物 =============== -->
-<section class="section" id="deliverables">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">DELIVERABLES</span>
-      <h2 class="section-title">納品物<span class="accent">一覧</span></h2>
-      <p class="section-lead">「名刺データを渡して終わり」ではありません。導線を動かすための素材一式を、制作範囲に応じてお渡しします。</p>
-    </div>
-
-    <div class="deliv-grid reveal-stagger">
-      <div class="deliv-card"><h3>名刺・印刷データ</h3><p>名刺デザインデータ／印刷用データ／名刺掲載用コピー</p></div>
-      <div class="deliv-card"><h3>QR・登録導線</h3><p>QRコード／LINE登録導線／登録メリット文</p></div>
-      <div class="deliv-card"><h3>LINE基本文面</h3><p>あいさつメッセージ／無料オファー案内／自動応答文</p></div>
-      <div class="deliv-card"><h3>無料オファー導線</h3><p>受け渡し設定／オファー訴求文／資料・特典データ</p></div>
-      <div class="deliv-card"><h3>メニュー・シナリオ</h3><p>リッチメニュー画像／シナリオ配信文／問い合わせ導線</p></div>
-      <div class="deliv-card"><h3>運用素材</h3><p>追客メッセージ／アポ打診文／簡易運用メモ</p></div>
-      <div class="deliv-card"><h3>計測セット</h3><p>チャネル別の動的QR設定／登録・反応の記録テンプレート／数字の見方メモ（※含まれる範囲は構成により異なります。お見積もり時に明示します）</p></div>
-    </div>
-    <p class="note t-center" style="margin-top:20px;">※納品物は制作範囲により変動します。シンプル構成では名刺・QR・LINE基本導線を中心に、本格構成ではリッチメニュー・シナリオ・追客文までお渡しします。</p>
-  </div>
-</section>
-
-<!-- =============== 14. 向いている方・向いていない方 =============== -->
-<section class="section bg-light" id="fit">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">FOR WHOM</span>
-      <h2 class="section-title">向いている方・<span class="accent">向いていない方</span></h2>
-      <p class="section-lead">正直にお伝えします。メイシルは、すべての方に合うサービスではありません。</p>
-    </div>
-
-    <div class="fit-grid">
-      <div class="fit-card ok">
-        <h3>メイシルが向いている方</h3>
-        <ul>
-          <li>名刺やカードを渡す機会がある</li>
-          <li>LINE登録後に案内したい商品・サービスがある</li>
-          <li>相談・問い合わせ・予約につなげたい</li>
-          <li>無料オファーを活用したい</li>
-          <li>名刺交換後の追客が苦手</li>
-          <li>公式LINEを営業導線として活用したい</li>
-        </ul>
-      </div>
-      <div class="fit-card ng">
-        <h3>向いていない方</h3>
-        <ul>
-          <li>名刺をほとんど配らない</li>
-          <li>LINE登録後に案内する商品がない</li>
-          <li>問い合わせや予約の受け皿がない</li>
-          <li>無料オファーを用意する意思がない</li>
-          <li>作っただけで自動的に売上が上がると思っている</li>
-          <li>成果保証を求めている</li>
+          <li>予約・相談導線</li>
         </ul>
       </div>
     </div>
 
-    <div class="fit-conditions">
-      <h3>効果を高める3つの条件</h3>
-      <ol>
-        <li>渡す相手がいること</li>
-        <li>登録する理由（無料オファー）があること</li>
-        <li>次の受け皿（問い合わせ・予約・相談先）があること</li>
-      </ol>
-      <p style="font-size:13.5px; margin-top:10px; opacity:.85;">この3つが揃うほど導線は働きます。揃っていない部分は、無料相談で一緒に考えることもできます。</p>
-    </div>
+    <p class="note t-center reveal" style="max-width:760px; margin:24px auto 0;">
+      ※金額はすべて目安・例であり、確定金額ではありません。印刷費・外部ツール利用料は別途です。正式金額はヒアリング後に制作範囲を整理してご提示します。成果を保証するものではありません。
+    </p>
+
+    <p class="t-center reveal" style="margin-top:28px;">
+      <a class="btn btn-ghost" href="price.html">総額の目安・業種別の費用感を見る</a>
+    </p>
   </div>
 </section>
 
-<!-- =============== 15. FAQ → CTA =============== -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">FAQ</span>
-      <h2 class="section-title">よくある<span class="accent">ご質問</span></h2>
-    </div>
+<!-- =============== ⑧ 共通CTAセクション（partials (d)そのまま） =============== -->
+<section class="section bg-dark" id="contact" aria-labelledby="cta-heading">
+  <div class="container t-center">
+    <span class="kicker" style="color:#8fe3b6;">CONTACT</span>
+    <h2 class="section-title" id="cta-heading" style="color:#fff;">名刺を、<span class="accent">始まりに。</span></h2>
+    <p class="section-lead" style="color:rgba(255,255,255,.9);">
+      無料相談のゴールは契約ではなく、必要な導線と予算感の整理です。<br>
+      オンライン対応・ご契約を迫りません。まずは現状のお話からお聞かせください。
+    </p>
 
-    <div class="faq-list">
-      <details>
-        <summary>結局、総額でいくらかかりますか？</summary>
-        <div class="answer"><div class="answer-inner"><p>本体の制作費はシンプル構成5〜10万円前後、標準構成10〜20万円前後、本格構成20万円〜が目安です。これに印刷費と外部ツール利用料（LINE公式アカウントの有料プラン等）が別途かかります。正式な金額はヒアリング後に制作範囲を整理してご提示し、総額の目安もあわせてお示しします。</p></div></div>
-      </details>
-      <details>
-        <summary>納期はどのくらいですか？</summary>
-        <div class="answer"><div class="answer-inner"><p>ご相談から納品まで最短2週間です。ヒアリング、設計・ご提案、デザイン制作、ご確認・修正、印刷、納品の流れで進みます。お急ぎの場合はスピード対応もご相談ください。</p></div></div>
-      </details>
-      <details>
-        <summary>成果は保証されますか？</summary>
-        <div class="answer"><div class="answer-inner"><p>いいえ、成果の保証はいたしません。メイシルがお作りするのは「次の行動につながる導線」であり、成果をお約束するサービスではありません。その代わり、名刺配布からLINE登録・問い合わせまでの進み方を可視化し、どこを直せば良くなるかを一緒に考える改善サポートをご用意しています。</p></div></div>
-      </details>
-      <details>
-        <summary>公式LINEをまだ持っていなくても依頼できますか？</summary>
-        <div class="answer"><div class="answer-inner"><p>はい、ご相談いただけます。公式LINEの有無は最初のヒアリングで確認し、これから始める場合は開設を含めた導線設計をご提案します。アカウントの開設から初期設定まで、画面を一緒に見ながら進めます。お客様にお願いするのは月額プランのお申し込みだけです。作業の分担はお見積もり時に書面で明示します。すべて揃っていなくても、まずはご相談ください。</p></div></div>
-      </details>
-      <details>
-        <summary>無料オファーにできる資料がありません。それでも大丈夫ですか？</summary>
-        <div class="answer"><div class="answer-inner"><p>大丈夫です。資料や無料オファーがない場合も、業種とお客様の状況に合わせて一緒に考えます。既存の資料を活用する方法から、チェックリスト・診断シートなどの新規企画・制作まで、必要な範囲でご提案します。</p></div></div>
-      </details>
-      <details>
-        <summary>デザインが気に入らなかった場合はどうなりますか？</summary>
-        <div class="answer"><div class="answer-inner"><p>デザイン制作の段階で、修正は何度でも可能です。ご確認・修正のステップでご要望を伺いながら、納得いただけるまで調整します。※当初の制作範囲内での修正です。構成の変更・コンセプトの全面的なやり直しは別途お見積もりとなります。</p></div></div>
-      </details>
-      <details>
-        <summary>納品後の継続契約は必須ですか？</summary>
-        <div class="answer"><div class="answer-inner"><p>いいえ、任意です。納品後は「自分で運用する（追加費用なし）」「必要な時だけスポットで依頼する」「継続して相談する」の3つから選べます。納品後の運用状況を見てから決めていただけます。</p></div></div>
-      </details>
-      <details>
-        <summary>お客様の年齢層が高く、LINEを使わない方が多いのですが。</summary>
-        <div class="answer"><div class="answer-inner"><p>その場合は、LINEだけに頼らない導線をご提案します。電話・問い合わせフォームの併記など、お客様の層に合わせた代替導線を含めて設計できますので、ヒアリングの際にお聞かせください。</p></div></div>
-      </details>
-      <details>
-        <summary>支払い方法・支払いのタイミングを教えてください。</summary>
-        <div class="answer"><div class="answer-inner"><p>標準は着手金50%＋納品時50%の銀行振込です。ご負担を分けたい場合は、3回分割（着手金40%＋中間金30%＋残金30%）にも対応していますので、お申し込み時にご相談ください。</p></div></div>
-      </details>
-      <details>
-        <summary>何を用意して相談すればいいですか？</summary>
-        <div class="answer"><div class="answer-inner"><p>特別な準備は不要です。現在の名刺、公式LINEの有無、無料オファーの有無、問い合わせ・予約先、名刺を渡す相手や場面が分かると話が早く進みますが、すべて揃っていなくてもご相談いただけます。</p></div></div>
-      </details>
-      <details>
-        <summary>士業ですが、所属会の広告規程が気になります。</summary>
-        <div class="answer"><div class="answer-inner"><p>成果を断定する表現、他と比べて優良と誤認させる表現、業際（＝資格ごとの業務範囲）を越える表現は、ご提案の段階から使いません。所属会の広告規程の確認は、制作の最初の工程で行います。最終的な規程との照合はご本人にご確認いただく前提で、一緒に文面を整えていきます。</p></div></div>
-      </details>
-      <details>
-        <summary>勤務先に販促物の事前承認規定があります。対応できますか？</summary>
-        <div class="answer"><div class="answer-inner"><p>はい。承認に出せる形（デザインデータと文面の一覧）で納品しますので、社内の承認手続きにそのままお使いいただけます。規定上むずかしい場合は、無理におすすめせず、正直に見送りをご提案します。</p></div></div>
-      </details>
-      <details>
-        <summary>途中でキャンセルした場合はどうなりますか？</summary>
-        <div class="answer"><div class="answer-inner"><p>着手前（着手金のご入金前）であれば、費用は発生しません。着手後は、進捗に応じた出来高で精算します。なお、法人の請求書払いに対応しています。適格請求書（インボイス）の対応状況：【対応状況を記載】</p></div></div>
-      </details>
-      <details>
-        <summary>まず資料だけ欲しいのですが。</summary>
-        <div class="answer"><div class="answer-inner"><p>無料相談フォームから「資料希望」とだけお送りいただければ、PDF資料をメールでお送りします。相談を挟まなくても構いません。</p></div></div>
-      </details>
-    </div>
-
-    <!-- CTA 5/5（seam: 次セクションへ48px食い込み） -->
-    <div class="cta-block cta-seam reveal">
-      <h3>解決しなかった疑問は、直接お聞きください。</h3>
-      <p>ご契約を迫ることはありません。相談のゴールは、必要な導線と予算感の整理です。</p>
-      <div class="cta-buttons">
-        <!-- 差し替え: https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform -->
-        <a class="btn btn-primary js-cta" data-cta-id="faq_soudan" href="#contact">無料相談で質問する</a>
-        <!-- 差し替え: https://line.me/R/ti/p/@471iiiut -->
-        <a class="btn btn-sub js-cta" data-cta-id="faq_line" href="#contact">
-          <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          LINEで気軽に質問する
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============== 16. 運用サポート3択 =============== -->
-<section class="section bg-light" id="support">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">AFTER SUPPORT</span>
-      <h2 class="section-title">納品後は、<span class="accent">3つの選択肢</span>から選べます。</h2>
-      <p class="section-lead">継続契約は必須ではありません。運用の状況を見てから、合う形を選んでください。</p>
-    </div>
-
-    <div class="support-grid reveal-stagger">
-      <div class="support-card">
-        <span class="s-label">選択肢 1</span>
-        <h3>自分で運用する</h3>
-        <p>追加費用はかかりません。納品された導線と運用メモをもとに、ご自身のペースで運用いただけます。</p>
-      </div>
-      <div class="support-card">
-        <span class="s-label">選択肢 2</span>
-        <h3>必要な時だけ依頼する</h3>
-        <p>スポット相談・都度見積もりの形です。文面の作成、導線の修正、改善のご相談など、必要な時だけお声がけください。</p>
-      </div>
-      <div class="support-card">
-        <span class="s-label">選択肢 3</span>
-        <h3>継続して相談する</h3>
-        <p>毎月払い・年払いに対応。毎月の反応確認、追客文の作成、LINE導線の改善までを継続的にサポートします。</p>
-      </div>
-    </div>
-    <p class="support-note">どの形でも、名刺とLINE導線はあなたの資産としてお手元に残ります。</p>
-  </div>
-</section>
-
-<!-- =============== 17. クロージング =============== -->
-<section class="closing" id="contact">
-  <div class="container">
-    <p class="closing-copy">名刺を、<span class="accent">始まりに。</span></p>
-    <p class="lead">名刺は、営業の終わりではありません。見込み客との関係が始まる入口です。<br>まずは現状の名刺と導線のお話から、お聞かせください。</p>
-
-    <div class="cta-buttons" style="margin-bottom:26px;">
-      <!-- ⚠️⚠️公開ブロッカー: このhrefが【】のままでは無料相談を一件も申し込めない。公開前に必ず実URL（無料相談フォームURL）に差し替え -->
-      <a class="btn btn-primary js-cta" data-cta-id="closing_soudan" href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform">無料相談を予約する<span class="micro">オンライン対応・ご契約を迫りません</span></a>
-      <!-- ⚠️⚠️公開ブロッカー: このhrefが【】のままではLINE友だち追加が一件もできない。公開前に必ず実URL（LINE友だち追加URL）に差し替え -->
-      <a class="btn btn-sub js-cta" data-cta-id="closing_line" href="https://line.me/R/ti/p/@471iiiut">
+    <div class="cta-buttons" style="margin:32px 0 16px;">
+      <a class="btn btn-primary js-cta" data-cta-id="closing_soudan"
+         href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+         target="_blank" rel="noopener">
+        無料相談を予約する<span class="micro">オンライン対応・ご契約を迫りません</span>
+      </a>
+      <a class="btn btn-line js-cta" data-cta-id="closing_line"
+         href="https://line.me/R/ti/p/@471iiiut"
+         target="_blank" rel="noopener">
         <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        名刺導線チェックリストをLINEで受け取る
+        公式LINEで受け取る
       </a>
     </div>
-    <p class="cta-note" style="margin-top:-14px;margin-bottom:26px;">配信は月数回程度。不要になればブロックでいつでも解除できます。</p>
 
-    <!-- タグラインは必ずカテゴリ名ロックアップとの2段構成 -->
-    <div class="lockup" style="margin-bottom:0;">
-      <span class="category">コンバージョン名刺 メイシル</span>
-      <span class="tagline">渡して終わり、を終わらせる。</span>
+    <p class="cta-note" style="color:rgba(255,255,255,.82);">
+      いきなりの相談に迷う方は、
+      <a href="https://uicity.github.io/meisiru/checklist.html" target="_blank" rel="noopener" style="color:#8fe3b6; text-decoration:underline; text-underline-offset:3px;">名刺導線チェックリスト</a>
+      から。LINE友だち追加で受け取れます。<br>
+      配信は月数回程度。不要になればブロックでいつでも解除できます。<br>
+      ※「LINE」はLINEヤフー株式会社の商標です。
+    </p>
+  </div>
+</section>
+
+<!-- =============== ⑨ 代表からの一言 =============== -->
+<section class="section bg-light" id="message">
+  <div class="container">
+    <div class="section-head t-center reveal">
+      <span class="kicker">MESSAGE</span>
+      <h2 class="section-title">代表からの、<span class="accent">一言</span>。</h2>
+    </div>
+
+    <div class="message-grid reveal">
+      <div class="photo-placeholder">代表写真<br>（準備中）</div>
+      <div class="message-body">
+        <p>名刺は、営業の終わりではありません。見込み客との関係が始まる入口です。せっかくの出会いを「渡して終わり」にしてしまうのは、あまりにもったいない——そう考えて、メイシルを立ち上げました。</p>
+        <p>私たちがお作りするのは、成果を約束する魔法ではなく、次の行動につながる「導線」です。すべての機能を入れる必要はありません。ご予算に合わせて、必要なものだけを一緒に絞り込みます。まずは現状のお話から、お気軽にお聞かせください。</p>
+        <p class="message-sign">
+          UIcity株式会社　代表取締役　梶本 雅人
+          <span class="en">Masato Kajimoto, CEO / UIcity Inc.</span>
+        </p>
+        <p><a href="company.html">会社概要はこちら →</a></p>
+      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- =============== フッター =============== -->
+<!-- =============== フッター（共通） =============== -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div>
         <div class="footer-logo">
-          <!-- 白抜きロゴ（ダーク背景用） -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 236" role="img" aria-label="コンバージョン名刺 メイシル">
             <g transform="translate(106,117) scale(0.65) translate(-235.6,-256)">
               <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
@@ -1608,113 +620,51 @@ thead th.col-meisiru{ background:var(--green-dark); color:var(--white); }
           </svg>
         </div>
         <p class="footer-company">
-          運営: UIcity株式会社<br>
-          所在地: 〒461-0005 愛知県名古屋市東区東桜2丁目3-7 東カン名古屋キャステール1F<br>
-          電話: 052-325-2222／メール: kaji.2415@gmail.com
+          運営: UIcity株式会社（代表取締役 梶本 雅人）<br>
+          所在地: 〒460-0003 愛知県名古屋市中区錦1-17-13 名興ビル5F<br>
+          電話: <a href="tel:0523252222">052-325-2222</a>（受付 平日10:00〜17:00）<br>
+          メール: <a href="mailto:info@uicity.net">info@uicity.net</a><br>
+          <span class="note" style="color:rgba(255,255,255,.7);">お問い合わせは原則メール／公式LINEにて承ります。</span>
         </p>
       </div>
       <nav aria-label="フッターリンク">
         <ul class="footer-links">
-          <li><a href="#samples">制作サンプル</a></li>
-          <li><a href="#price">料金の目安</a></li>
-          <li><a href="#steps">ご利用の流れ</a></li>
-          <li><a href="#faq">よくあるご質問</a></li>
-          <li><a href="./特定商取引法に基づく表記.html">特定商取引法に基づく表記</a><!-- 公開時: 法務フォルダ（02_LP/法務/）の2ファイルを index.html と同一ディレクトリに配置するか、hrefを公開URLに差し替え --></li>
-          <li><a href="./プライバシーポリシー.html">プライバシーポリシー</a><!-- 公開時: 法務フォルダ（02_LP/法務/）の2ファイルを index.html と同一ディレクトリに配置するか、hrefを公開URLに差し替え --></li>
+          <li><a href="service.html">サービス</a></li>
+          <li><a href="price.html">料金の目安</a></li>
+          <li><a href="flow.html">導入の流れ</a></li>
+          <li><a href="faq.html">よくあるご質問</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="特定商取引法に基づく表記.html">特定商取引法に基づく表記</a></li>
+          <li><a href="プライバシーポリシー.html">プライバシーポリシー</a></li>
         </ul>
       </nav>
     </div>
     <div class="footer-legal">
-      <p>本ページに記載の数値はすべて説明のための例であり、成果を保証するものではありません。料金は目安であり、印刷費・外部ツール利用料は別途です。</p>
+      <p>本サイトに記載の数値はすべて説明のための例であり、成果を保証するものではありません。料金は目安であり、印刷費・外部ツール利用料は別途です。正式金額はヒアリング後に制作範囲を整理してご提示します。</p>
       <p>「LINE」はLINEヤフー株式会社の商標です。本サービスはLINEヤフー株式会社とは関係のない、独立したサービスです。</p>
-      <p class="en">&copy; <span id="copyright-year">2026</span> MEISIRU（メイシル）. All rights reserved.</p>
+      <p class="en">&copy; <span id="copyright-year">2026</span> UIcity Inc. / MEISIRU（メイシル）. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
-<!-- =============== モバイル固定CTAバー =============== -->
+<!-- back-to-top -->
+<button class="back-to-top" aria-label="ページ先頭へ戻る">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 5l-7 7M12 5l7 7M12 5v14" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- モバイル固定CTAバー -->
 <div class="fixed-cta" role="navigation" aria-label="お申し込み・お問い合わせ">
-  <!-- 差し替え: https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform -->
-  <a class="js-cta" data-cta-id="fixedbar_soudan" href="#contact">無料相談を予約</a>
-  <!-- 差し替え: https://line.me/R/ti/p/@471iiiut -->
-  <a class="js-cta" data-cta-id="fixedbar_line" href="#contact">
+  <a class="js-cta" data-cta-id="fixedbar_soudan"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+     target="_blank" rel="noopener">無料相談を予約</a>
+  <a class="js-cta line" data-cta-id="fixedbar_line"
+     href="https://line.me/R/ti/p/@471iiiut" target="_blank" rel="noopener">
     <span class="line-badge" aria-hidden="true" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     LINEで受け取る
   </a>
 </div>
 
-<script>
-/* ============================================================
-   計測・挙動スクリプト
-   - CTAクリック: gtag('event','cta_click', {...})
-   - フォーム送信: gtag('event','generate_lead', {...})
-     ※無料相談フォームを本ページに埋め込む場合は、
-       formタグに class="js-lead-form" を付与してください。
-============================================================ */
-(function(){
-  'use strict';
-
-  /* コピーライト年の自動更新 */
-  var y = document.getElementById('copyright-year');
-  if (y) { y.textContent = String(new Date().getFullYear()); }
-
-  /* CTAクリック計測 */
-  document.querySelectorAll('.js-cta').forEach(function(el){
-    el.addEventListener('click', function(){
-      var id = el.getAttribute('data-cta-id') || 'unknown';
-      var type = id.indexOf('line') > -1 ? 'line_add' : 'consult_form';
-      if (typeof gtag === 'function') {
-        gtag('event', 'cta_click', {
-          cta_id: id,          /* どのボタンか（例: fv_soudan / price_line） */
-          cta_type: type,      /* consult_form=無料相談 / line_add=LINE登録 */
-          transport_type: 'beacon'
-        });
-      }
-    });
-  });
-
-  /* フォーム送信計測（フォーム埋め込み後に有効になります） */
-  document.querySelectorAll('form.js-lead-form').forEach(function(form){
-    form.addEventListener('submit', function(){
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          form_id: form.id || 'consult_form',
-          transport_type: 'beacon'
-        });
-      }
-    });
-  });
-
-  /* スクロール連出（reveal）: reduced-motion時はCSS側で無効化されるためJS分岐は不要 */
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-      });
-    }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.reveal,.reveal-stagger').forEach(function(el){ io.observe(el); });
-
-    /* 固定CTAバー: フッター到達時に退避 */
-    var bar = document.querySelector('.fixed-cta');
-    var foot = document.querySelector('.site-footer');
-    if (bar && foot) {
-      var ioBar = new IntersectionObserver(function(es){
-        es.forEach(function(e){ bar.classList.toggle('is-hidden', e.isIntersecting); });
-      }, {threshold:0});
-      ioBar.observe(foot);
-    }
-  }
-
-  /* ページ内リンクのスムーススクロール（CSS scroll-behavior 非対応環境向けフォールバック） */
-  if (!('scrollBehavior' in document.documentElement.style)) {
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
-      a.addEventListener('click', function(e){
-        var target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView(); }
-      });
-    });
-  }
-})();
-</script>
+<!-- 共通JS -->
+<script src="assets/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="メイシル">
+  <rect width="512" height="512" rx="112" fill="#F4F7F9"/>
+  <g transform="translate(256,256) scale(1.32) translate(-235.6,-256)">
+    <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
+    <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
+  </g>
+</svg>
