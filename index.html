@@ -160,8 +160,28 @@
     background:radial-gradient(62% 100% at 50% 100%, rgba(143,227,182,.10) 0%, rgba(143,227,182,0) 72%);
   }
 
-  /* ---------- 3Dカード本体 ---------- */
-  .stage3d-card{
+  /* ==========================================================
+     3D 3つ折り名刺（Z折り／じゃばら折り）
+     構造: 中央P2固定・左P1と右P3をヒンジで回転。
+       crease1（P1|P2）= 谷折り: A面同士が向き合う
+       crease2（P2|P3）= 山折り: B面同士が向き合う
+     閉じた状態の外面 = 表紙（A面右・基本情報）と QR面（B面右）。
+     折り角は178度（実物の紙のわずかな反発を再現しつつZファイティング回避）
+  ========================================================== */
+  .stage3d-stage{ --tri-s:1; --f1:0deg; --f3:0deg; --pz1:0px; --pz3:0px; --psc:1; }
+  /* 閉時は紙厚ぶんのZオフセット(--pz)で層を分離し、近接平面の描画抜けを防ぐ。
+     --psc は重なったパネルをわずかに縮め、前面の角丸から背面の直角エッジが覗くのを防ぐ */
+  .stage3d-stage[data-state="closed"]{ --f1:178deg; --f3:178deg; --pz1:-4px; --pz3:4px; --psc:.993; --tri-s:1; }
+  .stage3d-stage[data-state="openA"],
+  .stage3d-stage[data-state="openB"]{ --f1:0deg; --f3:0deg; --pz1:0px; --pz3:0px; --psc:1; --tri-s:.56; }
+
+  .stage3d-scaleWrap{
+    transform-style:preserve-3d;
+    transform:scale(var(--tri-s));
+    transition:transform 1.05s cubic-bezier(.45,.03,.18,1);
+  }
+  .stage3d-tri{
+    --tri-r:calc(var(--stage3d-w) * .031); /* 実寸2.5〜3mm相当の角丸 */
     position:relative;
     width:var(--stage3d-w);
     aspect-ratio:91/55;
@@ -173,14 +193,26 @@
     touch-action:pan-y;
     outline:none;
   }
-  .stage3d-card.is-grabbing{ cursor:grabbing; }
-  .stage3d-card:focus-visible{ outline:2px solid #8fe3b6; outline-offset:8px; }
+  .stage3d-tri.is-grabbing{ cursor:grabbing; }
+  .stage3d-tri:focus-visible{ outline:2px solid #8fe3b6; outline-offset:8px; }
+
+  .stage3d-panel{ position:absolute; inset:0; transform-style:preserve-3d; }
+  /* 紙厚オフセット（折り畳み時のみ有効・自パネル法線方向）＋角丸保護の微縮小 */
+  .stage3d-p1{ transform:translateZ(var(--pz1)) scale(var(--psc)); transition:transform 1.05s cubic-bezier(.45,.03,.18,1); }
+  .stage3d-p3{ transform:translateZ(var(--pz3)) scale(var(--psc)); transition:transform 1.05s cubic-bezier(.45,.03,.18,1); transition-delay:.1s; }
+  .stage3d-hinge{
+    position:absolute; top:0; bottom:0; width:100%;
+    transform-style:preserve-3d;
+    transition:transform 1.05s cubic-bezier(.45,.03,.18,1);
+  }
+  .stage3d-hingeL{ right:100%; transform-origin:100% 50%; transform:rotateY(var(--f1)); }
+  .stage3d-hingeR{ left:100%;  transform-origin:0% 50%;  transform:rotateY(var(--f3)); transition-delay:.1s; }
+
   .stage3d-face{
     position:absolute; inset:0;
-    border-radius:calc(var(--stage3d-w) * .031); /* 実寸2.5〜3mm相当の角丸 */
     overflow:hidden;
     backface-visibility:hidden; -webkit-backface-visibility:hidden;
-    transform:translateZ(1.1px);
+    transform:translateZ(2.5px);
     background:#FFFFFF;
     border:1px solid rgba(255,255,255,.85);      /* 微細な紙エッジ */
     box-shadow:
@@ -189,10 +221,25 @@
       0 10px 22px rgba(0,0,0,.32),
       0 2px 6px rgba(0,0,0,.28);
   }
-  .stage3d-back{ transform:rotateY(180deg) translateZ(1.1px); }
+  .stage3d-faceB{ transform:rotateY(180deg) translateZ(2.5px); }
+  /* 角丸: スプレッドの外側4隅のみ（折り目側は直角＝実物どおり） */
+  .stage3d-p1 .stage3d-faceF{ border-radius:var(--tri-r) 0 0 var(--tri-r); }
+  .stage3d-p1 .stage3d-faceB{ border-radius:0 var(--tri-r) var(--tri-r) 0; }
+  .stage3d-p3 .stage3d-faceF{ border-radius:0 var(--tri-r) var(--tri-r) 0; }
+  .stage3d-p3 .stage3d-faceB{ border-radius:var(--tri-r) 0 0 var(--tri-r); }
   .stage3d-face img{
     display:block; width:100%; height:100%; object-fit:cover; pointer-events:none;
   }
+  /* 折り目の陰（クリース）: 各面の折り目側エッジに5%幅の淡い影 */
+  .stage3d-face::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:var(--tri-crease,none);
+  }
+  .stage3d-p2 .stage3d-face{ --tri-crease:linear-gradient(90deg, rgba(15,37,64,.09), rgba(15,37,64,0) 5.5%, rgba(15,37,64,0) 94.5%, rgba(15,37,64,.09)); }
+  .stage3d-p1 .stage3d-faceF{ --tri-crease:linear-gradient(270deg, rgba(15,37,64,.09), rgba(15,37,64,0) 5.5%); }
+  .stage3d-p1 .stage3d-faceB{ --tri-crease:linear-gradient(90deg,  rgba(15,37,64,.09), rgba(15,37,64,0) 5.5%); }
+  .stage3d-p3 .stage3d-faceF{ --tri-crease:linear-gradient(90deg,  rgba(15,37,64,.09), rgba(15,37,64,0) 5.5%); }
+  .stage3d-p3 .stage3d-faceB{ --tri-crease:linear-gradient(270deg, rgba(15,37,64,.09), rgba(15,37,64,0) 5.5%); }
   /* 斜めのグロス（光沢）スイープ */
   .stage3d-face::after{
     content:""; position:absolute; inset:0; pointer-events:none;
@@ -201,6 +248,30 @@
     background-size:260% 100%;
     background-position:var(--stage3d-gloss,55%) 0;
     mix-blend-mode:screen;
+  }
+
+  /* 展開時は接地影を広げる */
+  .stage3d-ground{ transition:width 1.05s cubic-bezier(.45,.03,.18,1); }
+  .stage3d-stage[data-state="openA"] .stage3d-ground,
+  .stage3d-stage[data-state="openB"] .stage3d-ground{ width:calc(var(--stage3d-w) * 1.65); }
+
+  /* ---------- 平面プレビュー（A面／B面の全パネル） ---------- */
+  .stage3d-flat{ max-width:860px; margin:26px auto 0; }
+  .stage3d-flat summary{
+    cursor:pointer; text-align:center; list-style:none;
+    color:rgba(255,255,255,.66); font-size:13.5px; padding:6px 0;
+  }
+  .stage3d-flat summary::-webkit-details-marker{ display:none; }
+  .stage3d-flat summary::after{ content:" ▾"; font-size:11px; }
+  .stage3d-flat[open] summary::after{ content:" ▴"; }
+  .stage3d-flat summary:hover{ color:#8fe3b6; }
+  .stage3d-flat figure{ margin:14px 0 0; }
+  .stage3d-flat figcaption{
+    color:rgba(255,255,255,.6); font-size:12px; margin-bottom:6px; text-align:center;
+  }
+  .stage3d-flatRow{ display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+  .stage3d-flatRow img{
+    display:block; width:100%; height:auto; border-radius:4px; background:#FFFFFF;
   }
 
   /* ---------- 接地影（楕円blur） ---------- */
@@ -274,11 +345,20 @@
     .stage3d-scene{ --stage3d-w:min(78vw,420px); padding:24px 0 76px; }
     .stage3d-ground{ bottom:26px; }
     .stage3d-caption{ position:static; display:block; text-align:center; margin-top:18px; }
+    /* 展開スプレッド(3面)が画面内に収まる縮小率 */
+    .stage3d-stage[data-state="openA"],
+    .stage3d-stage[data-state="openB"]{ --tri-s:.40; }
+    /* 3ピルが375px幅に収まる余白 */
+    .stage3d-toggle{ max-width:calc(100vw - 32px); }
+    .stage3d-pill{ padding:8px 13px; font-size:12.5px; }
+    /* 平面プレビューは縦積みで判読サイズを確保 */
+    .stage3d-flatRow{ grid-template-columns:1fr; gap:8px; }
   }
 
-  /* ---------- prefers-reduced-motion: 15度の固定アングル静止表示 ---------- */
+  /* ---------- prefers-reduced-motion: アニメーション無効・即時切り替え ---------- */
   @media (prefers-reduced-motion:reduce){
-    .stage3d-card{ transform:rotateX(-6deg) rotateY(15deg); cursor:default; }
+    .stage3d-tri{ transform:rotateX(-6deg) rotateY(15deg); cursor:default; }
+    .stage3d-hinge, .stage3d-scaleWrap, .stage3d-ground{ transition:none; }
     .stage3d-face::after{ background-position:60% 0; }
     .stage3d-pill{ transition:none; }
     .hero-visual img.stage3d-heroCard{ transform:rotateX(4deg) rotateY(-10deg); }
@@ -381,35 +461,80 @@
   <div class="container">
     <div class="stage3d-head reveal">
       <span class="stage3d-kicker en">SHOWCASE</span>
-      <h2 class="stage3d-title" id="stage3d-heading">これが、メイシルの名刺。</h2>
-      <p class="stage3d-sub">私たち自身が毎日使っている実物のデザインです。裏面が、LINE登録への入口になります。</p>
+      <h2 class="stage3d-title" id="stage3d-heading">これが、メイシルの3つ折り名刺。</h2>
+      <p class="stage3d-sub">私たち自身が使っている実物の3面折りデザインです。閉じれば1枚の名刺、開けば人となり・想い・導線が伝わります。</p>
     </div>
 
-    <div class="stage3d-stage reveal">
+    <div class="stage3d-stage reveal" data-state="closed">
       <div class="stage3d-scene">
-        <div class="stage3d-card" tabindex="0" role="button"
-             aria-label="メイシルの名刺。クリックまたはドラッグで表裏を回転して確認できます">
-          <div class="stage3d-face stage3d-front">
-            <img src="assets/card_front.png" alt="メイシル名刺 表面" width="1456" height="880" draggable="false" decoding="async">
-          </div>
-          <div class="stage3d-face stage3d-back">
-            <img src="assets/card_back.png" alt="メイシル名刺 裏面（公式LINE登録QRコード付き）" width="1456" height="880" draggable="false" decoding="async">
+        <div class="stage3d-scaleWrap">
+          <div class="stage3d-tri" tabindex="0" role="button"
+               aria-label="メイシルの3つ折り名刺。下のボタンで折りたたみ・展開、ドラッグまたはクリックで回転できます">
+            <div class="stage3d-panel stage3d-p2">
+              <div class="stage3d-face stage3d-faceF">
+                <img src="assets/tri_a2.png" alt="A面中央パネル: 想い（渡して終わり、を終わらせる。）" width="1456" height="880" draggable="false" decoding="async">
+              </div>
+              <div class="stage3d-face stage3d-faceB">
+                <img src="assets/tri_b2.png" alt="B面中央パネル: 導線と流れのご案内・メモ枠" width="1456" height="880" draggable="false" decoding="async">
+              </div>
+            </div>
+            <div class="stage3d-hinge stage3d-hingeL" aria-hidden="true">
+              <div class="stage3d-panel stage3d-p1">
+                <div class="stage3d-face stage3d-faceF">
+                  <img src="assets/tri_a1.png" alt="" width="1456" height="880" draggable="false" decoding="async">
+                </div>
+                <div class="stage3d-face stage3d-faceB">
+                  <img src="assets/tri_b1.png" alt="" width="1456" height="880" draggable="false" decoding="async">
+                </div>
+              </div>
+            </div>
+            <div class="stage3d-hinge stage3d-hingeR" aria-hidden="true">
+              <div class="stage3d-panel stage3d-p3">
+                <div class="stage3d-face stage3d-faceF">
+                  <img src="assets/tri_a3.png" alt="" width="1456" height="880" draggable="false" decoding="async">
+                </div>
+                <div class="stage3d-face stage3d-faceB">
+                  <img src="assets/tri_b3.png" alt="" width="1456" height="880" draggable="false" decoding="async">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="stage3d-ground" aria-hidden="true"></div>
       </div>
 
-      <div class="stage3d-toggle" role="group" aria-label="名刺の表面・裏面を切り替え">
-        <button type="button" class="stage3d-pill is-active" data-side="front" aria-pressed="true">表面</button>
-        <button type="button" class="stage3d-pill" data-side="back" aria-pressed="false">裏面</button>
+      <div class="stage3d-toggle" role="group" aria-label="名刺の状態を切り替え">
+        <button type="button" class="stage3d-pill is-active" data-tstate="closed" aria-pressed="true">閉じた状態</button>
+        <button type="button" class="stage3d-pill" data-tstate="openA" aria-pressed="false">A面（外側）</button>
+        <button type="button" class="stage3d-pill" data-tstate="openB" aria-pressed="false">B面（内側）</button>
       </div>
 
-      <p class="stage3d-caption en" aria-hidden="true">MEISIRU — Conversion Business Card</p>
+      <p class="stage3d-caption en" aria-hidden="true">MEISIRU — Tri-Fold Conversion Business Card</p>
     </div>
 
+    <details class="stage3d-flat reveal">
+      <summary>平面で見る（A面／B面の全パネル）</summary>
+      <figure>
+        <figcaption>A面（表紙側・外側）　左から: 人となり・SNS ／ 想い ／ 基本情報（表紙）</figcaption>
+        <div class="stage3d-flatRow">
+          <img src="assets/tri_a1.png" alt="A面左: 人となり・SNS" width="1456" height="880" loading="lazy" decoding="async">
+          <img src="assets/tri_a2.png" alt="A面中央: 想い" width="1456" height="880" loading="lazy" decoding="async">
+          <img src="assets/tri_a3.png" alt="A面右: 基本情報（表紙）" width="1456" height="880" loading="lazy" decoding="async">
+        </div>
+      </figure>
+      <figure>
+        <figcaption>B面（内側・詳細面）　左から: 会社・サービス説明 ／ 導線・補足メモ ／ 資料オファーQR</figcaption>
+        <div class="stage3d-flatRow">
+          <img src="assets/tri_b3.png" alt="B面左: 会社・サービス説明" width="1456" height="880" loading="lazy" decoding="async">
+          <img src="assets/tri_b2.png" alt="B面中央: 導線・補足メモ" width="1456" height="880" loading="lazy" decoding="async">
+          <img src="assets/tri_b1.png" alt="B面右: 資料オファー（LINE登録QR）" width="1456" height="880" loading="lazy" decoding="async">
+        </div>
+      </figure>
+    </details>
+
     <ul class="stage3d-notes reveal-stagger">
-      <li><a href="service.html">裏面のQRから公式LINEへ</a></li>
-      <li><a href="service.html">特典で登録の理由をつくる</a></li>
+      <li><a href="service.html">閉じたまま裏のQRを読み取れる</a></li>
+      <li><a href="service.html">開けば人となりと導線が伝わる</a></li>
       <li><a href="service.html">この1枚が営業の入口になる</a></li>
     </ul>
   </div>
@@ -822,7 +947,7 @@
 <!-- 共通JS -->
 <script src="assets/site.js"></script>
 
-<!-- stage3d: 実写級3D名刺ショーケース用JS（自己完結・vanillaのみ・site.jsには不干渉） -->
+<!-- stage3d: 3つ折り名刺 3Dショーケース用JS（自己完結・vanillaのみ・site.jsには不干渉） -->
 <script>
 (function () {
   'use strict';
@@ -836,42 +961,69 @@
   }
 
   ready(function () {
+    var stage = document.querySelector('.stage3d-stage');
     var scene = document.querySelector('.stage3d-scene');
-    var card  = document.querySelector('.stage3d-card');
-    if (!scene || !card) { return; }
+    var tri   = document.querySelector('.stage3d-tri');
+    if (!stage || !scene || !tri) { return; }
     var pills = Array.prototype.slice.call(document.querySelectorAll('.stage3d-pill'));
 
     var BASE_X = -6;                       /* 常時かかる僅かな仰角 */
-    var rot = 0, vel = 0;                  /* Y回転(deg) / 慣性速度(deg/ms) */
+    var rot = 180, vel = 0;                /* Y回転(deg) / 慣性速度(deg/ms) */
     var tiltX = 0, tiltY = 0;              /* 現在チルト（補間後） */
     var tTiltX = 0, tTiltY = 0;            /* チルト目標値 */
     var dragging = false, tween = null, auto = false;
     var idleTimer = null, running = false, lastTs = null;
+    var tstate = 'closed';                 /* closed | openA | openB */
+    var interacted = false, introTimer = null;
+    var lastPillKey = '', rafPending = false;
 
     function normalize(d) { return ((d % 360) + 360) % 360; }
     function isBack(ry) { var g = normalize(ry); return g > 90 && g < 270; }
 
+    function setStage(s) { tstate = s; stage.setAttribute('data-state', s); }
+
     function apply() {
       var ry = rot + tiltY;
-      card.style.transform =
+      tri.style.transform =
         'rotateX(' + (BASE_X + tiltX).toFixed(3) + 'deg) rotateY(' + ry.toFixed(3) + 'deg)';
       var g = normalize(ry);
       var fold = g > 180 ? 360 - g : g;    /* 0(正面)〜180(裏面) */
-      card.style.setProperty('--stage3d-gloss', (28 + fold * 0.3 + tiltY * 1.4).toFixed(1) + '%');
-      var back = isBack(ry);
-      pills.forEach(function (p) {
-        var active = (p.getAttribute('data-side') === 'back') === back;
-        p.classList.toggle('is-active', active);
-        p.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
+      tri.style.setProperty('--stage3d-gloss', (28 + fold * 0.3 + tiltY * 1.4).toFixed(1) + '%');
+      /* ピルの属性書き込みは状態が変わったフレームだけ（毎フレームのDOMミューテーション回避） */
+      var pillKey = tstate + '|' + (isBack(ry) ? 'B' : 'A');
+      if (pillKey !== lastPillKey) {
+        lastPillKey = pillKey;
+        var back = isBack(ry);
+        pills.forEach(function (p) {
+          var ps = p.getAttribute('data-tstate');
+          var active = (tstate === 'closed')
+            ? (ps === 'closed')
+            : (ps === (back ? 'openB' : 'openA'));
+          p.classList.toggle('is-active', active);
+          p.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      }
     }
 
     function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-    function startTween(to, dur) { tween = { from: rot, to: to, start: null, dur: dur || 900 }; vel = 0; }
+    function startTween(to, dur) { tween = { from: rot, to: to, start: null, dur: dur || 1050 }; vel = 0; }
     function nearestSnap() { return Math.round(rot / 180) * 180; }
-    function targetFor(side) {
-      if (side === 'front') { return Math.round(rot / 360) * 360; }
+
+    /* 状態ごとの正面向き: openA=0(mod360) ／ closed・openB=180(mod360)
+       （閉じた状態は 180=表紙〈基本情報〉が正面。0 はQR面） */
+    function targetRotFor(s) {
+      if (s === 'openA') { return Math.round(rot / 360) * 360; }
       return Math.round((rot - 180) / 360) * 360 + 180;
+    }
+    function setState(s, dur) {
+      setStage(s);
+      startTween(targetRotFor(s), dur || 1050);
+    }
+    function flip(dur) { startTween(nearestSnap() + 180, dur || 950); }
+
+    function markInteracted() {
+      interacted = true;
+      if (introTimer) { window.clearTimeout(introTimer); introTimer = null; }
     }
 
     /* 無操作8秒で自動ターン。操作があれば停止してタイマー再セット */
@@ -881,27 +1033,41 @@
       idleTimer = window.setTimeout(function () { auto = true; }, 8000);
     }
 
-    /* ---------- reduced-motion: 15度固定アングル＋即時トグル ---------- */
+    /* URLパラメータ ?tri=closed|openA|openB&rot=deg（検証・QA用の静的状態指定） */
+    var qsState = null, qsRot = NaN;
+    try {
+      var qs = new URLSearchParams(window.location.search);
+      qsState = qs.get('tri'); qsRot = parseFloat(qs.get('rot'));
+    } catch (e) {}
+    var validState = (qsState === 'closed' || qsState === 'openA' || qsState === 'openB');
+
+    /* ---------- reduced-motion: 固定アングル＋即時切り替え ---------- */
     if (reduce) {
-      rot = 15;
+      setStage(validState ? qsState : 'openA');
+      rot = isFinite(qsRot) ? qsRot : (tstate === 'openA' ? 15 : 195);
       apply();
-      var setSide = function (side) { rot = side === 'back' ? 195 : 15; apply(); };
       pills.forEach(function (p) {
-        p.addEventListener('click', function () { setSide(p.getAttribute('data-side')); });
+        p.addEventListener('click', function () {
+          setStage(p.getAttribute('data-tstate'));
+          rot = (tstate === 'openA') ? 15 : 195;
+          apply();
+        });
       });
-      card.addEventListener('click', function () { setSide(isBack(rot) ? 'front' : 'back'); });
-      card.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          setSide(isBack(rot) ? 'front' : 'back');
-        }
+      var rmToggle = function () {
+        if (tstate === 'closed') { rot += 180; }
+        else { setStage(isBack(rot) ? 'openA' : 'openB'); rot += 180; }
+        apply();
+      };
+      tri.addEventListener('click', rmToggle);
+      tri.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rmToggle(); }
       });
       return;
     }
 
-    /* ---------- rAFループ（セクション可視時のみ稼働） ---------- */
+    /* ---------- rAFループ（セクション可視時のみ稼働・二重スケジュール防止） ---------- */
     function frame(ts) {
-      if (!running) { lastTs = null; return; }
+      if (!running) { rafPending = false; lastTs = null; return; }
       window.requestAnimationFrame(frame);
       if (lastTs === null) { lastTs = ts; return; }
       var dt = Math.min(ts - lastTs, 64);
@@ -928,12 +1094,42 @@
       apply();
     }
 
+    /* 初期演出: 初めて画面に入った時に再生（閉じた表紙が正面へ → 2.4秒後にA面へ自動展開） */
+    var introPlayed = false;
+    function playIntro() {
+      if (introPlayed || interacted) { return; }
+      introPlayed = true;
+      startTween(180, 1100);
+      introTimer = window.setTimeout(function () {
+        if (!interacted) { setState('openA', 1350); }
+      }, 2400);
+    }
+
+    /* ---------- 初期状態（IO配線より先に確定させる） ---------- */
+    if (validState) {
+      /* QA・検証用: 指定状態で静止（演出・自動展開・自動ターンなし。操作すれば通常動作） */
+      setStage(qsState);
+      rot = isFinite(qsRot) ? qsRot : (qsState === 'openA' ? 0 : 180);
+      apply();
+      interacted = true;
+      introPlayed = true;
+    } else {
+      setStage('closed');
+      rot = 156;
+      apply();
+      poke();
+    }
+
+    function startLoop() {
+      if (!rafPending) { rafPending = true; window.requestAnimationFrame(frame); }
+    }
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting && !running) {
             running = true;
-            window.requestAnimationFrame(frame);
+            startLoop();
+            playIntro();
           } else if (!e.isIntersecting && running) {
             running = false;
           }
@@ -942,27 +1138,36 @@
       io.observe(scene);
     } else {
       running = true;
-      window.requestAnimationFrame(frame);
+      startLoop();
+      playIntro();
     }
 
-    /* 初期演出: 少し回した状態から正面へ */
-    rot = -24;
-    apply();
-    startTween(0, 1100);
-    poke();
+    /* OS設定が閲覧中にreduced-motionへ切り替わったら動きを止める */
+    if (window.matchMedia) {
+      var rmq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var rmHandler = function (ev) {
+        if (ev.matches) {
+          auto = false; tween = null; tTiltX = 0; tTiltY = 0;
+          if (idleTimer) { window.clearTimeout(idleTimer); idleTimer = null; }
+        }
+      };
+      if (rmq.addEventListener) { rmq.addEventListener('change', rmHandler); }
+      else if (rmq.addListener) { rmq.addListener(rmHandler); }
+    }
 
-    /* ---------- ドラッグ/スワイプ回転（慣性つき・タップでフリップ） ---------- */
+    /* ---------- ドラッグ/スワイプ回転（慣性つき・タップで反転/面切り替え） ---------- */
     var px = 0, pt = 0, downT = 0, movedTotal = 0;
-    card.addEventListener('pointerdown', function (e) {
+    tri.addEventListener('pointerdown', function (e) {
       dragging = true;
       tween = null; vel = 0;
       px = e.clientX; pt = e.timeStamp; downT = e.timeStamp; movedTotal = 0;
-      card.classList.add('is-grabbing');
-      if (card.setPointerCapture) { try { card.setPointerCapture(e.pointerId); } catch (err) {} }
+      tri.classList.add('is-grabbing');
+      if (tri.setPointerCapture) { try { tri.setPointerCapture(e.pointerId); } catch (err) {} }
+      markInteracted();
       poke();
       e.preventDefault();
     });
-    card.addEventListener('pointermove', function (e) {
+    tri.addEventListener('pointermove', function (e) {
       if (!dragging) { return; }
       var dx = e.clientX - px;
       var dtm = Math.max(e.timeStamp - pt, 1);
@@ -972,20 +1177,28 @@
       vel = vel * 0.4 + (dx * 0.35 / dtm) * 0.6;
       apply();
     });
+    function tapAction() {
+      if (tstate === 'closed') {
+        flip(950);                            /* 閉じたまま反転（表紙 ⇄ QR面） */
+      } else {
+        setStage(isBack(rot) ? 'openA' : 'openB');
+        startTween(targetRotFor(tstate), 1050);
+      }
+    }
     function release(e) {
       if (!dragging) { return; }
       dragging = false;
-      card.classList.remove('is-grabbing');
+      tri.classList.remove('is-grabbing');
       var wasTap = movedTotal < 6 && (e.timeStamp - downT) < 400;
-      if (wasTap) {                                   /* タップ/クリックでフリップ */
-        startTween(targetFor(isBack(rot) ? 'front' : 'back'), 900);
-      } else if (Math.abs(vel) < 0.01) {              /* 慣性が弱ければ最寄り面へスナップ */
+      if (wasTap) {
+        tapAction();
+      } else if (Math.abs(vel) < 0.01) {      /* 慣性が弱ければ最寄り面へスナップ */
         startTween(nearestSnap(), 650);
       }
       poke();
     }
-    card.addEventListener('pointerup', release);
-    card.addEventListener('pointercancel', release);
+    tri.addEventListener('pointerup', release);
+    tri.addEventListener('pointercancel', release);
 
     /* ---------- マウスチルト（ホバー環境のみ・±12deg） ---------- */
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -998,19 +1211,33 @@
       scene.addEventListener('mouseleave', function () { tTiltX = 0; tTiltY = 0; });
     }
 
-    /* ---------- 表面/裏面トグル（0.9s cubic-bezier相当のイージング） ---------- */
+    /* ---------- 状態トグル（閉じた状態／A面／B面） ---------- */
     pills.forEach(function (p) {
       p.addEventListener('click', function () {
-        startTween(targetFor(p.getAttribute('data-side')), 900);
+        markInteracted();
+        var s = p.getAttribute('data-tstate');
+        if (s === 'closed' && tstate === 'closed') {
+          startTween(targetRotFor('closed'), 950);  /* 表紙向きへ整える */
+        } else {
+          setState(s);
+        }
         poke();
       });
     });
 
-    /* ---------- キーボード操作 ---------- */
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
+    /* ---------- キーボード操作（矢印=方向つき回転 / Enter・Space=タップ相当） ---------- */
+    tri.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
-        startTween(targetFor(isBack(rot) ? 'front' : 'back'), 900);
+        markInteracted();
+        var to = nearestSnap() + (e.key === 'ArrowRight' ? 180 : -180);
+        if (tstate !== 'closed') { setStage(isBack(to) ? 'openB' : 'openA'); }
+        startTween(to, 950);
+        poke();
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        markInteracted();
+        tapAction();
         poke();
       }
     });
