@@ -248,6 +248,14 @@
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
       els.forEach(function (el) { io.observe(el); });
+      /* 安全策: 何らかの理由でリビールされない要素が残らないよう、
+         読み込み後に一定時間で未表示要素を強制表示（コンテンツ非表示を防止・SEO/アクセシビリティ配慮） */
+      window.setTimeout(function () {
+        document.querySelectorAll('.reveal:not(.is-in), .reveal-stagger:not(.is-in)').forEach(function (el) {
+          var r = el.getBoundingClientRect();
+          if (r.top < (window.innerHeight || 0) * 1.1) { el.classList.add('is-in'); }
+        });
+      }, 1400);
     })();
 
     /* ---------- 固定CTAバー: フッター到達時に退避 ---------- */
