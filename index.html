@@ -46,6 +46,13 @@
 <style>
   /* ヒーロー導線ミニ図の下の一言 */
   .hero-note{ font-size:12.5px; margin-top:14px; opacity:.85; }
+  /* 説明ムービー */
+  .movie-shell{
+    max-width:880px; margin:0 auto; border-radius:16px; overflow:hidden; background:#0F2540;
+    box-shadow:0 24px 60px rgba(15,37,64,.22), 0 6px 16px rgba(15,37,64,.12);
+  }
+  .movie-shell video{ display:block; width:100%; height:auto; }
+  .movie-note{ text-align:center; font-size:13px; margin-top:14px; opacity:.8; }
   /* 3つのお悩みカード（枠のみ・影なし＝格差付け） */
   .pain-card .num{
     font-family:"Inter",sans-serif; font-feature-settings:"tnum"; font-size:13px; font-weight:700;
@@ -543,6 +550,31 @@
       <li><a href="service.html">この1枚が営業の入口になる</a></li>
     </ul>
   </div>
+</section>
+
+<!-- =============== ①'' 説明ムービー（42秒・ペルソナ審査の最優秀案） =============== -->
+<section class="section" id="movie" aria-labelledby="movie-heading">
+  <div class="container">
+    <div class="section-head t-center reveal">
+      <span class="kicker">MOVIE</span>
+      <h2 class="section-title" id="movie-heading">42秒でわかる、<span class="accent">メイシル</span>。</h2>
+      <p class="section-lead">渡したあとに何が起きるのか。仕組みと進め方を、動画でご覧ください。</p>
+    </div>
+    <div class="movie-shell reveal">
+      <video id="movie-player" src="assets/movie_meisiru.mp4" poster="assets/movie_poster.jpg"
+             controls muted autoplay playsinline preload="metadata"
+             aria-label="メイシル紹介ムービー（42秒）。名刺を渡す、LINE登録、特典が届くの3ステップと、無料相談までの流れを説明します。名刺の記載内容はデモデータです。"></video>
+    </div>
+    <p class="movie-note">音声をONにすると、ナレーション付きでご覧いただけます。動画内の名刺はデモデータ（架空）です。</p>
+  </div>
+  <script>
+    (function () {
+      var v = document.getElementById('movie-player');
+      if (v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        v.removeAttribute('autoplay'); v.pause();
+      }
+    })();
+  </script>
 </section>
 
 <!-- =============== ② 3つのお悩み =============== -->
