@@ -110,11 +110,16 @@
   /* 代表からの一言 */
   .message-grid{ display:grid; gap:28px; align-items:start; max-width:900px; margin:0 auto; }
   @media (min-width:800px){ .message-grid{ grid-template-columns:240px 1fr; } }
-  .photo-placeholder{
-    width:100%; max-width:240px; aspect-ratio:3/4; border-radius:var(--radius);
-    background:var(--bg); border:2px dashed #B9C6D0;
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    font-size:13px; color:var(--navy); opacity:.8; margin:0 auto;
+  .rep-photo-top{
+    width:100%; max-width:240px; margin:0 auto;
+  }
+  .rep-photo-top img{
+    display:block; width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top;
+    border-radius:var(--radius); background:var(--bg);
+    box-shadow:0 14px 30px rgba(15,37,64,.16), 0 4px 10px rgba(15,37,64,.10);
+  }
+  .rep-photo-top figcaption{
+    font-size:12px; color:var(--navy); opacity:.75; text-align:center; margin-top:8px;
   }
   .message-body p{ margin-bottom:16px; }
   .message-sign{ font-weight:700; margin-top:8px; }
@@ -867,7 +872,10 @@
     </div>
 
     <div class="message-grid reveal">
-      <div class="photo-placeholder">代表写真<br>（準備中）</div>
+      <figure class="rep-photo-top">
+        <img src="assets/rep.jpg" alt="UIcity株式会社 代表取締役 梶本 雅人" width="1062" height="1542" loading="lazy" decoding="async">
+        <figcaption>代表取締役　梶本 雅人</figcaption>
+      </figure>
       <div class="message-body">
         <p>名刺は、営業の終わりではありません。見込み客との関係が始まる入口です。せっかくの出会いを「渡して終わり」にしてしまうのは、あまりにもったいない——そう考えて、メイシルを立ち上げました。</p>
         <p>私たちがお作りするのは、成果を約束する魔法ではなく、次の行動につながる「導線」です。すべての機能を入れる必要はありません。ご予算に合わせて、必要なものだけを一緒に絞り込みます。まずは現状のお話から、お気軽にお聞かせください。</p>
