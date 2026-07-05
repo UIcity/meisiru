@@ -114,6 +114,170 @@
   .message-sign{ font-weight:700; margin-top:8px; }
   .message-sign .en{ font-size:12px; font-weight:600; letter-spacing:.1em; display:block; opacity:.7; }
 </style>
+
+<!-- ================= stage3d: 実写級3D名刺ショーケース（自己完結・.stage3d-プレフィックスのみ） ================= -->
+<style>
+  /* ---------- ダークプレミアムステージ ---------- */
+  .stage3d{
+    position:relative; overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 50% -12%, rgba(11,158,82,.16) 0%, rgba(11,158,82,0) 56%),
+      radial-gradient(85% 62% at 50% 34%, rgba(34,58,88,.40) 0%, rgba(10,20,32,0) 72%),
+      linear-gradient(180deg, #0C1826 0%, #0A1420 55%, #081018 100%);
+    padding:96px 0 72px;
+  }
+  .stage3d-head{ text-align:center; max-width:780px; margin:0 auto 44px; }
+  .stage3d-kicker{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:.22em;
+    color:#8fe3b6; margin-bottom:14px;
+  }
+  .stage3d-title{
+    color:#FFFFFF; font-size:clamp(28px,4.6vw,46px); font-weight:700;
+    line-height:1.35; letter-spacing:.01em; margin-bottom:16px;
+  }
+  .stage3d-sub{ color:rgba(255,255,255,.78); font-size:15.5px; line-height:1.9; }
+
+  /* ---------- ステージ / シーン ---------- */
+  .stage3d-stage{ position:relative; max-width:860px; margin:0 auto; padding-bottom:18px; }
+  .stage3d-scene{
+    --stage3d-w:min(78vw,480px);
+    position:relative;
+    perspective:1400px; perspective-origin:50% 32%;
+    display:flex; justify-content:center;
+    padding:36px 0 96px;
+    touch-action:pan-y;
+  }
+  /* 床への柔らかい反射（グラデーション） */
+  .stage3d-scene::before{
+    content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:min(92vw,760px); height:140px; pointer-events:none;
+    background:radial-gradient(62% 100% at 50% 100%, rgba(143,227,182,.10) 0%, rgba(143,227,182,0) 72%);
+  }
+
+  /* ---------- 3Dカード本体 ---------- */
+  .stage3d-card{
+    position:relative;
+    width:var(--stage3d-w);
+    aspect-ratio:91/55;
+    transform-style:preserve-3d;
+    transform:rotateX(-6deg);
+    will-change:transform;
+    cursor:grab;
+    user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent;
+    touch-action:pan-y;
+    outline:none;
+  }
+  .stage3d-card.is-grabbing{ cursor:grabbing; }
+  .stage3d-card:focus-visible{ outline:2px solid #8fe3b6; outline-offset:8px; }
+  .stage3d-face{
+    position:absolute; inset:0;
+    border-radius:calc(var(--stage3d-w) * .031); /* 実寸2.5〜3mm相当の角丸 */
+    overflow:hidden;
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    transform:translateZ(1.1px);
+    background:#FFFFFF;
+    border:1px solid rgba(255,255,255,.85);      /* 微細な紙エッジ */
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.35),
+      0 26px 52px rgba(0,0,0,.44),
+      0 10px 22px rgba(0,0,0,.32),
+      0 2px 6px rgba(0,0,0,.28);
+  }
+  .stage3d-back{ transform:rotateY(180deg) translateZ(1.1px); }
+  .stage3d-face img{
+    display:block; width:100%; height:100%; object-fit:cover; pointer-events:none;
+  }
+  /* 斜めのグロス（光沢）スイープ */
+  .stage3d-face::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(115deg,
+      rgba(255,255,255,0) 42%, rgba(255,255,255,.20) 50%, rgba(255,255,255,0) 58%);
+    background-size:260% 100%;
+    background-position:var(--stage3d-gloss,55%) 0;
+    mix-blend-mode:screen;
+  }
+
+  /* ---------- 接地影（楕円blur） ---------- */
+  .stage3d-ground{
+    position:absolute; left:50%; bottom:34px;
+    width:calc(var(--stage3d-w) * .84); height:calc(var(--stage3d-w) * .105);
+    transform:translateX(-50%);
+    background:radial-gradient(50% 50% at 50% 50%,
+      rgba(0,0,0,.55) 0%, rgba(0,0,0,.26) 46%, rgba(0,0,0,0) 74%);
+    filter:blur(10px);
+    pointer-events:none;
+  }
+
+  /* ---------- 表面/裏面トグル（pill型） ---------- */
+  .stage3d-toggle{
+    display:flex; gap:0; width:max-content; margin:0 auto;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:999px; padding:4px;
+  }
+  .stage3d-pill{
+    appearance:none; -webkit-appearance:none; border:0; background:transparent;
+    color:rgba(255,255,255,.72);
+    font-family:"Noto Sans JP",'Yu Gothic UI','Yu Gothic',Meiryo,sans-serif;
+    font-size:13.5px; font-weight:700; letter-spacing:.06em;
+    padding:8px 28px; border-radius:999px; cursor:pointer;
+    transition:background-color .3s ease, color .3s ease;
+  }
+  .stage3d-pill.is-active{ background:#0B9E52; color:#FFFFFF; }
+  .stage3d-pill:focus-visible{ outline:2px solid #8fe3b6; outline-offset:2px; }
+
+  /* ---------- 極小キャプション ---------- */
+  .stage3d-caption{
+    position:absolute; right:2px; bottom:0;
+    margin:0; font-size:10px; font-weight:600; letter-spacing:.18em;
+    color:rgba(255,255,255,.34); text-transform:uppercase; pointer-events:none;
+  }
+
+  /* ---------- ミニ注釈3つ ---------- */
+  .stage3d-notes{
+    list-style:none; margin:44px auto 0; padding:0;
+    display:grid; gap:12px; max-width:860px;
+  }
+  @media (min-width:768px){ .stage3d-notes{ grid-template-columns:repeat(3,1fr); } }
+  .stage3d-notes li{ text-align:center; }
+  .stage3d-notes a{
+    color:rgba(255,255,255,.66); font-size:13.5px; text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.22); padding-bottom:2px;
+    transition:color .25s ease, border-color .25s ease;
+  }
+  .stage3d-notes a:hover,
+  .stage3d-notes a:focus-visible{ color:#8fe3b6; border-color:#8fe3b6; }
+
+  /* ---------- FVヒーロー: card_front.png の静的アングル表示 ---------- */
+  .stage3d-heroWrap{ perspective:1200px; }
+  .hero-visual img.stage3d-heroCard{
+    width:100%; max-width:480px; aspect-ratio:91/55; object-fit:cover;
+    border-radius:min(3.2vw,15px);
+    background:#FFFFFF;
+    border:1px solid rgba(255,255,255,.9);
+    transform:rotateX(6deg) rotateY(-14deg) rotateZ(1.2deg);
+    box-shadow:
+      0 30px 60px rgba(15,37,64,.26),
+      0 12px 26px rgba(15,37,64,.16),
+      0 2px 6px rgba(15,37,64,.12);
+  }
+
+  /* ---------- モバイル ---------- */
+  @media (max-width:600px){
+    .stage3d{ padding:64px 0 56px; }
+    .stage3d-scene{ --stage3d-w:min(78vw,420px); padding:24px 0 76px; }
+    .stage3d-ground{ bottom:26px; }
+    .stage3d-caption{ position:static; display:block; text-align:center; margin-top:18px; }
+  }
+
+  /* ---------- prefers-reduced-motion: 15度の固定アングル静止表示 ---------- */
+  @media (prefers-reduced-motion:reduce){
+    .stage3d-card{ transform:rotateX(-6deg) rotateY(15deg); cursor:default; }
+    .stage3d-face::after{ background-position:60% 0; }
+    .stage3d-pill{ transition:none; }
+    .hero-visual img.stage3d-heroCard{ transform:rotateX(4deg) rotateY(-10deg); }
+  }
+</style>
 </head>
 <body>
 
@@ -197,66 +361,51 @@
       <p class="hero-note">配信は月数回程度。不要になればブロックでいつでも解除できます。<br>※「LINE」はLINEヤフー株式会社の商標です。</p>
     </div>
 
-    <div class="hero-visual">
-      <!-- 導線ミニ図（インラインSVG）: 名刺 → LINE → 無料オファー → 相談 -->
-      <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="名刺からLINE登録、無料オファー、相談へとつながる導線のイメージ図">
-        <!-- 装飾レイヤー -->
-        <rect x="288" y="0" width="232" height="232" rx="44" fill="#F4F7F9"/>
-        <circle cx="56" cy="368" r="64" fill="#F4F7F9"/>
-
-        <!-- 名刺（ネイビー6%オフセット面＋本体） -->
-        <rect x="24" y="52" width="240" height="148" rx="16" fill="rgba(15,37,64,.06)"/>
-        <rect x="24" y="46" width="240" height="148" rx="16" fill="#FFFFFF" stroke="#0F2540" stroke-width="1.5"/>
-        <g transform="translate(44,58) scale(0.15) translate(-134,-176)">
-          <path d="M166,176 L207,176 L281.7,250.7 Q287,256 281.7,261.3 L207,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
-          <path d="M221.6,178.4 L259.6,178.4 L331.9,250.7 Q337.2,256 331.9,261.3 L259.6,333.6 L221.6,333.6 L299.2,256 Z" fill="#047A3B"/>
-        </g>
-        <text x="82" y="68" font-size="6.5" font-weight="500" letter-spacing="0.8" fill="#047A3B" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">コンバージョン名刺</text>
-        <text x="82" y="81" font-size="13" font-weight="700" letter-spacing="1" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">メイシル</text>
-        <rect x="44" y="108" width="90" height="9" rx="4.5" fill="#0F2540"/>
-        <rect x="44" y="125" width="62" height="6" rx="3" fill="#0F2540" opacity="0.45"/>
-        <rect x="44" y="152" width="100" height="20" rx="10" fill="#0B9E52"/>
-        <rect x="200" y="122" width="50" height="50" rx="4" fill="#FFFFFF" stroke="#0F2540" stroke-width="1.2" stroke-dasharray="2 1.6"/>
-        <g fill="#0F2540">
-          <rect x="205" y="127" width="10" height="10"/><rect x="235" y="127" width="10" height="10"/><rect x="205" y="157" width="10" height="10"/>
-          <rect x="221" y="130" width="4" height="4"/><rect x="228" y="140" width="4" height="4"/><rect x="218" y="146" width="4" height="4"/>
-          <rect x="236" y="150" width="4" height="4"/><rect x="224" y="158" width="4" height="4"/>
-        </g>
-        <g fill="#FFFFFF">
-          <rect x="207.5" y="129.5" width="5" height="5"/><rect x="237.5" y="129.5" width="5" height="5"/><rect x="207.5" y="159.5" width="5" height="5"/>
-        </g>
-        <!-- ✓入り円 -->
-        <circle cx="46" cy="26" r="10" fill="#FFFFFF" stroke="#0B9E52" stroke-width="2"/>
-        <path d="M41.5,26 L45,29.5 L51,22.5" fill="none" stroke="#0B9E52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- 変身ガイド弧（図形用途 #0EA5E9） -->
-        <path d="M300,188 C336,198 356,208 380,228 C402,246 416,252 434,256" fill="none" stroke="#0EA5E9" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.7"/>
-        <rect x="288" y="158" width="52" height="52" rx="13" fill="#0B9E52" opacity="0.32"/>
-        <path d="M360,184 L384,184 L410,210 Q412,214 410,218 L384,244 L360,244 Q342,244 342,226 L342,202 Q342,184 360,184 Z" fill="#0B9E52" opacity="0.6"/>
-        <g transform="translate(448,242) rotate(18) translate(-62,-46)">
-          <path d="M27,0 L54,0 L99,45 Q102,48 99,51 L54,96 L27,96 Q0,96 0,69 L0,27 Q0,0 27,0 Z" fill="#0B9E52"/>
-          <path d="M62,1.5 L86,1.5 L130,45 Q133,48 130,51 L86,94.5 L62,94.5 L106,48 Z" fill="#047A3B"/>
-        </g>
-
-        <!-- 到達点3ステップ: LINE → 無料オファー → 相談（LINEセル上辺のみ #06C755） -->
-        <g>
-          <rect x="20" y="318" width="150" height="80" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
-          <rect x="186" y="318" width="150" height="80" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
-          <rect x="352" y="318" width="150" height="80" rx="14" fill="#FFFFFF" stroke="#E3E9EE" stroke-width="1"/>
-          <path d="M36,320.5 H154" stroke="#06C755" stroke-width="3" stroke-linecap="round"/>
-          <path d="M202,320.5 H320" stroke="#0B9E52" stroke-width="3" stroke-linecap="round"/>
-          <path d="M368,320.5 H486" stroke="#0B9E52" stroke-width="3" stroke-linecap="round"/>
-          <path d="M172,358 h11 m-4.5,-4.5 l4.5,4.5 l-4.5,4.5" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M338,358 h11 m-4.5,-4.5 l4.5,4.5 l-4.5,4.5" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        <text x="95" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">LINE登録</text>
-        <text x="95" y="374" text-anchor="middle" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">つながる</text>
-        <text x="261" y="356" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">無料オファー</text>
-        <text x="261" y="374" text-anchor="middle" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">価値提供・信頼獲得</text>
-        <text x="427" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">相談・問い合わせ</text>
-        <text x="427" y="374" text-anchor="middle" font-size="11" fill="#0F2540" font-family="'Noto Sans JP','Yu Gothic',Meiryo,sans-serif">次の行動へ</text>
-      </svg>
+    <div class="hero-visual stage3d-heroWrap">
+      <!-- FVビジュアル: メイシル名刺（表面）実物デザインの静的アングル表示 -->
+      <img class="stage3d-heroCard" src="assets/card_front.png"
+           alt="メイシルの名刺（表面）。私たち自身が使っている実物のデザイン"
+           width="1456" height="880" decoding="async" draggable="false">
     </div>
+  </div>
+</section>
+
+<!-- =============== ①' 実写級3D名刺ショーケース（stage3d） =============== -->
+<section class="stage3d" id="showcase" aria-labelledby="stage3d-heading">
+  <div class="container">
+    <div class="stage3d-head reveal">
+      <span class="stage3d-kicker en">SHOWCASE</span>
+      <h2 class="stage3d-title" id="stage3d-heading">これが、メイシルの名刺。</h2>
+      <p class="stage3d-sub">私たち自身が毎日使っている実物のデザインです。裏面が、LINE登録への入口になります。</p>
+    </div>
+
+    <div class="stage3d-stage reveal">
+      <div class="stage3d-scene">
+        <div class="stage3d-card" tabindex="0" role="button"
+             aria-label="メイシルの名刺。クリックまたはドラッグで表裏を回転して確認できます">
+          <div class="stage3d-face stage3d-front">
+            <img src="assets/card_front.png" alt="メイシル名刺 表面" width="1456" height="880" draggable="false" decoding="async">
+          </div>
+          <div class="stage3d-face stage3d-back">
+            <img src="assets/card_back.png" alt="メイシル名刺 裏面（公式LINE登録QRコード付き）" width="1456" height="880" draggable="false" decoding="async">
+          </div>
+        </div>
+        <div class="stage3d-ground" aria-hidden="true"></div>
+      </div>
+
+      <div class="stage3d-toggle" role="group" aria-label="名刺の表面・裏面を切り替え">
+        <button type="button" class="stage3d-pill is-active" data-side="front" aria-pressed="true">表面</button>
+        <button type="button" class="stage3d-pill" data-side="back" aria-pressed="false">裏面</button>
+      </div>
+
+      <p class="stage3d-caption en" aria-hidden="true">MEISIRU — Conversion Business Card</p>
+    </div>
+
+    <ul class="stage3d-notes reveal-stagger">
+      <li><a href="service.html">裏面のQRから公式LINEへ</a></li>
+      <li><a href="service.html">特典で登録の理由をつくる</a></li>
+      <li><a href="service.html">この1枚が営業の入口になる</a></li>
+    </ul>
   </div>
 </section>
 
@@ -666,5 +815,201 @@
 
 <!-- 共通JS -->
 <script src="assets/site.js"></script>
+
+<!-- stage3d: 実写級3D名刺ショーケース用JS（自己完結・vanillaのみ・site.jsには不干渉） -->
+<script>
+(function () {
+  'use strict';
+
+  var reduce = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') { fn(); }
+    else { document.addEventListener('DOMContentLoaded', fn); }
+  }
+
+  ready(function () {
+    var scene = document.querySelector('.stage3d-scene');
+    var card  = document.querySelector('.stage3d-card');
+    if (!scene || !card) { return; }
+    var pills = Array.prototype.slice.call(document.querySelectorAll('.stage3d-pill'));
+
+    var BASE_X = -6;                       /* 常時かかる僅かな仰角 */
+    var rot = 0, vel = 0;                  /* Y回転(deg) / 慣性速度(deg/ms) */
+    var tiltX = 0, tiltY = 0;              /* 現在チルト（補間後） */
+    var tTiltX = 0, tTiltY = 0;            /* チルト目標値 */
+    var dragging = false, tween = null, auto = false;
+    var idleTimer = null, running = false, lastTs = null;
+
+    function normalize(d) { return ((d % 360) + 360) % 360; }
+    function isBack(ry) { var g = normalize(ry); return g > 90 && g < 270; }
+
+    function apply() {
+      var ry = rot + tiltY;
+      card.style.transform =
+        'rotateX(' + (BASE_X + tiltX).toFixed(3) + 'deg) rotateY(' + ry.toFixed(3) + 'deg)';
+      var g = normalize(ry);
+      var fold = g > 180 ? 360 - g : g;    /* 0(正面)〜180(裏面) */
+      card.style.setProperty('--stage3d-gloss', (28 + fold * 0.3 + tiltY * 1.4).toFixed(1) + '%');
+      var back = isBack(ry);
+      pills.forEach(function (p) {
+        var active = (p.getAttribute('data-side') === 'back') === back;
+        p.classList.toggle('is-active', active);
+        p.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+
+    function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function startTween(to, dur) { tween = { from: rot, to: to, start: null, dur: dur || 900 }; vel = 0; }
+    function nearestSnap() { return Math.round(rot / 180) * 180; }
+    function targetFor(side) {
+      if (side === 'front') { return Math.round(rot / 360) * 360; }
+      return Math.round((rot - 180) / 360) * 360 + 180;
+    }
+
+    /* 無操作8秒で自動ターン。操作があれば停止してタイマー再セット */
+    function poke() {
+      auto = false;
+      if (idleTimer) { window.clearTimeout(idleTimer); }
+      idleTimer = window.setTimeout(function () { auto = true; }, 8000);
+    }
+
+    /* ---------- reduced-motion: 15度固定アングル＋即時トグル ---------- */
+    if (reduce) {
+      rot = 15;
+      apply();
+      var setSide = function (side) { rot = side === 'back' ? 195 : 15; apply(); };
+      pills.forEach(function (p) {
+        p.addEventListener('click', function () { setSide(p.getAttribute('data-side')); });
+      });
+      card.addEventListener('click', function () { setSide(isBack(rot) ? 'front' : 'back'); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setSide(isBack(rot) ? 'front' : 'back');
+        }
+      });
+      return;
+    }
+
+    /* ---------- rAFループ（セクション可視時のみ稼働） ---------- */
+    function frame(ts) {
+      if (!running) { lastTs = null; return; }
+      window.requestAnimationFrame(frame);
+      if (lastTs === null) { lastTs = ts; return; }
+      var dt = Math.min(ts - lastTs, 64);
+      lastTs = ts;
+
+      if (tween) {
+        if (tween.start === null) { tween.start = ts; }
+        var p = Math.min((ts - tween.start) / tween.dur, 1);
+        rot = tween.from + (tween.to - tween.from) * ease(p);
+        if (p >= 1) { tween = null; }
+      } else if (!dragging) {
+        if (Math.abs(vel) > 0.005) {         /* ドラッグ後の慣性 */
+          rot += vel * dt;
+          vel *= Math.pow(0.92, dt / 16.7);
+          if (Math.abs(vel) <= 0.005) { startTween(nearestSnap(), 650); }
+        } else if (auto) {                    /* 自動ターン 1周12s */
+          rot += dt * (360 / 12000);
+        }
+      }
+
+      var k = 1 - Math.pow(0.86, dt / 16.7); /* チルトのヌルっと補間 */
+      tiltX += (tTiltX - tiltX) * k;
+      tiltY += (tTiltY - tiltY) * k;
+      apply();
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && !running) {
+            running = true;
+            window.requestAnimationFrame(frame);
+          } else if (!e.isIntersecting && running) {
+            running = false;
+          }
+        });
+      }, { threshold: 0.05 });
+      io.observe(scene);
+    } else {
+      running = true;
+      window.requestAnimationFrame(frame);
+    }
+
+    /* 初期演出: 少し回した状態から正面へ */
+    rot = -24;
+    apply();
+    startTween(0, 1100);
+    poke();
+
+    /* ---------- ドラッグ/スワイプ回転（慣性つき・タップでフリップ） ---------- */
+    var px = 0, pt = 0, downT = 0, movedTotal = 0;
+    card.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      tween = null; vel = 0;
+      px = e.clientX; pt = e.timeStamp; downT = e.timeStamp; movedTotal = 0;
+      card.classList.add('is-grabbing');
+      if (card.setPointerCapture) { try { card.setPointerCapture(e.pointerId); } catch (err) {} }
+      poke();
+      e.preventDefault();
+    });
+    card.addEventListener('pointermove', function (e) {
+      if (!dragging) { return; }
+      var dx = e.clientX - px;
+      var dtm = Math.max(e.timeStamp - pt, 1);
+      px = e.clientX; pt = e.timeStamp;
+      movedTotal += Math.abs(dx);
+      rot += dx * 0.35;
+      vel = vel * 0.4 + (dx * 0.35 / dtm) * 0.6;
+      apply();
+    });
+    function release(e) {
+      if (!dragging) { return; }
+      dragging = false;
+      card.classList.remove('is-grabbing');
+      var wasTap = movedTotal < 6 && (e.timeStamp - downT) < 400;
+      if (wasTap) {                                   /* タップ/クリックでフリップ */
+        startTween(targetFor(isBack(rot) ? 'front' : 'back'), 900);
+      } else if (Math.abs(vel) < 0.01) {              /* 慣性が弱ければ最寄り面へスナップ */
+        startTween(nearestSnap(), 650);
+      }
+      poke();
+    }
+    card.addEventListener('pointerup', release);
+    card.addEventListener('pointercancel', release);
+
+    /* ---------- マウスチルト（ホバー環境のみ・±12deg） ---------- */
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      scene.addEventListener('mousemove', function (e) {
+        var r = scene.getBoundingClientRect();
+        tTiltY = ((e.clientX - r.left) / r.width - 0.5) * 24;
+        tTiltX = (0.5 - (e.clientY - r.top) / r.height) * 14;
+        poke();
+      });
+      scene.addEventListener('mouseleave', function () { tTiltX = 0; tTiltY = 0; });
+    }
+
+    /* ---------- 表面/裏面トグル（0.9s cubic-bezier相当のイージング） ---------- */
+    pills.forEach(function (p) {
+      p.addEventListener('click', function () {
+        startTween(targetFor(p.getAttribute('data-side')), 900);
+        poke();
+      });
+    });
+
+    /* ---------- キーボード操作 ---------- */
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        startTween(targetFor(isBack(rot) ? 'front' : 'back'), 900);
+        poke();
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
