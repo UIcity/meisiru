@@ -78,6 +78,12 @@
   .funnel-steps .f-step .lbl{ display:block; font-size:12px; margin-top:2px; opacity:.9; }
   .funnel-steps .f-arrow{ align-self:center; color:var(--white); opacity:.65; font-weight:700; font-family:"Inter",sans-serif; }
   .funnel-example .note{ color:var(--white); opacity:.75; }
+  /* 600px以下は縦並び（行末に矢印が浮くのを防ぐ・矢印は↓向き） */
+  @media (max-width:600px){
+    .funnel-steps{ flex-direction:column; align-items:stretch; gap:4px; }
+    .funnel-steps .f-step{ width:100%; }
+    .funnel-steps .f-arrow{ transform:rotate(90deg); line-height:1; }
+  }
   /* 料金プレビュー3枚 */
   .price-card{
     display:flex; flex-direction:column;
