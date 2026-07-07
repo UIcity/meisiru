@@ -5,4 +5,4 @@ Allow: /
 Disallow: /b/
 Disallow: /c/
 
-Sitemap: https://uicity.github.io/meisiru/sitemap.xml
+Sitemap: https://meisiru.vercel.app/sitemap.xml
