@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate deterministic LINE assets for Meisiru.
+"""Generate deterministic LINE assets for Meitsugi.
 
 Dependencies:
     python -m pip install Pillow qrcode opencv-python-headless
