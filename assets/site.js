@@ -298,11 +298,14 @@
     document.querySelectorAll('.js-cta').forEach(function (el) {
       el.addEventListener('click', function () {
         var id = el.getAttribute('data-cta-id') || 'unknown';
-        var type = id.indexOf('line') > -1 ? 'line_add' : 'consult_form';
+        var type = el.getAttribute('data-cta-type') || (id.indexOf('line') > -1 ? 'offer' : 'consult');
+        var placement = el.getAttribute('data-placement') || 'unknown';
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'cta_click', {
             cta_id: id,
             cta_type: type,
+            cta_placement: placement,
+            page_path: window.location.pathname,
             transport_type: 'beacon'
           });
         }

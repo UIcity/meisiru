@@ -787,6 +787,209 @@ body.nav-open .fixed-cta{ display:none; }
 }
 
 /* =========================================================
+   無料オファー体験型ファネル（2026-07）
+   ========================================================= */
+.home-page .hero-v3{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 22%,rgba(11,158,82,.12),transparent 31%),
+    radial-gradient(circle at 14% 86%,rgba(238,199,84,.14),transparent 28%),
+    linear-gradient(135deg,#FBFAF5 0%,#F4F8F5 52%,#EAF4EE 100%);
+}
+.home-page .hero-v3 h1{ max-width:710px; }
+.home-page .hero-v3-action{ display:block; }
+.home-page .hero-v3-action .btn{ min-width:min(100%,420px); }
+.home-page .hero-v3-action p{ margin-top:12px; }
+
+.hero-experience{
+  position:relative;
+  min-height:610px;
+  margin:0;
+  padding:22px 12px 44px 26px;
+  isolation:isolate;
+}
+.experience-glow{
+  position:absolute;
+  inset:8% 2% 6% 5%;
+  z-index:-2;
+  border-radius:48% 52% 42% 58% / 54% 42% 58% 46%;
+  background:linear-gradient(145deg,rgba(15,37,64,.10),rgba(11,158,82,.14));
+  filter:blur(1px);
+}
+.experience-card,.experience-pdf,.experience-chat{
+  position:absolute;
+  border:1px solid rgba(15,37,64,.09);
+  box-shadow:0 30px 70px rgba(12,31,48,.16);
+}
+.experience-card{
+  left:0;
+  top:72px;
+  width:66%;
+  overflow:hidden;
+  border-radius:18px;
+  background:#fff;
+  transform:rotate(-7deg);
+}
+.experience-card img{ display:block; width:100%; height:auto; }
+.experience-pdf{
+  right:0;
+  top:0;
+  width:42%;
+  overflow:hidden;
+  border-radius:15px;
+  background:#fff;
+  transform:rotate(5deg);
+}
+.experience-pdf img{ display:block; width:100%; height:auto; }
+.experience-label{
+  position:absolute;
+  z-index:2;
+  top:11px;
+  left:11px;
+  padding:5px 9px;
+  border-radius:999px;
+  color:#fff;
+  background:rgba(15,37,64,.88);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  backdrop-filter:blur(6px);
+}
+.experience-chat{
+  right:9%;
+  bottom:58px;
+  z-index:3;
+  width:58%;
+  padding:16px;
+  border-radius:20px;
+  background:#EEF7F2;
+  transform:rotate(-1.5deg);
+}
+.experience-chat-head{ display:flex; align-items:center; gap:9px; margin-bottom:13px; color:#21394D; font-size:11px; }
+.experience-chat-head span{
+  width:28px; height:28px; display:grid; place-items:center; flex:0 0 auto;
+  border-radius:50%; color:#fff; background:var(--green-dark); font-weight:700;
+}
+.experience-chat p{
+  margin:0 18px 9px 0; padding:12px 13px; border-radius:5px 15px 15px 15px;
+  color:#20384B; background:#fff; font-size:11.5px; line-height:1.7;
+}
+.experience-download{
+  margin-right:18px; padding:10px 12px; border-radius:9px;
+  color:#fff; background:var(--green-dark); font-size:11.5px; font-weight:700; text-align:center;
+}
+.hero-experience figcaption{
+  position:absolute;
+  left:6%; right:3%; bottom:0;
+  color:#4B6475;
+  font-size:12px;
+  font-weight:600;
+  line-height:1.7;
+  text-align:center;
+}
+
+.offer-v4{ background:#fff; }
+.offer-v4-grid{ display:grid; align-items:center; gap:72px; }
+.offer-v4-preview{ position:relative; min-height:630px; }
+.offer-v4-cover,.offer-v4-pages img{
+  overflow:hidden;
+  border:1px solid rgba(15,37,64,.10);
+  border-radius:13px;
+  background:#fff;
+  box-shadow:0 28px 64px rgba(15,37,64,.14);
+}
+.offer-v4-cover{ position:absolute; z-index:2; left:10%; top:0; width:63%; transform:rotate(-3deg); }
+.offer-v4-cover img,.offer-v4-pages img{ display:block; width:100%; height:auto; }
+.offer-v4-pages img{ position:absolute; width:44%; }
+.offer-v4-pages img:first-child{ right:0; top:58px; transform:rotate(7deg); }
+.offer-v4-pages img:last-child{ right:5%; bottom:7px; transform:rotate(3deg); }
+.offer-v4-copy .home-v3-kicker{ justify-content:flex-start; }
+.offer-v4-copy .home-v3-kicker::after{ display:none; }
+.offer-v4-copy h2{ margin:14px 0 20px; font-size:clamp(31px,4vw,48px); line-height:1.4; }
+.offer-v4-copy > p{ color:#465F72; font-size:16px; line-height:1.9; }
+.offer-v4-list{ display:grid; gap:10px; margin:26px 0 20px; }
+.offer-v4-list li{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 16px; border:1px solid #DFEAE4; border-radius:12px; background:#F8FBF9;
+}
+.offer-v4-list strong{ color:var(--navy); font-size:14px; }
+.offer-v4-list span{ color:var(--green-dark); font-size:12.5px; font-weight:700; text-align:right; }
+.offer-v4-includes{ padding-left:16px; border-left:3px solid var(--gold); font-size:13px!important; }
+.offer-v4-copy .btn{ width:100%; margin-top:24px; }
+.offer-v4-detail{ display:block; margin-top:14px; color:var(--green-dark); font-size:13px; font-weight:700; text-align:center; text-underline-offset:4px; }
+
+.delivery-v4{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.02)),
+    linear-gradient(145deg,#0D253B 0%,#071827 100%);
+  color:#fff;
+}
+.delivery-v4 .home-v3-kicker{ color:#8FE3B6; }
+.delivery-v4 .home-v3-kicker::before,.delivery-v4 .home-v3-kicker::after{ background:#8FE3B6; }
+.delivery-v4 .home-v3-head > p:last-child{ color:rgba(255,255,255,.73); }
+.delivery-v4-timeline{ display:grid; gap:16px; margin-top:56px; counter-reset:delivery; }
+.delivery-v4-timeline li{
+  position:relative;
+  display:grid;
+  grid-template-columns:104px minmax(180px,.72fr) 1fr;
+  align-items:center;
+  gap:28px;
+  padding:24px 26px 24px 76px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  background:rgba(255,255,255,.055);
+}
+.delivery-v4-timeline li::before{
+  counter-increment:delivery;
+  content:"0" counter(delivery);
+  position:absolute;
+  left:24px;
+  color:#8FE3B6;
+  font:700 14px/1 Inter,sans-serif;
+}
+.delivery-v4-timeline span{ color:#8FE3B6; font-size:12px; font-weight:700; letter-spacing:.08em; }
+.delivery-v4-timeline strong{ font-size:17px; }
+.delivery-v4-timeline p{ color:rgba(255,255,255,.68); font-size:13.5px; line-height:1.75; }
+.delivery-v4-note{ margin-top:22px; color:rgba(255,255,255,.57); font-size:12px; text-align:center; }
+
+@media (min-width:940px){
+  .offer-v4-grid{ grid-template-columns:minmax(420px,.95fr) minmax(0,1.05fr); }
+}
+
+@media (max-width:919px){
+  .hero-experience{ min-height:570px; max-width:700px; width:100%; margin-inline:auto; }
+}
+
+@media (max-width:939px){
+  .offer-v4-grid{ gap:38px; }
+  .offer-v4-preview{ min-height:590px; max-width:630px; width:100%; margin:0 auto; }
+}
+
+@media (max-width:640px){
+  .home-page .hero-v3 h1{ font-size:clamp(31px,9vw,40px); }
+  .home-page .hero-v3 h1 br:first-of-type{ display:none; }
+  .hero-experience{ min-height:440px; padding-inline:0; }
+  .experience-card{ top:62px; width:68%; }
+  .experience-pdf{ width:41%; }
+  .experience-chat{ right:2%; bottom:49px; width:67%; padding:12px; }
+  .experience-chat p{ margin-right:8px; padding:9px 10px; font-size:10px; }
+  .experience-chat-head{ font-size:9.5px; }
+  .experience-download{ margin-right:8px; font-size:10px; }
+  .hero-experience figcaption{ left:0; right:0; font-size:10.5px; }
+  .offer-v4-preview{ min-height:440px; }
+  .offer-v4-cover{ left:1%; width:65%; }
+  .offer-v4-pages img{ width:46%; }
+  .offer-v4-pages img:first-child{ top:36px; }
+  .offer-v4-pages img:last-child{ bottom:2px; right:0; }
+  .offer-v4-copy h2{ font-size:30px; }
+  .offer-v4-list li{ align-items:flex-start; flex-direction:column; gap:4px; }
+  .offer-v4-list span{ text-align:left; }
+  .delivery-v4-timeline li{ grid-template-columns:1fr; gap:6px; padding:20px 18px 20px 58px; }
+  .delivery-v4-timeline li::before{ left:18px; top:24px; }
+  .delivery-v4-timeline strong{ font-size:16px; }
+}
+
+/* =========================================================
    HOME V3 — 事業主が一読で理解できる、編集的なLPデザイン
 ========================================================= */
 .hero-v3{
