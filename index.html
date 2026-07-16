@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>名刺交換を、次の相談につなげる｜コンバージョン名刺 メイシル</title>
-<meta name="description" content="三つ折り名刺・公式LINE・役立つ無料特典・問い合わせまでの流れを、あなたの事業に合わせて一式設計。名刺を渡したあとも次の接点が残る仕組みをつくります。">
+<title>名刺・LINE・登録特典をまとめて制作｜メイシル</title>
+<meta name="description" content="メイシルは、名刺のデザイン、LINE公式アカウントの初期設定、登録特典、問い合わせ・予約への案内までを一式で制作する事業主向けサービスです。">
 
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="コンバージョン名刺 メイシル">
-<meta property="og:title" content="名刺交換を、次の相談につなげる｜メイシル">
-<meta property="og:description" content="三つ折り名刺・公式LINE・無料特典・問い合わせまでを一式設計。名刺を渡したあとも次の接点が残る仕組みをつくります。">
+<meta property="og:title" content="名刺からLINE登録、相談まで。まとめてつくります。｜メイシル">
+<meta property="og:description" content="名刺のデザイン、LINE公式アカウントの初期設定、登録特典、問い合わせ・予約への案内までを一式で制作します。">
 <meta property="og:url" content="https://meisiru.vercel.app/">
 <meta property="og:image" content="https://meisiru.vercel.app/ogp.png"><!-- 差し替え: ogp.svg を PNG(1200×630) 化して配置 -->
 <meta property="og:locale" content="ja_JP">
@@ -42,95 +42,7 @@
 <!-- 共通CSS -->
 <link rel="stylesheet" href="assets/site.css">
 
-<!-- ページ固有の微調整（共通CSSのクラスを補うのみ・カラー規定は厳守） -->
-<style>
-  /* ヒーロー導線ミニ図の下の一言 */
-  .hero-note{ font-size:12.5px; margin-top:14px; opacity:.85; }
-  /* 説明ムービー */
-  .movie-shell{
-    max-width:880px; margin:0 auto; border-radius:16px; overflow:hidden; background:#0F2540;
-    box-shadow:0 24px 60px rgba(15,37,64,.22), 0 6px 16px rgba(15,37,64,.12);
-  }
-  .movie-shell video{ display:block; width:100%; height:auto; }
-  .movie-note{ text-align:center; font-size:13px; margin-top:14px; opacity:.8; }
-  /* 3つのお悩みカード（枠のみ・影なし＝格差付け） */
-  .pain-card .num{
-    font-family:"Inter",sans-serif; font-feature-settings:"tnum"; font-size:13px; font-weight:700;
-    letter-spacing:.1em; color:var(--green-dark); display:block; margin-bottom:8px;
-  }
-  .pain-card h3{ font-size:18px; font-weight:700; margin-bottom:10px; }
-  .pain-card p{ font-size:14px; }
-  .empathy-close{ max-width:720px; margin:40px auto 0; text-align:center; font-weight:500; }
-  .empathy-close strong{ color:var(--green-dark); }
-  /* 業種別プレビュー: dl */
-  .industry-card .badge{ margin-bottom:10px; }
-  .industry-card h3{ font-size:18px; font-weight:700; margin-bottom:10px; }
-  .industry-card dl{ font-size:14px; }
-  .industry-card dt{ font-weight:700; color:var(--green-dark); margin-top:10px; }
-  .industry-card dd{ margin:0; }
-  /* メリットカード内番号 */
-  .merit-card .m-num{
-    font-family:"Inter",sans-serif; font-feature-settings:"tnum"; font-size:26px; font-weight:700;
-    color:var(--green); display:block; margin-bottom:6px; line-height:1;
-  }
-  .funnel-example{ background:var(--navy); color:var(--white); border-radius:var(--radius-lg); padding:34px 24px; text-align:center; }
-  .funnel-example h3{ font-size:18px; font-weight:700; margin-bottom:22px; }
-  .funnel-steps{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; align-items:stretch; margin-bottom:16px; }
-  .funnel-steps .f-step{
-    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25);
-    border-radius:12px; padding:12px 16px; min-width:110px;
-  }
-  .funnel-steps .f-step .num{ font-size:clamp(24px,4vw,30px); color:#8fe3b6; line-height:1.1; }
-  .funnel-steps .f-step .lbl{ display:block; font-size:12px; margin-top:2px; opacity:.9; }
-  .funnel-steps .f-arrow{ align-self:center; color:var(--white); opacity:.65; font-weight:700; font-family:"Inter",sans-serif; }
-  .funnel-example .note{ color:var(--white); opacity:.75; }
-  /* 600px以下は縦並び（行末に矢印が浮くのを防ぐ・矢印は↓向き） */
-  @media (max-width:600px){
-    .funnel-steps{ flex-direction:column; align-items:stretch; gap:4px; }
-    .funnel-steps .f-step{ width:100%; }
-    .funnel-steps .f-arrow{ transform:rotate(90deg); line-height:1; }
-  }
-  /* 料金プレビュー3枚 */
-  .price-card{
-    display:flex; flex-direction:column;
-  }
-  .price-card .p-sub{ font-size:12.5px; font-weight:500; color:var(--green-dark); margin-bottom:12px; }
-  .price-card .price{
-    font-family:"Inter","Noto Sans JP",sans-serif; font-feature-settings:"tnum";
-    font-size:28px; font-weight:700; margin-bottom:4px; color:var(--navy);
-  }
-  .price-card .price small{ font-size:13px; font-weight:500; }
-  .price-card .p-note{ font-size:12px; opacity:.75; margin-bottom:16px; }
-  .price-card ul{ font-size:13.5px; margin-top:auto; }
-  .price-card ul li{ padding:7px 0 7px 26px; position:relative; border-top:1px dashed #DFE6EC; }
-  .price-card ul li::before{
-    content:""; position:absolute; left:2px; top:14px; width:14px; height:8px;
-    border-left:2.5px solid var(--green); border-bottom:2.5px solid var(--green); transform:rotate(-45deg);
-  }
-  .price-card.featured{ border:2px solid var(--green-dark); position:relative; }
-  .price-card.featured .ribbon{
-    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-    background:var(--green-dark); color:var(--white); font-size:12px; font-weight:700;
-    border-radius:999px; padding:3px 16px; white-space:nowrap;
-  }
-  /* 代表からの一言 */
-  .message-grid{ display:grid; gap:28px; align-items:start; max-width:900px; margin:0 auto; }
-  @media (min-width:800px){ .message-grid{ grid-template-columns:240px 1fr; } }
-  .rep-photo-top{
-    width:100%; max-width:240px; margin:0 auto;
-  }
-  .rep-photo-top img{
-    display:block; width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top;
-    border-radius:var(--radius); background:var(--bg);
-    box-shadow:0 14px 30px rgba(15,37,64,.16), 0 4px 10px rgba(15,37,64,.10);
-  }
-  .rep-photo-top figcaption{
-    font-size:12px; color:var(--navy); opacity:.75; text-align:center; margin-top:8px;
-  }
-  .message-body p{ margin-bottom:16px; }
-  .message-sign{ font-weight:700; margin-top:8px; }
-  .message-sign .en{ font-size:12px; font-weight:600; letter-spacing:.1em; display:block; opacity:.7; }
-</style>
+
 
 <!-- ================= stage3d: 実写級3D名刺ショーケース（自己完結・.stage3d-プレフィックスのみ） ================= -->
 <style>
@@ -428,100 +340,90 @@
 
 <main id="main">
 
-<!-- =============== ① ヒーロー =============== -->
-<section class="hero" id="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="hero-eyebrow"><span aria-hidden="true"></span>名刺 × LINE × 無料特典の仕組みづくり</p>
-      <h1>名刺交換を、<br><span class="underline">次の相談</span>につなげる。</h1>
-
-      <p class="hero-desc">三つ折り名刺・公式LINE・役立つ無料特典・問い合わせまでの流れを、あなたの事業に合わせて一式でつくります。</p>
-      <p class="hero-support">営業が得意でなくても、「次に連絡する理由」が自然に残る仕組みです。</p>
-
-      <div class="cta-buttons hero-actions">
-        <!-- 主CTA: 無料相談フォーム（直リンク・新規タブ） -->
+<!-- =============== ヒーロー =============== -->
+<section class="hero-v3" id="hero" aria-labelledby="hero-heading">
+  <div class="container hero-v3-grid">
+    <div class="hero-v3-copy reveal">
+      <p class="hero-v3-eyebrow">事業主向け｜名刺・LINE・登録特典をまとめて制作</p>
+      <h1 id="hero-heading">名刺からLINE登録、<br><span>相談まで。</span><br>まとめて制作します。</h1>
+      <p class="hero-v3-lead">メイシルは、名刺のデザインだけでなく、LINE公式アカウントの初期設定、登録特典、問い合わせ・予約への案内までを一式で制作するサービスです。</p>
+      <div class="hero-v3-action">
         <a class="btn btn-primary js-cta" data-cta-id="hero_soudan"
            href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
-           target="_blank" rel="noopener">無料で導線と費用を相談する<span class="micro">オンライン対応・ご契約を迫りません</span></a>
-        <!-- 副CTA: 公式LINE（直リンク・新規タブ） -->
-        <a class="btn btn-line js-cta" data-cta-id="hero_line"
-           href="https://fcvm0fsu.autosns.app/line"
-           target="_blank" rel="noopener">
-          <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          チェックリストをLINEで受け取る
-        </a>
+           target="_blank" rel="noopener">無料相談を申し込む</a>
+        <p>オンライン対応｜相談・見積もり無料</p>
       </div>
-      <p class="hero-note">相談・見積もり無料。必要な範囲だけ整理してご提案します。</p>
     </div>
 
-    <div class="hero-visual stage3d-heroWrap" aria-label="名刺からLINE、無料特典、相談へつながる流れ">
-      <div class="hero-orbit" aria-hidden="true"></div>
-      <div class="hero-card-stack">
-        <span class="hero-demo-label">導線設計デモ</span>
-        <img class="stage3d-heroCard" src="assets/card_front.png"
-             alt="メイシルの三つ折り名刺の表紙（架空データを使った導線設計デモ）"
-             width="1456" height="880" decoding="async" draggable="false">
+    <figure class="hero-v3-visual reveal">
+      <div class="hero-v3-photo">
+        <img src="assets/hero_meisiru_v3.webp"
+             alt="事業の相談につながる名刺を交換する日本の事業主"
+             width="1536" height="1024" fetchpriority="high" decoding="async">
       </div>
-      <div class="hero-flow-card">
-        <p class="hero-flow-kicker en">NEXT ACTION FLOW</p>
-        <ol>
-          <li><span>01</span><strong>名刺</strong></li>
-          <li><span>02</span><strong>LINE</strong></li>
-          <li><span>03</span><strong>特典</strong></li>
-          <li><span>04</span><strong>相談</strong></li>
-        </ol>
-        <p class="hero-flow-note">渡したあとも、次の接点が残る。</p>
-      </div>
+      <figcaption class="hero-v3-caption">
+        <span>利用イメージ｜名刺交換の、その先まで。</span>
+        <strong>4つの制作物を、ひとつの体験に</strong>
+        <small>名刺 ／ LINE初期設定 ／ 登録特典 ／ 相談先の案内</small>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- =============== 制作するもの =============== -->
+<section class="home-v3-section deliverables-v3" id="deliverables" aria-labelledby="deliverables-heading">
+  <div class="container">
+    <div class="home-v3-head reveal">
+      <p class="home-v3-kicker">制作するもの</p>
+      <h2 id="deliverables-heading">名刺だけではありません。<br>4つをまとめて制作します。</h2>
+      <p>別々の会社に頼む必要はありません。名刺を受け取った人が迷わず相談先まで進めるよう、必要なものを一つずつ整えます。</p>
+    </div>
+    <div class="deliverables-v3-grid reveal-stagger">
+      <article>
+        <span class="deliverables-v3-number">01</span>
+        <h3>名刺</h3>
+        <p>誰に、何を相談できるのかが短時間で伝わるデザインと文章をつくります。</p>
+      </article>
+      <article>
+        <span class="deliverables-v3-number">02</span>
+        <h3>LINE初期設定</h3>
+        <p>あいさつ文、メニュー、案内メッセージまで、登録直後に必要な設定を整えます。</p>
+      </article>
+      <article>
+        <span class="deliverables-v3-number">03</span>
+        <h3>登録特典</h3>
+        <p>チェックリストやガイドなど、「登録して受け取りたい」と思える資料をつくります。</p>
+      </article>
+      <article>
+        <span class="deliverables-v3-number">04</span>
+        <h3>相談先の案内</h3>
+        <p>問い合わせ、予約、資料請求など、事業に合う次の行動へわかりやすく案内します。</p>
+      </article>
     </div>
   </div>
 </section>
 
-<aside class="trust-strip" aria-label="サービスの安心材料">
-  <div class="container">
-    <ul>
-      <li><span class="trust-label">制作費</span><strong>5万円〜</strong><small>税込／印刷費・外部ツール費別</small></li>
-      <li><span class="trust-label">納品目安</span><strong>最短2週間</strong><small>内容・確認速度で変動</small></li>
-      <li><span class="trust-label">制作期間中</span><strong>修正回数無制限</strong><small>合意範囲内・校了前まで</small></li>
-      <li><span class="trust-label">運営</span><strong>UIcity株式会社</strong><small>法人情報を公開</small></li>
-    </ul>
-  </div>
-</aside>
-
-<!-- =============== ② 40秒ブランドムービー =============== -->
-<section class="movie-feature" id="movie" aria-labelledby="movie-heading">
-  <div class="container movie-feature-grid">
-    <div class="movie-copy reveal">
-      <span class="movie-kicker en">40 SEC. BRAND STORY</span>
-      <h2 id="movie-heading">名刺のあとに起きることを、<br><span>40秒</span>で。</h2>
-      <p>名刺を渡す。QRからLINEにつながる。役立つ特典が届き、サービスを知り、相談へ進む。その一連の体験を、制作イメージでご覧いただけます。</p>
-      <ul class="movie-chapters" aria-label="動画の内容">
-        <li><span>01</span>名刺を渡す</li>
-        <li><span>02</span>LINEにつながる</li>
-        <li><span>03</span>価値が届く</li>
-        <li><span>04</span>相談へ進む</li>
-      </ul>
-      <p class="movie-access"><span aria-hidden="true">●</span> 日本語字幕付き。音声なしでも内容が伝わります。</p>
+<!-- =============== 40秒紹介ムービー =============== -->
+<section class="home-v3-section movie-v3" id="movie" aria-labelledby="movie-heading">
+  <div class="container movie-v3-grid">
+    <div class="movie-v3-copy reveal">
+      <p class="home-v3-kicker">40秒でわかるメイシル</p>
+      <h2 id="movie-heading">受け取った人が<br>どう進むか、見てください。</h2>
+      <p>名刺を受け取り、LINEで役立つ資料を受け取り、必要なときに相談する。その一連の流れを40秒にまとめました。</p>
+      <ol class="movie-v3-steps" aria-label="動画で紹介する流れ">
+        <li><span>1</span>名刺でサービスを知る</li>
+        <li><span>2</span>LINEで資料を受け取る</li>
+        <li><span>3</span>必要なときに相談する</li>
+      </ol>
+      <p class="movie-v3-access">BGM・ナレーション・日本語字幕付き。音声なしでも内容を確認できます。</p>
     </div>
-
-    <div class="movie-media-wrap reveal">
-      <div class="movie-media">
-        <video id="movie-player" src="assets/movie_meisiru_v2.mp4" poster="assets/movie_poster_v2.jpg"
-               width="1280" height="720" controls playsinline preload="metadata"
-               aria-label="メイシル紹介ムービー。名刺交換からLINE、無料特典、相談までの流れを40秒で説明します。">
-          <track kind="captions" src="assets/movie_meisiru_ja.vtt" srclang="ja" label="日本語" default>
-        </video>
-      </div>
-      <p class="movie-note">映像内の氏名・連絡先・導線数値は、説明用の架空データです。</p>
-    </div>
-  </div>
-  <div class="container movie-cta-row reveal">
-    <p>見終わったあと、今の名刺と「次につなげたい行動」を無料相談で整理できます。</p>
-    <div>
-      <a class="btn btn-primary js-cta" data-cta-id="movie_soudan"
-         href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
-         target="_blank" rel="noopener">無料で導線を相談する</a>
-      <a class="btn btn-movie-line js-cta" data-cta-id="movie_line"
-         href="https://fcvm0fsu.autosns.app/line" target="_blank" rel="noopener">LINEでチェックリストを受け取る</a>
+    <div class="movie-v3-media reveal">
+      <video id="movie-player" src="assets/movie_meisiru_v3.mp4" poster="assets/movie_poster_v2.jpg"
+             width="1280" height="720" controls playsinline preload="metadata"
+             aria-label="名刺からLINE登録、登録特典、相談までを説明するメイシルの40秒紹介動画">
+        <track kind="captions" src="assets/movie_meisiru_ja.vtt" srclang="ja" label="日本語" default>
+      </video>
+      <p>映像内の氏名・連絡先・数値は、説明用の架空データです。</p>
     </div>
   </div>
 </section>
@@ -530,9 +432,9 @@
 <section class="stage3d" id="showcase" aria-labelledby="stage3d-heading">
   <div class="container">
     <div class="stage3d-head reveal">
-      <span class="stage3d-kicker en">SHOWCASE</span>
-      <h2 class="stage3d-title" id="stage3d-heading">これが、メイシルの3つ折り名刺。</h2>
-      <p class="stage3d-sub">納品仕様そのままの3面折りデモです（氏名・連絡先はサンプルの架空データ）。<br>閉じれば1枚の名刺、開けば人となり・想い・導線が伝わります。</p>
+      <span class="stage3d-kicker">制作サンプル</span>
+      <h2 class="stage3d-title" id="stage3d-heading">完成後の名刺を、実際に動かして確認できます。</h2>
+      <p class="stage3d-sub">三つ折り名刺の制作サンプルです。閉じた状態と、開いた状態の両方をご覧ください。<br>掲載している氏名・連絡先は説明用の架空データです。</p>
     </div>
 
     <div class="stage3d-stage reveal" data-state="closed">
@@ -545,7 +447,7 @@
                 <img src="assets/tri_a2.png" alt="A面中央パネル: サービスに込めた想い（渡して終わり、を終わらせる。）" width="1456" height="880" draggable="false" decoding="async">
               </div>
               <div class="stage3d-face stage3d-faceB">
-                <img src="assets/tri_b2.png" alt="B面中央パネル: サービス内容②（進め方と無料オファーへの案内）" width="1456" height="880" draggable="false" decoding="async">
+                <img src="assets/tri_b2.png" alt="B面中央パネル: サービス内容②（進め方と登録特典への案内）" width="1456" height="880" draggable="false" decoding="async">
               </div>
             </div>
             <div class="stage3d-hinge stage3d-hingeL" aria-hidden="true">
@@ -593,372 +495,159 @@
         </div>
       </figure>
       <figure>
-        <figcaption>B面（内側・詳細面）　左から: サービス内容①（お悩み・メニュー）／ サービス内容②（進め方）／ 無料オファー・QR</figcaption>
+        <figcaption>B面（内側・詳細面）　左から: サービス内容①（お悩み・メニュー）／ サービス内容②（進め方）／ 登録特典・QR</figcaption>
         <div class="stage3d-flatRow">
           <img src="assets/tri_b3.png" alt="B面左: サービス内容①（お悩みチェックと3つのサービス）" width="1456" height="880" loading="lazy" decoding="async">
           <img src="assets/tri_b2.png" alt="B面中央: サービス内容②（進め方4ステップ）" width="1456" height="880" loading="lazy" decoding="async">
-          <img src="assets/tri_b1.png" alt="B面右: 無料オファー『名刺導線チェックリスト』とLINE登録QR" width="1456" height="880" loading="lazy" decoding="async">
+          <img src="assets/tri_b1.png" alt="B面右: 登録特典「名刺チェックリスト」とLINE登録QR" width="1456" height="880" loading="lazy" decoding="async">
         </div>
       </figure>
     </details>
 
     <ul class="stage3d-notes reveal-stagger">
-      <li><a href="service.html">閉じたまま裏のQRを読み取れる</a></li>
-      <li><a href="service.html">開けば人となりと導線が伝わる</a></li>
-      <li><a href="service.html">この1枚が営業の入口になる</a></li>
+      <li><a href="service.html">名刺の裏面からLINEへ登録</a></li>
+      <li><a href="service.html">開くとサービス内容と人柄がわかる</a></li>
+      <li><a href="service.html">登録特典と相談先まで案内</a></li>
     </ul>
   </div>
 </section>
 
-<!-- =============== ② 3つのお悩み =============== -->
-<section class="section bg-light" id="problem">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">PROBLEM</span>
-      <h2 class="section-title">名刺を渡しても、<span class="accent">その先</span>がない。</h2>
-      <p class="section-lead">交流会や商談で名刺を交換したのに、そこから何も生まれない。<br>その原因は、名刺交換のあとに「次の行動につながる導線」がないことです。</p>
+<!-- =============== 活用場面 =============== -->
+<section class="home-v3-section usecases-v3" id="usecases" aria-labelledby="usecases-heading">
+  <div class="container usecases-v3-layout">
+    <div class="home-v3-head reveal">
+      <p class="home-v3-kicker">こんな事業に</p>
+      <h2 id="usecases-heading">名刺を渡す機会がある<br>事業主に向いています。</h2>
+      <p>相談、予約、商談など、名刺のあとに案内したい行動がある事業で活用できます。</p>
     </div>
-
-    <div class="grid-3 reveal-stagger">
-      <div class="card pain-card">
-        <span class="num en">01</span>
-        <h3>後日、連絡が来ない</h3>
-        <p>渡しただけで終わってしまい、その後の接点がつくれない。せっかくの出会いが、取りこぼし・機会損失になっていませんか。</p>
-      </div>
-      <div class="card pain-card">
-        <span class="num en">02</span>
-        <h3>相手が覚えていない</h3>
-        <p>時間が経つと想起されず、名前も顔も思い出してもらえない。いざ必要になったときに、選ばれる存在になれていますか。</p>
-      </div>
-      <div class="card pain-card">
-        <span class="num en">03</span>
-        <h3>自分から追客しづらい</h3>
-        <p>営業っぽくなるのが苦手で、こちらからフォローできない。追いかけないうちに、関係がそのまま途切れてしまう。</p>
-      </div>
-    </div>
-
-    <p class="empathy-close reveal">
-      名刺は「自己紹介で終わるもの」ではなく、<strong>見込み客との関係が始まる入口</strong>に変えられます。
-    </p>
-  </div>
-</section>
-
-<!-- =============== ③ メイシルがつくる6ステップ導線 =============== -->
-<section class="section" id="flow">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">FLOW</span>
-      <h2 class="section-title">メイシルがつくる、<span class="accent">6ステップの導線</span>。</h2>
-      <p class="section-lead">名刺を受け取った相手が、迷わず次の行動へ進めるように。<br>渡した瞬間から相談・予約までを、ひとつの道すじにつなげます。</p>
-    </div>
-
-    <ol class="flow reveal-stagger">
-      <li>
-        <h3>名刺を受け取る</h3>
-        <p>交流会・商談・来店などの場面で、コンバージョン名刺を手渡します。渡す瞬間の一言まで含めて設計します。</p>
-      </li>
-      <li>
-        <h3>無料オファーに興味を持つ</h3>
-        <p>「相談前に使えるチェックリストをLINEでお渡ししています」——受け取る理由（無料オファー）で、行動のきっかけを作ります。</p>
-      </li>
-      <li>
-        <h3>QRコードから公式LINEに登録</h3>
-        <p>名刺のQRから、使い慣れたLINEでかんたんに登録。連絡先入力の手間がなく、相手のハードルを下げます。</p>
-      </li>
-      <li>
-        <h3>LINEで無料オファーを受け取る</h3>
-        <p>登録直後に無料オファーを自動でお届け。あいさつメッセージから自然に価値提供が始まります。</p>
-      </li>
-      <li>
-        <h3>サービス内容・実績を確認</h3>
-        <p>リッチメニューや配信で、サービス理解が深まる導線へ。相談前に「何を頼めるか」が伝わります。</p>
-      </li>
-      <li>
-        <h3>問い合わせ・相談・予約へ進む</h3>
-        <p>理解が進んだうえで、問い合わせ・相談・予約の受け皿へ。名刺が「関係が始まる入口」に変わります。</p>
-      </li>
-    </ol>
-
-    <div class="card card--left reveal" style="max-width:720px; margin:36px auto 0;">
-      <p style="font-weight:500;">名刺は営業の終わりではなく、見込み客との関係が始まる入口です。メイシルは、その入口から相談までの道すじをまとめて設計します。<a href="service.html">サービスの詳細はこちら →</a></p>
+    <div class="usecases-v3-grid reveal-stagger">
+      <article>
+        <span>士業・コンサル</span>
+        <h3>相談前の疑問を減らす</h3>
+        <p>よくある質問や相談前チェックリストを渡し、相談内容を具体的にします。</p>
+      </article>
+      <article>
+        <span>不動産・保険</span>
+        <h3>検討中も連絡先を残す</h3>
+        <p>物件探しや保険選びのガイドを渡し、必要になったときの相談先になります。</p>
+      </article>
+      <article>
+        <span>サロン・店舗</span>
+        <h3>来店・予約へ案内する</h3>
+        <p>セルフケア資料や店舗案内を届け、予約方法をわかりやすく伝えます。</p>
+      </article>
+      <article>
+        <span>法人営業・展示会</span>
+        <h3>次の商談につなげる</h3>
+        <p>サービス資料や事例集を渡し、問い合わせや商談の窓口へ案内します。</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- =============== ④ 選ばれる理由（メリット抜粋） =============== -->
-<section class="section bg-light" id="merit">
+<!-- =============== 料金と進め方 =============== -->
+<section class="home-v3-section price-process-v3" id="price" aria-labelledby="price-process-heading">
   <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">WHY MEISIRU</span>
-      <h2 class="section-title">名刺1枚に、<span class="accent">仕組み</span>を詰め込む。</h2>
-      <p class="section-lead">メイシルがお作りするのは、単なる名刺ではありません。<br>関係づくりから次の行動までを支える「仕組み」を、名刺1枚に組み込みます。</p>
+    <div class="home-v3-head reveal">
+      <p class="home-v3-kicker">料金と進め方</p>
+      <h2 id="price-process-heading">作るものと金額を決めてから、<br>制作を始めます。</h2>
+      <p>必要のない制作物まで勧めません。初回相談で現状を確認し、内容と総額をお見積もりにまとめます。</p>
     </div>
-
-    <div class="grid-3 reveal-stagger">
-      <div class="card merit-card card--accent">
-        <span class="m-num en">01</span>
-        <h3>自然につながる仕組み</h3>
-        <p>名刺を渡すだけで、LINE登録・無料オファーへ自然に誘導。押し売り感なく、次の接点が生まれます。</p>
-      </div>
-      <div class="card merit-card card--accent">
-        <span class="m-num en">02</span>
-        <h3>LINEで関係を継続できる</h3>
-        <p>お役立ち情報や特典を継続的にお届け。連絡待ちではなく、こちらから信頼を育てられます。</p>
-      </div>
-      <div class="card merit-card card--accent">
-        <span class="m-num en">03</span>
-        <h3>無料オファーで価値提供</h3>
-        <p>登録する理由（無料オファー）を用意することで、信頼を獲得し、サービスへの興味・理解を深めます。</p>
-      </div>
-      <div class="card merit-card card--accent">
-        <span class="m-num en">04</span>
-        <h3>相談・予約につながりやすい</h3>
-        <p>サービス理解が進むことで、問い合わせ・予約といった具体的な行動につながりやすくなります。</p>
-      </div>
-      <div class="card merit-card card--accent">
-        <span class="m-num en">05</span>
-        <h3>関係が可視化できる</h3>
-        <p>登録数や反応をデータで把握。「次にどこを直せば問い合わせに近づくか」が見えるようになります。</p>
-      </div>
-      <div class="card merit-card card--accent">
-        <span class="m-num en">06</span>
-        <h3>営業・集客の時間を削減</h3>
-        <p>整えた導線が自動で働くことで、追客の手間を減らせます。仕組みが関係づくりの一部を担います。</p>
-      </div>
-    </div>
-
-    <p class="t-center reveal" style="margin-top:36px;">
-      <a class="btn btn-ghost" href="service.html">選ばれる理由を詳しく見る</a>
-    </p>
-  </div>
-</section>
-
-<!-- =============== ⑤ 業種別プレビュー =============== -->
-<section class="section" id="industry">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">INDUSTRY</span>
-      <h2 class="section-title">業種別の、<span class="accent">活用イメージ</span>。</h2>
-      <p class="section-lead">名刺やカードを渡す機会があり、LINE登録後に案内したいサービスがある。<br>そんな方に、業種に合わせた無料オファーと導線を設計します。</p>
-    </div>
-
-    <div class="grid-2 reveal-stagger">
-      <div class="card card--shadow industry-card">
-        <span class="badge">士業・専門家</span>
-        <h3>相談前の不安を、先回りして解く</h3>
-        <dl>
-          <dt>無料オファー例</dt>
-          <dd>相談前チェックリスト／よくある質問集／初回相談の進め方ガイド</dd>
-          <dt>導線の流れ</dt>
-          <dd>LINE登録 → 無料オファー → サービス理解 → 相談・問い合わせ</dd>
-        </dl>
-      </div>
-      <div class="card card--shadow industry-card">
-        <span class="badge">保険・不動産</span>
-        <h3>検討中の見込み客と、つながり続ける</h3>
-        <dl>
-          <dt>無料オファー例</dt>
-          <dd>ライフプラン診断／物件探しのポイント集／お役立ち情報レポート</dd>
-          <dt>導線の流れ</dt>
-          <dd>LINE登録 → 無料オファー → サービス理解 → 相談・問い合わせ</dd>
-        </dl>
-      </div>
-      <div class="card card--shadow industry-card">
-        <span class="badge">サロン・整体・美容</span>
-        <h3>初回来店の一歩を、後押しする</h3>
-        <dl>
-          <dt>無料オファー例</dt>
-          <dd>お悩み別セルフケアガイド／施術の流れ・効果ガイド／お得な特典クーポン</dd>
-          <dt>導線の流れ</dt>
-          <dd>LINE登録 → 無料オファー → サービス理解 → 予約・来店</dd>
-        </dl>
-      </div>
-      <div class="card card--shadow industry-card">
-        <span class="badge">BtoB・法人サービス</span>
-        <h3>大量の接点を、商談へ束ねる</h3>
-        <dl>
-          <dt>無料オファー例</dt>
-          <dd>業界レポート・事例集／サービス資料ダウンロード／課題チェックリスト</dd>
-          <dt>導線の流れ</dt>
-          <dd>LINE登録 → 無料オファー → サービス理解 → 問い合わせ・商談</dd>
-        </dl>
-      </div>
-    </div>
-
-    <p class="t-center reveal" style="margin-top:36px;">
-      <a class="btn btn-ghost" href="service.html">業種別の活用例を詳しく見る</a>
-    </p>
-  </div>
-</section>
-
-<!-- =============== ⑥ 導入後に見える変化 =============== -->
-<section class="section bg-light" id="change">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">VISUALIZE</span>
-      <h2 class="section-title">名刺のあとが、<span class="accent">見えるようになる</span>。</h2>
-      <p class="section-lead">これまでは、名刺を渡した後に何が起きたか分かりませんでした。<br>導線を整えると、相手がどの段階まで進んだかを振り返れるようになります。</p>
-    </div>
-
-    <div class="funnel-example reveal">
-      <h3>名刺を渡したあとも、次の接点をひとつの流れで確認</h3>
-      <div class="funnel-steps funnel-steps--journey" aria-label="名刺配布から相談までの導線">
-        <div class="f-step">
-          <span class="num en">01</span>
-          <span class="lbl">名刺配布</span>
-        </div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step">
-          <span class="num en">02</span>
-          <span class="lbl">LINE登録</span>
-        </div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step">
-          <span class="num en">03</span>
-          <span class="lbl">特典を閲覧</span>
-        </div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step">
-          <span class="num en">04</span>
-          <span class="lbl">サービス理解</span>
-        </div>
-        <span class="f-arrow" aria-hidden="true">→</span>
-        <div class="f-step">
-          <span class="num en">05</span>
-          <span class="lbl">相談・予約</span>
-        </div>
-      </div>
-      <p class="note">運用後は登録数やクリックなど、取得できる範囲の実測値を確認できます。目的は成果を保証することではなく、「次にどこを直すか」を見つけることです。</p>
-    </div>
-  </div>
-</section>
-
-<!-- =============== ⑦ 料金プレビュー（3構成の要点） =============== -->
-<section class="section" id="price">
-  <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">PRICE</span>
-      <h2 class="section-title">必要なものだけを選ぶ、<span class="accent">3つの構成</span>。</h2>
-      <p class="section-lead">すべての機能を入れる必要はありません。目的・予算・必要な導線に合わせて、<br>無理のない構成からご提案します。まずは全体像の目安をご覧ください。</p>
-    </div>
-
-    <div class="grid-3 reveal-stagger">
-      <div class="card price-card card--shadow">
-        <h3>シンプル構成</h3>
-        <p class="p-sub">まずは名刺からLINE導線まで</p>
-        <p class="price">5〜10<small>万円前後</small></p>
-        <p class="p-note">制作費（本体・税込）の目安。印刷費・外部ツール利用料は別途。</p>
+    <div class="price-process-v3-grid">
+      <article class="price-v3-panel reveal">
+        <p class="price-v3-label">制作費の目安</p>
+        <p class="price-v3-main"><strong>5</strong>万円から</p>
         <ul>
-          <li>名刺制作</li>
-          <li>QR設置</li>
-          <li>LINE基本導線</li>
-          <li>無料オファー</li>
+          <li><span>シンプル</span><strong>5〜10万円前後</strong></li>
+          <li><span>標準</span><strong>10〜20万円前後</strong></li>
+          <li><span>本格制作</span><strong>20万円〜</strong></li>
         </ul>
-      </div>
-      <div class="card price-card card--shadow featured">
-        <span class="ribbon">よく選ばれる</span>
-        <h3>標準構成</h3>
-        <p class="p-sub">問い合わせ導線まで整える</p>
-        <p class="price">10〜20<small>万円前後</small></p>
-        <p class="p-note">制作費（本体・税込）の目安。印刷費・外部ツール利用料は別途。</p>
-        <ul>
-          <li>名刺制作</li>
-          <li>LINE基本導線</li>
-          <li>無料オファー設計</li>
-          <li>リッチメニュー</li>
-          <li>問い合わせ導線</li>
-        </ul>
-      </div>
-      <div class="card price-card card--shadow">
-        <h3>本格構成</h3>
-        <p class="p-sub">追客・予約まで自動で</p>
-        <p class="price">20<small>万円〜</small></p>
-        <p class="p-note">内容により変動。制作費（本体・税込）の目安。印刷費・外部ツール利用料は別途。</p>
-        <ul>
-          <li>3つ折り名刺</li>
-          <li>無料オファー制作</li>
-          <li>リッチメニュー</li>
-          <li>シナリオ配信</li>
-          <li>予約・相談導線</li>
-        </ul>
-      </div>
+        <p class="price-v3-note">すべて税込の目安です。印刷費・外部ツール利用料は別途。正式金額は制作範囲を確認してご提示します。</p>
+        <a class="home-v3-text-link" href="price.html">料金の内訳を確認する <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="process-v3-panel reveal">
+        <h3>ご相談から納品まで</h3>
+        <ol>
+          <li><span>1</span><div><strong>事業とお客様を聞く</strong><p>名刺を渡す相手と、相談してほしい内容を確認します。</p></div></li>
+          <li><span>2</span><div><strong>内容と見積もりを確認</strong><p>制作するもの、金額、納期を事前にお伝えします。</p></div></li>
+          <li><span>3</span><div><strong>名刺・LINE・資料を制作</strong><p>同じ方針で一式をつくり、確認しながら仕上げます。</p></div></li>
+          <li><span>4</span><div><strong>動作確認して納品</strong><p>QRや案内先まで確認し、使い方と一緒にお渡しします。</p></div></li>
+        </ol>
+        <a class="home-v3-text-link" href="flow.html">詳しい進め方を確認する <span aria-hidden="true">→</span></a>
+      </article>
     </div>
-
-    <p class="note t-center reveal" style="max-width:760px; margin:24px auto 0;">
-      ※金額はすべて目安・例であり、確定金額ではありません。印刷費・外部ツール利用料は別途です。正式金額はヒアリング後に制作範囲を整理してご提示します。成果を保証するものではありません。
-    </p>
-
-    <p class="t-center reveal" style="margin-top:28px;">
-      <a class="btn btn-ghost" href="price.html">総額の目安・業種別の費用感を見る</a>
-    </p>
   </div>
 </section>
 
-<!-- =============== ⑧ 運営会社・代表 =============== -->
-<section class="section bg-light" id="message">
+<!-- =============== 安心材料 =============== -->
+<section class="home-v3-section trust-v3" id="company" aria-labelledby="trust-heading">
+  <div class="container trust-v3-grid">
+    <div class="trust-v3-copy reveal">
+      <p class="home-v3-kicker">安心してご相談いただくために</p>
+      <h2 id="trust-heading">制作範囲と金額を確認してから始めます。</h2>
+      <p>口頭だけで進めず、作るもの・金額・修正範囲を書面で確認します。事前の合意なく費用が増えることはありません。</p>
+      <ul class="trust-v3-promises">
+        <li>契約書とサービス内容確認書を交付</li>
+        <li>追加作業は見積もりと承認のあとに実施</li>
+        <li>合意した範囲は最終確認前まで修正回数無制限</li>
+        <li>秘密保持契約にも対応</li>
+      </ul>
+    </div>
+    <aside class="trust-v3-company reveal" aria-label="運営会社情報">
+      <img src="assets/rep.jpg" alt="UIcity株式会社 代表取締役 梶本 雅人" width="1062" height="1542" loading="lazy" decoding="async">
+      <div>
+        <span>運営会社</span>
+        <h3>UIcity株式会社</h3>
+        <p>代表取締役　梶本 雅人<br>愛知県名古屋市</p>
+        <a class="home-v3-text-link" href="company.html">会社情報を見る <span aria-hidden="true">→</span></a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- =============== よくある質問 =============== -->
+<section class="home-v3-section faq-v3" id="faq" aria-labelledby="faq-heading">
   <div class="container">
-    <div class="section-head t-center reveal">
-      <span class="kicker">WHO WE ARE</span>
-      <h2 class="section-title">顔の見える法人が、<span class="accent">最後まで伴走</span>します。</h2>
-      <p class="section-lead">曖昧な提案や、事前合意のない追加請求はしません。必要な範囲を整理し、契約内容を確認してから制作を始めます。</p>
+    <div class="home-v3-head reveal">
+      <p class="home-v3-kicker">よくある質問</p>
+      <h2 id="faq-heading">相談前に、気になること。</h2>
     </div>
-
-    <div class="message-grid reveal">
-      <figure class="rep-photo-top">
-        <img src="assets/rep.jpg" alt="UIcity株式会社 代表取締役 梶本 雅人" width="1062" height="1542" loading="lazy" decoding="async">
-        <figcaption>UIcity株式会社 代表取締役　梶本 雅人</figcaption>
-      </figure>
-      <div class="message-body">
-        <p class="message-quote">「せっかくの出会いを、渡して終わりにしたくない。」</p>
-        <p>名刺は、営業の終わりではありません。見込み客との関係が始まる入口です。私たちがお作りするのは成果を約束する魔法ではなく、次の行動につながる「道すじ」です。</p>
-        <p>すべての機能を入れる必要はありません。ご予算と運用体制に合わせて、必要なものだけを一緒に絞り込みます。</p>
-        <ul class="trust-promises">
-          <li>制作請負契約書・サービス内容確認書を交付</li>
-          <li>追加費用は必ず事前見積もり・合意後に実施</li>
-          <li>合意範囲内は校了前まで修正回数無制限</li>
-          <li>NDA（秘密保持契約）にも対応</li>
-        </ul>
-        <p class="message-sign">
-          UIcity株式会社　代表取締役　梶本 雅人
-          <span class="en">Masato Kajimoto, CEO / UIcity Inc.</span>
-        </p>
-        <p><a class="text-link" href="company.html">会社概要と運営情報を見る →</a></p>
+    <div class="accordion js-accordion reveal">
+      <div class="accordion-item is-open">
+        <button class="accordion-q">LINE公式アカウントを持っていなくても依頼できますか？</button>
+        <div class="accordion-a"><div class="accordion-a-inner"><p>はい。お客様名義での開設サポートから、あいさつメッセージやメニューの設定まで対応します。すでにお持ちの場合は、今のアカウントを活用できます。</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">名刺に載せる文章や登録特典がなくても大丈夫ですか？</button>
+        <div class="accordion-a"><div class="accordion-a-inner"><p>大丈夫です。事業内容とお客様について伺い、名刺の文章と登録特典の企画から一緒につくります。既存の資料がある場合は、それを活用する方法もご提案します。</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">料金はいくらですか？</button>
+        <div class="accordion-a"><div class="accordion-a-inner"><p>制作費は税込5万円からです。名刺、LINE設定、登録特典など、必要な制作物によって変わります。初回相談後に内容と総額を明記した見積もりをご確認いただきます。</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">完成までどれくらいかかりますか？</button>
+        <div class="accordion-a"><div class="accordion-a-inner"><p>名刺とLINE初期設定が中心の場合、着手後2〜4週間がひとつの目安です。登録特典の新規制作や確認回数によって変わるため、契約前に納品予定日をお伝えします。</p></div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-q">どんな事業に向いていますか？</button>
+        <div class="accordion-a"><div class="accordion-a-inner"><p>名刺やカードを渡す機会があり、その後に相談・予約・商談へ案内したい事業に向いています。名刺をほとんど使わない場合は、別の方法が合うことも正直にお伝えします。</p></div></div>
       </div>
     </div>
+    <p class="faq-v3-more reveal"><a class="home-v3-text-link" href="faq.html">すべての質問を見る <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<!-- =============== ⑨ 共通CTAセクション =============== -->
-<section class="section bg-dark" id="contact" aria-labelledby="cta-heading">
-  <div class="container t-center">
-    <span class="kicker" style="color:#8fe3b6;">CONTACT</span>
-    <h2 class="section-title" id="cta-heading" style="color:#fff;">名刺を、<span class="accent">始まりに。</span></h2>
-    <p class="section-lead" style="color:rgba(255,255,255,.9);">
-      無料相談のゴールは契約ではなく、必要な導線と予算感の整理です。<br>
-      オンライン対応・ご契約を迫りません。まずは現状のお話からお聞かせください。
-    </p>
-
-    <div class="cta-buttons" style="margin:32px 0 16px;">
-      <a class="btn btn-primary js-cta" data-cta-id="closing_soudan"
-         href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
-         target="_blank" rel="noopener">
-        無料相談を申し込む<span class="micro">オンライン対応・ご契約を迫りません</span>
-      </a>
-      <a class="btn btn-line js-cta" data-cta-id="closing_line"
-         href="https://fcvm0fsu.autosns.app/line"
-         target="_blank" rel="noopener">
-        <span class="line-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        公式LINEで受け取る
-      </a>
-    </div>
-
-    <p class="cta-note" style="color:rgba(255,255,255,.82);">
-      いきなりの相談に迷う方は、
-      <a href="https://meisiru.vercel.app/checklist.html" target="_blank" rel="noopener" style="color:#8fe3b6; text-decoration:underline; text-underline-offset:3px;">名刺導線チェックリスト</a>
-      から。LINE友だち追加で受け取れます。<br>
-      配信は月数回程度。不要になればブロックでいつでも解除できます。<br>
-      ※「LINE」はLINEヤフー株式会社の商標です。
-    </p>
+<!-- =============== 最終CTA =============== -->
+<section class="cta-v3" id="contact" aria-labelledby="cta-heading">
+  <div class="container cta-v3-inner reveal">
+    <p>まずは、今お使いの名刺から。</p>
+    <h2 id="cta-heading">今の名刺を見せるところから、<br>始められます。</h2>
+    <p>事業内容と「名刺のあとにしてほしいこと」を伺い、必要な制作物と費用を整理します。</p>
+    <a class="btn btn-primary js-cta" data-cta-id="closing_soudan"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
+       target="_blank" rel="noopener">無料相談を申し込む</a>
+    <small>オンライン対応｜相談・見積もり無料｜ご契約を迫りません</small>
   </div>
 </section>
 
@@ -1014,15 +703,10 @@
 </button>
 
 <!-- モバイル固定CTAバー -->
-<div class="fixed-cta" role="navigation" aria-label="お申し込み・お問い合わせ">
+<div class="fixed-cta fixed-cta--single" role="navigation" aria-label="無料相談">
   <a class="js-cta" data-cta-id="fixedbar_soudan"
      href="https://docs.google.com/forms/d/e/1FAIpQLSebr4NRa_qPbnG0fkgt8a5XSpz8ZBNvOkizG67SxBsGML7tZw/viewform"
      target="_blank" rel="noopener">無料相談を申し込む</a>
-  <a class="js-cta line" data-cta-id="fixedbar_line"
-     href="https://fcvm0fsu.autosns.app/line" target="_blank" rel="noopener">
-    <span class="line-badge" aria-hidden="true" style="width:18px;height:18px;"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    LINEで受け取る
-  </a>
 </div>
 
 <!-- 共通JS -->
