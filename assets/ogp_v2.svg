@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="コンバージョン名刺 メイシル 渡して終わり、を終わらせる。">
+  <title>メイシル OGP画像 v2（3Dショーケース）</title>
+  <desc>ディープネイビーのステージ背景にスポットライトを当て、メイシル名刺（表面・案A意匠の簡略ベクター）を遠近感のある平行四辺形＋多層影で商品写真風に配置。左に白の大型タイポ「渡して終わり、を終わらせる。」とカテゴリ名ロックアップ「コンバージョン名刺 メイシル」。</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&amp;family=Inter:wght@600;700&amp;display=swap');
+    .jp { font-family: 'Noto Sans JP', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif; }
+    .en { font-family: 'Inter', 'Segoe UI', 'Yu Gothic UI', Arial, sans-serif; }
+  </style>
+
+  <defs>
+    <!-- ステージ背景: ディープネイビーの対角グラデーション -->
+    <linearGradient id="ogp2-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A1420"/>
+      <stop offset="0.55" stop-color="#0C1B30"/>
+      <stop offset="1" stop-color="#0F2540"/>
+    </linearGradient>
+    <!-- スポットライト（白のラジアル） -->
+    <radialGradient id="ogp2-spot" cx="0.66" cy="0.24" r="0.72">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.13"/>
+      <stop offset="0.45" stop-color="#FFFFFF" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 名刺背後のブランドグリーンのグロー -->
+    <radialGradient id="ogp2-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0B9E52" stop-opacity="0.26"/>
+      <stop offset="0.6" stop-color="#0B9E52" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#0B9E52" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 床の残光 -->
+    <radialGradient id="ogp2-floor" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0B9E52" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#0B9E52" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 光のビーム -->
+    <linearGradient id="ogp2-beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <!-- 名刺フェイス（わずかな紙のグラデーション） -->
+    <linearGradient id="ogp2-cardface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.7" stop-color="#FAFCFD"/>
+      <stop offset="1" stop-color="#EFF3F6"/>
+    </linearGradient>
+    <!-- 名刺表面のシーン（光沢） -->
+    <linearGradient id="ogp2-sheen" x1="0" y1="0" x2="1" y2="0.35">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <!-- ビネット（周辺減光） -->
+    <radialGradient id="ogp2-vig" cx="0.5" cy="0.45" r="0.75">
+      <stop offset="0" stop-color="#05090F" stop-opacity="0"/>
+      <stop offset="0.68" stop-color="#05090F" stop-opacity="0"/>
+      <stop offset="1" stop-color="#05090F" stop-opacity="0.55"/>
+    </radialGradient>
+    <filter id="ogp2-blurL" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="ogp2-blurS" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="ogp2-blurF" x="-40%" y="-80%" width="180%" height="260%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <clipPath id="ogp2-cardclip">
+      <rect x="0" y="0" width="430" height="260" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <!-- ===== ステージ背景 ===== -->
+  <rect width="1200" height="630" fill="url(#ogp2-bg)"/>
+  <polygon points="700,-40 960,-40 1190,630 560,630" fill="url(#ogp2-beam)"/>
+  <rect width="1200" height="630" fill="url(#ogp2-spot)"/>
+  <ellipse cx="915" cy="290" rx="360" ry="300" fill="url(#ogp2-glow)"/>
+  <ellipse cx="915" cy="480" rx="320" ry="52" fill="url(#ogp2-floor)"/>
+  <rect width="1200" height="630" fill="url(#ogp2-vig)"/>
+
+  <!-- ===== 床の接地影（ワールド座標・カードの傾きに合わせて回転） ===== -->
+  <ellipse cx="918" cy="452" rx="248" ry="30" fill="#000000" opacity="0.5" filter="url(#ogp2-blurF)" transform="rotate(-8 918 452)"/>
+
+  <!-- ===== メイシル名刺（表面）: 遠近感のある平行四辺形＋多層影 ===== -->
+  <g transform="translate(700,168) rotate(-8) skewX(-6)">
+    <!-- 多層影 1: 広いアンビエントシャドウ -->
+    <rect x="16" y="30" width="430" height="260" rx="16" fill="#000000" opacity="0.45" filter="url(#ogp2-blurL)"/>
+    <!-- 多層影 2: 近接シャドウ -->
+    <rect x="7" y="13" width="430" height="260" rx="16" fill="#000000" opacity="0.35" filter="url(#ogp2-blurS)"/>
+    <!-- カードの厚み（エッジ） -->
+    <rect x="5" y="7" width="430" height="260" rx="16" fill="#062A18"/>
+    <!-- カードフェイス -->
+    <g clip-path="url(#ogp2-cardclip)">
+      <rect x="0" y="0" width="430" height="260" fill="url(#ogp2-cardface)"/>
+      <!-- 右側の透かしシェブロン（実カードの右側大シンボルの簡略） -->
+      <g transform="translate(316,104) scale(0.62) translate(-230.4,-178.4)" opacity="0.12">
+        <path d="M230.4,178.4 L284.4,178.4 L357.8,251.8 Q362,256 357.8,260.2 L284.4,333.6 L230.4,333.6 L308,256 Z" fill="#0B9E52"/>
+      </g>
+      <!-- 緑シンボル（案A・マスタージオメトリ） -->
+      <g transform="translate(38,32) scale(0.28) translate(-134,-176)">
+        <path d="M166,176 L216,176 L291.8,251.8 Q296,256 291.8,260.2 L216,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#0B9E52"/>
+        <path d="M230.4,178.4 L284.4,178.4 L357.8,251.8 Q362,256 357.8,260.2 L284.4,333.6 L230.4,333.6 L308,256 Z" fill="#047A3B"/>
+      </g>
+      <!-- ワードマーク「メイシル」＋ MEISIRU -->
+      <text class="jp" x="116" y="64" font-size="30" font-weight="700" letter-spacing="2" fill="#0F2540">メイシル</text>
+      <text class="en" x="117" y="86" font-size="11" font-weight="600" letter-spacing="4" fill="#047A3B">MEISIRU</text>
+      <!-- 氏名・連絡先のダミーライン（簡略ベクター） -->
+      <rect x="38" y="118" width="5" height="30" fill="#0B9E52"/>
+      <rect x="52" y="118" width="148" height="14" rx="7" fill="#D8E0E6"/>
+      <rect x="52" y="140" width="92" height="8" rx="4" fill="#E3EAEF"/>
+      <rect x="38" y="164" width="168" height="7" rx="3.5" fill="#E3EAEF"/>
+      <rect x="38" y="177" width="128" height="7" rx="3.5" fill="#E3EAEF"/>
+      <!-- コンバージョン名刺の帯 -->
+      <rect x="0" y="196" width="430" height="40" fill="#0B9E52"/>
+      <polygon points="38,206 46,206 56,216 46,226 38,226 48,216" fill="#FFFFFF"/>
+      <text class="jp" x="66" y="222" font-size="17" font-weight="700" letter-spacing="3" fill="#FFFFFF">コンバージョン名刺</text>
+      <!-- 下部ストリップ（実カードの帯を踏襲: 濃緑＋ネイビー） -->
+      <rect x="0" y="236" width="430" height="12" fill="#047A3B"/>
+      <rect x="0" y="248" width="430" height="12" fill="#0F2540"/>
+      <!-- 光沢シーン -->
+      <polygon points="0,0 150,0 40,260 0,260" fill="url(#ogp2-sheen)"/>
+    </g>
+    <!-- ハイライトの縁 -->
+    <rect x="0.5" y="0.5" width="429" height="259" rx="15.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1"/>
+  </g>
+
+  <!-- ===== 左: カテゴリ名ロックアップ（ピル） ===== -->
+  <rect x="80" y="112" width="424" height="54" rx="27" fill="#0B9E52"/>
+  <text class="jp" x="110" y="148" font-size="24" font-weight="700" letter-spacing="3" fill="#FFFFFF">コンバージョン名刺 メイシル</text>
+
+  <!-- ===== 左: 大型タイポ ===== -->
+  <text class="jp" x="76" y="296" font-size="66" font-weight="900" letter-spacing="2" fill="#FFFFFF">渡して終わり、を</text>
+  <text class="jp" x="76" y="380" font-size="66" font-weight="900" letter-spacing="2" fill="#FFFFFF">終わらせる。</text>
+  <rect x="80" y="416" width="58" height="5" rx="2.5" fill="#0B9E52"/>
+
+  <!-- ===== 左下: ロゴロックアップ（白抜き・案A準拠） ===== -->
+  <g transform="translate(80,512) scale(0.25) translate(-134,-176)">
+    <path d="M166,176 L216,176 L291.8,251.8 Q296,256 291.8,260.2 L216,336 L166,336 Q134,336 134,304 L134,208 Q134,176 166,176 Z" fill="#FFFFFF"/>
+    <path d="M230.4,178.4 L284.4,178.4 L357.8,251.8 Q362,256 357.8,260.2 L284.4,333.6 L230.4,333.6 L308,256 Z" fill="#FFFFFF"/>
+  </g>
+  <text class="jp" x="152" y="543" font-size="28" font-weight="700" letter-spacing="1.5" fill="#FFFFFF">メイシル</text>
+  <text class="en" x="286" y="542" font-size="15" font-weight="600" letter-spacing="5" fill="#FFFFFF" opacity="0.8">MEISIRU</text>
+
+  <!-- ===== ボトムのブランドストリップ ===== -->
+  <rect x="0" y="624" width="1200" height="6" fill="#0B9E52"/>
+</svg>

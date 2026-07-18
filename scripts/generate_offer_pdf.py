@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the MEITSUGI industry-specific business-card-to-LINE guide.
+"""Generate the MEISIRU industry-specific business-card-to-LINE guide.
 
 The script creates the final PDF in both the public assets directory and the
 project output directory, renders every page for QA, and creates web-ready
@@ -29,8 +29,8 @@ from reportlab.platypus import Paragraph
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_PDF = ROOT / "output" / "pdf" / "meitsugi-industry-line-template-guide.pdf"
-ASSET_PDF = ROOT / "assets" / "meitsugi-industry-line-template-guide.pdf"
+OUTPUT_PDF = ROOT / "output" / "pdf" / "meisiru-industry-line-template-guide.pdf"
+ASSET_PDF = ROOT / "assets" / "meisiru-industry-line-template-guide.pdf"
 OFFER_DIR = ROOT / "assets" / "offer"
 RENDER_DIR = ROOT / "tmp" / "pdfs"
 
@@ -39,7 +39,7 @@ CONSULT_URL = "https://lin.ee/oGIGfiq"
 
 PAGE_W, PAGE_H = A4
 
-# MEITSUGI brand palette
+# MEISIRU brand palette
 NAVY = HexColor("#102A43")
 DEEP_NAVY = HexColor("#071B2B")
 BLUE = HexColor("#1C4F73")
@@ -154,7 +154,7 @@ def draw_brand(c: canvas.Canvas, x: float, y: float, inverse: bool = False, smal
     c.line(x + size * 0.76, y + size * 0.70, x + size * 0.59, y + size * 0.70)
     c.setFillColor(WHITE if inverse else NAVY)
     c.setFont(FONT_BOLD_NAME, 16 if small else 20)
-    c.drawString(x + size + 8, y + (3 if small else 4), "メイツギ")
+    c.drawString(x + size + 8, y + (3 if small else 4), "メイシル")
     c.restoreState()
 
 
@@ -180,7 +180,7 @@ def draw_footer(c: canvas.Canvas, page_num: int) -> None:
     c.line(38, 27, PAGE_W - 38, 27)
     c.setFillColor(MUTED)
     c.setFont(FONT_REGULAR_NAME, 7.2)
-    c.drawString(38, 14, "MEITSUGI / UIcity Inc.  |  実務テンプレート集")
+    c.drawString(38, 14, "MEISIRU / UIcity Inc.  |  実務テンプレート集")
     c.setFont(FONT_BOLD_NAME, 7.2)
     c.drawRightString(PAGE_W - 38, 14, f"{page_num:02d} / 08")
     c.restoreState()
@@ -250,7 +250,7 @@ def cover_page(c: canvas.Canvas) -> None:
     draw_brand(c, 42, PAGE_H - 76, inverse=True)
     c.setFillColor(YELLOW)
     c.setFont(FONT_BOLD_NAME, 8.5)
-    c.drawRightString(PAGE_W - 42, PAGE_H - 56, "MEITSUGI PRACTICAL GUIDE 01")
+    c.drawRightString(PAGE_W - 42, PAGE_H - 56, "MEISIRU PRACTICAL GUIDE 01")
 
     draw_label(c, "日本国内の事業主向け", 42, PAGE_H - 143, TEAL)
     draw_paragraph(c, "そのまま使える", 42, PAGE_H - 181, 460, style(17, 22, YELLOW, bold=True))
@@ -566,9 +566,9 @@ def build_pdf(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(path), pagesize=A4, pageCompression=1)
     c.setTitle("そのまま使える 業種別 名刺→LINE導線テンプレート集")
-    c.setAuthor("MEITSUGI / UIcity Inc.")
+    c.setAuthor("MEISIRU / UIcity Inc.")
     c.setSubject("日本国内の事業主向け 名刺からLINE登録・相談につなげる実務テンプレート")
-    c.setCreator("MEITSUGI PDF Generator")
+    c.setCreator("MEISIRU PDF Generator")
     cover_page(c)
     basic_page(c)
     for item in INDUSTRIES:
@@ -592,9 +592,9 @@ def locate_pdftoppm() -> Path:
 
 def render_pdf(path: Path) -> list[Path]:
     RENDER_DIR.mkdir(parents=True, exist_ok=True)
-    for old in RENDER_DIR.glob("meitsugi-page-*.png"):
+    for old in RENDER_DIR.glob("meisiru-page-*.png"):
         old.unlink()
-    prefix = RENDER_DIR / "meitsugi-page"
+    prefix = RENDER_DIR / "meisiru-page"
     subprocess.run(
         [str(locate_pdftoppm()), "-png", "-r", "170", str(path), str(prefix)],
         check=True,
@@ -602,14 +602,14 @@ def render_pdf(path: Path) -> list[Path]:
         stderr=subprocess.PIPE,
     )
     pages = sorted(
-        RENDER_DIR.glob("meitsugi-page-*.png"),
+        RENDER_DIR.glob("meisiru-page-*.png"),
         key=lambda p: int(re.search(r"-(\d+)\.png$", p.name).group(1)),
     )
     if len(pages) != 8:
         raise RuntimeError(f"Expected 8 rendered pages, found {len(pages)}")
     normalized: list[Path] = []
     for idx, page in enumerate(pages, 1):
-        target = RENDER_DIR / f"meitsugi-page-{idx:02d}.png"
+        target = RENDER_DIR / f"meisiru-page-{idx:02d}.png"
         if page != target:
             if target.exists():
                 target.unlink()
